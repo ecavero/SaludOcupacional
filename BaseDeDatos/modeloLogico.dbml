@@ -1,0 +1,36 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table Persona {
+  idPersona integer [primary key]
+  dni varchar(10)
+  apellidoPaterno varchar(100)
+  apellidoMaterno varchar(100)
+  idUbigeo integer
+}
+
+Table Paciente {
+  idPersona integer [primary key]      
+}
+
+Table Empresa {
+  idEmpresa integer [primary key]
+  nombre varchar(100)
+  idUbigeo integer
+}
+
+Table PerfilMedico {
+  idPerfilMedico integer [primary key]
+  idPersona integer
+  idEmpresa integer
+}
+
+Table Ubigeo {
+  idUbigeo int [primary key]
+}
+
+Ref: Persona.idPersona - Paciente.idPersona
+Ref: PerfilMedico.idPersona > Paciente.idPersona 
+Ref: PerfilMedico.idEmpresa > Empresa.idEmpresa
+Ref: Persona.idUbigeo > Ubigeo.idUbigeo
+Ref: Empresa.idUbigeo > Ubigeo.idUbigeo
