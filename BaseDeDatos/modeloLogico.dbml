@@ -1,5 +1,6 @@
 // Use DBML to define your database structure
 // Docs: https://dbml.dbdiagram.io/docs
+//hello mates
 
 Table Persona {
   idPersona integer [primary key]
@@ -16,6 +17,7 @@ Table Paciente {
 Table Empresa {
   idEmpresa integer [primary key]
   nombre varchar(100)
+  RUC varchar (60) 
   idUbigeo integer
 }
 
