@@ -1,18 +1,29 @@
+
 // Use DBML to define your database structure
 // Docs: https://dbml.dbdiagram.io/docs
 //hello mates
 
 Table Persona {
   idPersona integer [primary key]
+  idTipoPersona integer
   dni varchar(10)
   apellidoPaterno varchar(100)
   apellidoMaterno varchar(100)
   idUbigeo integer
+  estado bool
 }
 
+Table TipoPersona {
+  idTipoPersona integer [primary key]
+  descripcion varchar(10)
+}
+
+Ref: Persona.idTipoPersona > TipoPersona.idTipoPersona
 Table Paciente {
   idPersona integer [primary key]      
 }
+
+Ref: Persona.idPersona - Paciente.idPersona
 
 Table Empresa {
   idEmpresa integer [primary key]
@@ -27,11 +38,67 @@ Table PerfilMedico {
   idEmpresa integer
 }
 
+Table Examen {
+  idExamen integer [primary key]
+  nombre varchar
+}
+
+
+Table PerfilMedicoExamen {
+  idPerfilMedicoExamen integer [primary key]
+  idPerfilMedico integer
+  idExamen integer
+}
+
+Ref: PerfilMedicoExamen.idPerfilMedico > PerfilMedico.idPerfilMedico
+Ref: PerfilMedicoExamen.idExamen > Examen.idExamen
+
+Table Cita {
+  idCita integer [primary key]
+  idPersona integer
+  idPerfilMedico integer
+  fecha datetime
+}
+
+Ref: Cita.idPerfilMedico > PerfilMedico.idPerfilMedico
+
+Table CitaExamen {
+  idCitaExamen integer [primary key]
+  idCita integer
+  idExamen integer
+}
+
+Ref: CitaExamen.idCita > Cita.idCita
+
+Ref: Cita.idPersona > Paciente.idPersona
+
+
 Table Ubigeo {
   idUbigeo int [primary key]
 }
 
-Ref: Persona.idPersona - Paciente.idPersona
+
+
+Table CitaExamenResultado {
+  idCitaExamenResultado integer [primary key]  
+  idCita integer
+  idExamenComponente integer
+  valor varchar
+}
+
+Ref: CitaExamenResultado.idExamenComponente > ExamenComponente.idExamenComponente
+Ref: CitaExamenResultado.idCita > Cita.idCita
+
+Table ExamenComponente {
+  idExamenComponente integer [primary key]
+  idExamen integer
+  descripcionComponente varchar
+}
+
+
+
+
+
 Ref: PerfilMedico.idPersona > Paciente.idPersona 
 Ref: PerfilMedico.idEmpresa > Empresa.idEmpresa
 Ref: Persona.idUbigeo > Ubigeo.idUbigeo
