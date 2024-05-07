@@ -1,4 +1,3 @@
-
 // Use DBML to define your database structure
 // Docs: https://dbml.dbdiagram.io/docs
 //hello mates
@@ -10,7 +9,7 @@ Table Persona {
   apellidoPaterno varchar(100)
   apellidoMaterno varchar(100)
   idUbigeo integer
-  estado bool
+  estado boolean
 }
 
 Table TipoPersona {
@@ -19,11 +18,21 @@ Table TipoPersona {
 }
 
 Ref: Persona.idTipoPersona > TipoPersona.idTipoPersona
+
+
 Table Paciente {
-  idPersona integer [primary key]      
+  idPersona integer [primary key]
+  numeroDeHistoria varchar(20)
 }
 
 Ref: Persona.idPersona - Paciente.idPersona
+
+
+Table Usuario {
+  idPersona integer [primary key]
+  nombreUsuario varchar(100)
+  clave varchar()
+}
 
 Table Empresa {
   idEmpresa integer [primary key]
@@ -36,6 +45,7 @@ Table PerfilMedico {
   idPerfilMedico integer [primary key]
   idPersona integer
   idEmpresa integer
+  descripcion varchar(100)
 }
 
 Table Examen {
