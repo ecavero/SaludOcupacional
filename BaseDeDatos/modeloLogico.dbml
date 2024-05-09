@@ -9,12 +9,13 @@ Table Persona {
   apellidoPaterno varchar(100)
   apellidoMaterno varchar(100)
   idUbigeo integer
-  estado boolean
+  estado bit
 }
 
 Table TipoPersona {
   idTipoPersona integer [primary key]
   descripcion varchar(10)
+
 }
 
 Ref: Persona.idTipoPersona > TipoPersona.idTipoPersona
@@ -23,22 +24,37 @@ Ref: Persona.idTipoPersona > TipoPersona.idTipoPersona
 Table Paciente {
   idPersona integer [primary key]
   numeroDeHistoria varchar(20)
+  estado bit
 }
 
 Ref: Persona.idPersona - Paciente.idPersona
+
+
+Table Medico {
+  idPersona integer [primary key]
+  nroColegiatura integer
+  especialiad varchar
+  estado bit
+}
+
+Ref: Persona.idPersona - Medico.idPersona
 
 
 Table Usuario {
   idPersona integer [primary key]
   nombreUsuario varchar(100)
   clave varchar()
+  estado bit
 }
+
+Ref: Usuario.idPersona - Persona.idPersona
 
 Table Empresa {
   idEmpresa integer [primary key]
   nombre varchar(100)
   RUC varchar (60) 
   idUbigeo integer
+  estado bit
 }
 
 Table PerfilMedico {
@@ -46,11 +62,13 @@ Table PerfilMedico {
   idPersona integer
   idEmpresa integer
   descripcion varchar(100)
+  estado bit
 }
 
 Table Examen {
   idExamen integer [primary key]
   nombre varchar
+  estado bit
 }
 
 
@@ -58,6 +76,7 @@ Table PerfilMedicoExamen {
   idPerfilMedicoExamen integer [primary key]
   idPerfilMedico integer
   idExamen integer
+  estado bit
 }
 
 Ref: PerfilMedicoExamen.idPerfilMedico > PerfilMedico.idPerfilMedico
@@ -68,6 +87,7 @@ Table Cita {
   idPersona integer
   idPerfilMedico integer
   fecha datetime
+  estado bit
 }
 
 Ref: Cita.idPerfilMedico > PerfilMedico.idPerfilMedico
@@ -76,6 +96,7 @@ Table CitaExamen {
   idCitaExamen integer [primary key]
   idCita integer
   idExamen integer
+  estado bit
 }
 
 Ref: CitaExamen.idCita > Cita.idCita
@@ -85,6 +106,7 @@ Ref: Cita.idPersona > Paciente.idPersona
 
 Table Ubigeo {
   idUbigeo int [primary key]
+  estado bit
 }
 
 
@@ -93,7 +115,8 @@ Table CitaExamenResultado {
   idCitaExamenResultado integer [primary key]  
   idCita integer
   idExamenComponente integer
-  valor varchar
+  resultado varchar
+  estado bit
 }
 
 Ref: CitaExamenResultado.idExamenComponente > ExamenComponente.idExamenComponente
@@ -103,9 +126,10 @@ Table ExamenComponente {
   idExamenComponente integer [primary key]
   idExamen integer
   descripcionComponente varchar
+  estado bit
 }
 
-
+Ref: ExamenComponente.idExamen > Examen.idExamen 
 
 
 
