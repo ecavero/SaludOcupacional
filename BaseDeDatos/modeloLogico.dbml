@@ -96,10 +96,12 @@ Table CitaExamen {
   idCitaExamen integer [primary key]
   idCita integer
   idExamen integer
+  idMedico integer
   estado bit
 }
 
 Ref: CitaExamen.idCita > Cita.idCita
+Ref: CitaExamen.idMedico > Medico.idPersona
 
 Ref: Cita.idPersona > Paciente.idPersona
 
