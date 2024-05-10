@@ -4,7 +4,8 @@ Table Persona {
   dni varchar(10)
   apellidoPaterno varchar(100)
   apellidoMaterno varchar(100)
-  idUbigeo integer
+  idUbigeo varchar(6)
+  estado bit
 }
 
 Table TipoPersona {
@@ -44,7 +45,7 @@ Table Empresa {
   idEmpresa integer [primary key]
   nombre varchar(100)
   RUC varchar(60)
-  idUbigeo integer
+  idUbigeo varchar(6)
   estado bit
 }
 
@@ -95,7 +96,13 @@ Ref: CitaExamen.idMedico > Medico.idPersona
 Ref: Cita.idPersona > Paciente.idPersona
 
 Table Ubigeo {
-  idUbigeo integer [primary key]
+  idUbigeo varchar(6) [primary key]
+  codProvincia varchar(2)
+  codDepartamento varchar(2)
+  codDistrito varchar(2)
+  provincia varchar(100) 
+  departamento varchar(100) 
+  distrito varchar(100) 
   estado bit
 }
 
