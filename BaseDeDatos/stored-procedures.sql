@@ -1,50 +1,58 @@
-create procedure usp_ingresarPersona
+
+CREATE PROCEDURE usp_ingresarPersona
 @idTipoPersona INT,
 @dni varchar(10),
 @apellidoPaterno varchar(100),
 @apellidoMaterno varchar(100),
 @idUbigeo integer
-as
+AS
+BEGIN
+    INSERT INTO Persona (idTipoPersona, dni, apellidoPaterno, apellidoMaterno, idUbigeo, estado)
+    VALUES (@idTipoPersona, @dni, @apellidoPaterno, @apellidoMaterno, @idUbigeo, true)
+END
+GO
 
-insert into Persona (idTipoPersona, dni, apellidoPaterno, apellidoMaterno, idUbigeo, estado)
-values (@idTipoPersona, @dni, @apellidoPaterno, @apellidoMaterno, @idUbigeo, true)
-go
 
-create procedure usp_modificarPersona
+CREATE PROCEDURE usp_modificarPersona
+@idPersona integer,
 @idTipoPersona integer,
 @dni varchar(10),
 @apellidoPaterno varchar(100),
 @apellidoMaterno varchar(100),
 @idUbigeo integer
-as
+AS
+BEGIN
+    UPDATE Persona
+    SET idTipoPersona = @idTipoPersona,
+        dni = @dni,
+        apellidoPaterno = @apellidoPaterno,
+        apellidoMaterno = @apellidoMaterno,
+        idUbigeo = @idUbigeo
+    WHERE idPersona = @idPersona
+END
+GO
 
-update Persona p 
-set 
-p.dni = @dni, 
-p.apellidoPaterno = @apellidoPaterno, 
-p.apellidoMaterno = @apellidoMaterno, 
-p.idUbigeo = @idUbigeo
-where p.idPersona = @idPersona
-go
 
-create procedure usp_eliminarPersona
-@idPersona integer,
-as
-
-update Persona p
-set p.estado = false
-where p.idPersona = @idPersona
-go
-
-create procedure usp_consultarPersona
+CREATE PROCEDURE usp_eliminarPersona
 @idPersona integer
-as
+AS
+BEGIN
+    UPDATE Persona
+    SET estado = false
+    WHERE idPersona = @idPersona
+END
+GO
 
-select idTipoPersona, dni, apellidoPaterno, apellidoMaterno, idUbigeo, estado 
-from Persona
-where idPersona = @idPersona
-go
 
+CREATE PROCEDURE usp_consultarPersona
+@idPersona integer
+AS
+BEGIN
+    SELECT idPersona, idTipoPersona, dni, apellidoPaterno, apellidoMaterno, idUbigeo, estado 
+    FROM Persona
+    WHERE idPersona = @idPersona
+END
+GO
 
 CREATE PROCEDURE usp_ingresarTipoPersona
 @descripcion varchar(10)
