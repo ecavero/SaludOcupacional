@@ -1,7 +1,3 @@
-// Use DBML to define your database structure
-// Docs: https://dbml.dbdiagram.io/docs
-//hello mates
-
 Table Persona {
   idPersona integer [primary key]
   idTipoPersona integer
@@ -9,17 +5,14 @@ Table Persona {
   apellidoPaterno varchar(100)
   apellidoMaterno varchar(100)
   idUbigeo integer
-  estado bit
 }
 
 Table TipoPersona {
   idTipoPersona integer [primary key]
-  descripcion varchar(10)
-
+  descripcion varchar(100)
 }
 
 Ref: Persona.idTipoPersona > TipoPersona.idTipoPersona
-
 
 Table Paciente {
   idPersona integer [primary key]
@@ -29,30 +22,28 @@ Table Paciente {
 
 Ref: Persona.idPersona - Paciente.idPersona
 
-
 Table Medico {
   idPersona integer [primary key]
   nroColegiatura integer
-  especialiad varchar
+  especialiad varchar(100)
   estado bit
 }
 
 Ref: Persona.idPersona - Medico.idPersona
 
-
-Table Usuario {
+Table Empleado {
   idPersona integer [primary key]
-  nombreUsuario varchar(100)
-  clave varchar()
+  nombreEmpleado varchar(100)
+  clave varchar(100)
   estado bit
 }
 
-Ref: Usuario.idPersona - Persona.idPersona
+Ref: Empleado.idPersona - Persona.idPersona
 
 Table Empresa {
   idEmpresa integer [primary key]
   nombre varchar(100)
-  RUC varchar (60) 
+  RUC varchar(60)
   idUbigeo integer
   estado bit
 }
@@ -62,21 +53,17 @@ Table PerfilMedico {
   idPersona integer
   idEmpresa integer
   descripcion varchar(100)
-  estado bit
 }
 
 Table Examen {
   idExamen integer [primary key]
-  nombre varchar
-  estado bit
+  nombre varchar(100)
 }
-
 
 Table PerfilMedicoExamen {
   idPerfilMedicoExamen integer [primary key]
   idPerfilMedico integer
   idExamen integer
-  estado bit
 }
 
 Ref: PerfilMedicoExamen.idPerfilMedico > PerfilMedico.idPerfilMedico
@@ -102,22 +89,18 @@ Table CitaExamen {
 
 Ref: CitaExamen.idCita > Cita.idCita
 Ref: CitaExamen.idMedico > Medico.idPersona
-
 Ref: Cita.idPersona > Paciente.idPersona
 
-
 Table Ubigeo {
-  idUbigeo int [primary key]
+  idUbigeo integer [primary key]
   estado bit
 }
 
-
-
 Table CitaExamenResultado {
-  idCitaExamenResultado integer [primary key]  
+  idCitaExamenResultado integer [primary key]
   idCita integer
   idExamenComponente integer
-  resultado varchar
+  resultado varchar(100)
   estado bit
 }
 
@@ -127,15 +110,25 @@ Ref: CitaExamenResultado.idCita > Cita.idCita
 Table ExamenComponente {
   idExamenComponente integer [primary key]
   idExamen integer
-  descripcionComponente varchar
+  descripcionComponente varchar(100)
   estado bit
 }
 
-Ref: ExamenComponente.idExamen > Examen.idExamen 
+Ref: ExamenComponente.idExamen > Examen.idExamen
 
-
-
-Ref: PerfilMedico.idPersona > Paciente.idPersona 
-Ref: PerfilMedico.idEmpresa > Empresa.idEmpresa
+Ref: PerfilMedico.idPersona > Paciente.idPersona
+Ref: PerfilMedico.idEmpresa > Empresa.idUbigeo
 Ref: Persona.idUbigeo > Ubigeo.idUbigeo
 Ref: Empresa.idUbigeo > Ubigeo.idUbigeo
+
+Table Auditoria {
+  idAuditoria integer [primary key]
+  idEmpleado integer
+  idCita integer
+  fecha datetime
+  accion varchar(100)
+  descripcion varchar(255)
+}
+
+Ref: Auditoria.idEmpleado > Empleado.idPersona
+Ref: Auditoria.idCita > Cita.idCita
