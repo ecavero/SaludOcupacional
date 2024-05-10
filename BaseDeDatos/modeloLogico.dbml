@@ -74,6 +74,9 @@ Table Cita {
   idPersona integer
   idPerfilMedico integer
   fecha datetime
+  idEmpladoCrea integer
+  idEmpleadoModifica integer
+  idEmpleadoElimina integer
   estado bit
 }
 
