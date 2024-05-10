@@ -1,4 +1,3 @@
-
 CREATE PROCEDURE usp_ingresarPersona
 @idTipoPersona INT,
 @dni varchar(10),
@@ -277,13 +276,13 @@ ON Cita
 AFTER INSERT, UPDATE
 AS
 BEGIN
-    DECLARE @fechaActual datetime;
-    SET @fechaActual = GETDATE();
+    DECLARE @fechaActual datetime
+    SET @fechaActual = GETDATE()
 
     UPDATE Cita
     SET estado = CASE 
                     WHEN fecha < @fechaActual THEN 0  -- Si la fecha de la cita es anterior a la fecha actual, establece el estado como 0 (pasada)
                     ELSE 1  -- Si la fecha de la cita es igual o posterior a la fecha actual, establece el estado como 1 (programada)
                  END
-    WHERE idCita IN (SELECT idCita FROM inserted);
-END;
+    WHERE idCita IN (SELECT idCita FROM inserted)
+END
