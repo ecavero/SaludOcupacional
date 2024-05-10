@@ -8,7 +8,7 @@ CREATE PROCEDURE usp_ingresarPersona
 AS
 BEGIN
     INSERT INTO Persona (idTipoPersona, dni, apellidoPaterno, apellidoMaterno, idUbigeo, estado)
-    VALUES (@idTipoPersona, @dni, @apellidoPaterno, @apellidoMaterno, @idUbigeo, true)
+    VALUES (@idTipoPersona, @dni, @apellidoPaterno, @apellidoMaterno, @idUbigeo, 1)
 END
 GO
 
@@ -38,7 +38,7 @@ CREATE PROCEDURE usp_eliminarPersona
 AS
 BEGIN
     UPDATE Persona
-    SET estado = false
+    SET estado = 0
     WHERE idPersona = @idPersona
 END
 GO
@@ -100,7 +100,7 @@ CREATE PROCEDURE usp_ingresarPaciente
 AS
 BEGIN
     INSERT INTO Paciente (idPersona, numeroDeHistoria, estado)
-    VALUES (@idPersona, @numeroDeHistoria, true)
+    VALUES (@idPersona, @numeroDeHistoria, 1)
 END
 GO
 
@@ -120,7 +120,7 @@ CREATE PROCEDURE usp_eliminarPaciente
 AS
 BEGIN
     UPDATE Paciente
-    SET estado = false
+    SET estado = 0
     WHERE idPersona = @idPersona
 END
 GO
@@ -143,7 +143,7 @@ CREATE PROCEDURE usp_ingresarMedico
 AS
 BEGIN
     INSERT INTO Medico (idPersona, nroColegiatura, especialiad, estado)
-    VALUES (@idPersona, @nroColegiatura, @especialiad, true)
+    VALUES (@idPersona, @nroColegiatura, @especialiad, 1)
 END
 GO
 
@@ -168,7 +168,7 @@ CREATE PROCEDURE usp_ingresarUsuario
 AS
 BEGIN
     INSERT INTO Usuario (idPersona, nombreUsuario, clave, estado)
-    VALUES (@idPersona, @nombreUsuario, @clave, true)
+    VALUES (@idPersona, @nombreUsuario, @clave, 1)
 END
 GO
 
@@ -190,7 +190,7 @@ CREATE PROCEDURE usp_eliminarUsuario
 AS
 BEGIN
     UPDATE Usuario
-    SET estado = false
+    SET estado = 0
     WHERE idPersona = @idPersona
 END
 GO
@@ -210,7 +210,7 @@ CREATE PROCEDURE usp_eliminarMedico
 AS
 BEGIN
     UPDATE Medico
-    SET estado = false
+    SET estado = 0
     WHERE idPersona = @idPersona
 END
 GO
@@ -233,7 +233,7 @@ CREATE PROCEDURE usp_ingresarEmpresa
 AS
 BEGIN
     INSERT INTO Empresa (nombre, RUC, idUbigeo, estado)
-    VALUES (@nombre, @RUC, @idUbigeo, true)
+    VALUES (@nombre, @RUC, @idUbigeo, 1)
 END
 GO
 
@@ -257,7 +257,7 @@ CREATE PROCEDURE usp_eliminarEmpresa
 AS
 BEGIN
     UPDATE Empresa
-    SET estado = false
+    SET estado = 0
     WHERE idEmpresa = @idEmpresa
 END
 GO
