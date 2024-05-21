@@ -134,6 +134,13 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE usp_listarPacientes
+AS
+BEGIN
+        SELECT idPersona, dni, apellidoPaterno, apellidoMaterno, departamento, provincia, distrito
+        FROM v_Paciente
+END
+
 
 CREATE PROCEDURE usp_ingresarMedico
 @idPersona INT,
