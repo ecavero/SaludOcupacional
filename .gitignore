@@ -1,5 +1,6 @@
-SaludOcupacional/SaludOcupacional_Entity/obj
-SaludOcupacional/SaludOcupacional_Model/obj
-SaludOcupacional/SaludOcupacional_View/obj
-SaludOcupacional/SaludOcupacional_Controller/obj
 .vs
+*.user
+bin
+obj
+packages
+
