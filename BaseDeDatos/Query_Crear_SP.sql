@@ -3,11 +3,12 @@ CREATE PROCEDURE usp_ingresarPersona
 @dni varchar(10),
 @apellidoPaterno varchar(100),
 @apellidoMaterno varchar(100),
+@nombre varchar(100),
 @idUbigeo integer
 AS
 BEGIN
-    INSERT INTO Persona (idTipoPersona, dni, apellidoPaterno, apellidoMaterno, idUbigeo, estado)
-    VALUES (@idTipoPersona, @dni, @apellidoPaterno, @apellidoMaterno, @idUbigeo, 1)
+    INSERT INTO Persona (idTipoPersona, dni, apellidoPaterno, apellidoMaterno, nombre, idUbigeo, estado)
+    VALUES (@idTipoPersona, @dni, @apellidoPaterno, @apellidoMaterno, @nombre, @idUbigeo, 1)
 END
 GO
 
@@ -26,6 +27,7 @@ BEGIN
         dni = @dni,
         apellidoPaterno = @apellidoPaterno,
         apellidoMaterno = @apellidoMaterno,
+        nombre = @nombre,
         idUbigeo = @idUbigeo
     WHERE idPersona = @idPersona
 END
@@ -47,7 +49,7 @@ CREATE PROCEDURE usp_consultarPersona
 @idPersona integer
 AS
 BEGIN
-    SELECT idPersona, idTipoPersona, dni, apellidoPaterno, apellidoMaterno, idUbigeo, estado 
+    SELECT idPersona, idTipoPersona, dni, apellidoPaterno, apellidoMaterno, nombre, idUbigeo, estado 
     FROM Persona
     WHERE idPersona = @idPersona
 END
@@ -137,7 +139,7 @@ GO
 CREATE PROCEDURE usp_listarPacientes
 AS
 BEGIN
-        SELECT idPersona, dni, apellidoPaterno, apellidoMaterno, departamento, provincia, distrito
+        SELECT idPersona, dni, apellidoPaterno, apellidoMaterno, nombre, departamento, provincia, distrito
         FROM v_Paciente
 END
 

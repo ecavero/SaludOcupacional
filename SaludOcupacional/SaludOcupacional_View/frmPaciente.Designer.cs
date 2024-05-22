@@ -1,6 +1,6 @@
 ﻿namespace SaludOcupacional_View
 {
-    partial class Form1
+    partial class frmPaciente
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,24 +29,37 @@
         private void InitializeComponent()
         {
             dgPacientes = new DataGridView();
+            btnAgregar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgPacientes).BeginInit();
             SuspendLayout();
             // 
             // dgPacientes
             // 
             dgPacientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgPacientes.Location = new Point(34, 12);
+            dgPacientes.Location = new Point(33, 61);
             dgPacientes.Name = "dgPacientes";
-            dgPacientes.Size = new Size(745, 150);
+            dgPacientes.Size = new Size(745, 317);
             dgPacientes.TabIndex = 0;
             // 
-            // Form1
+            // btnAgregar
+            // 
+            btnAgregar.Location = new Point(33, 402);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(75, 23);
+            btnAgregar.TabIndex = 1;
+            btnAgregar.Text = "&Agregar";
+            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
+            // 
+            // frmPaciente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnAgregar);
             Controls.Add(dgPacientes);
-            Name = "Form1";
+            Name = "frmPaciente";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dgPacientes).EndInit();
@@ -56,5 +69,6 @@
         #endregion
 
         private DataGridView dgPacientes;
+        private Button btnAgregar;
     }
 }

@@ -4,6 +4,7 @@ CREATE TABLE [Persona] (
   [dni] varchar(10),
   [apellidoPaterno] varchar(100),
   [apellidoMaterno] varchar(100),
+  [nombre] varchar(100),
   [idUbigeo] varchar(6),
   [estado] bit
 )

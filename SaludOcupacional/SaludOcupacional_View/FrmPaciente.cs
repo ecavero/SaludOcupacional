@@ -2,10 +2,10 @@ namespace SaludOcupacional_View;
 using SaludOcupacional_Controller;
 using System.Data;
 
-public partial class Form1 : Form
+public partial class frmPaciente : Form
 {
     PacienteController pacienteController = new PacienteController();
-    public Form1()
+    public frmPaciente()
     {
         InitializeComponent();
     }
@@ -19,7 +19,14 @@ public partial class Form1 : Form
     {
         var dataTable = pacienteController.ListarPacientes();
         var dataView = new DataView(dataTable);
-        dgPacientes.DataSource = dataView;            
+        dgPacientes.DataSource = dataView;
 
+    }
+
+    private void btnAgregar_Click(object sender, EventArgs e)
+    {
+        var frm = new FrmPacienteEditar();
+        frm.Text = "Paciente - Agregar";
+        frm.ShowDialog();
     }
 }
