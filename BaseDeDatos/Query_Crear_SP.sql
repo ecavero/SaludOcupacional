@@ -280,6 +280,14 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE usp_listarDepartamentos
+AS
+BEGIN
+        SELECT codDepartamento, departamento
+        FROM v_Departamentos
+END
+GO
+
 CREATE TRIGGER ActualizarEstadoCita
 ON Cita
 AFTER INSERT, UPDATE

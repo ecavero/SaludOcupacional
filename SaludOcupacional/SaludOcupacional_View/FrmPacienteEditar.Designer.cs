@@ -38,6 +38,8 @@
             label4 = new Label();
             txtNombre = new TextBox();
             label5 = new Label();
+            label6 = new Label();
+            cboDepartamento = new ComboBox();
             SuspendLayout();
             // 
             // label1
@@ -123,11 +125,31 @@
             label5.TabIndex = 8;
             label5.Text = "Nombre";
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(12, 176);
+            label6.Name = "label6";
+            label6.Size = new Size(83, 15);
+            label6.TabIndex = 10;
+            label6.Text = "Departamento";
+            // 
+            // cboDepartamento
+            // 
+            cboDepartamento.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboDepartamento.FormattingEnabled = true;
+            cboDepartamento.Location = new Point(124, 176);
+            cboDepartamento.Name = "cboDepartamento";
+            cboDepartamento.Size = new Size(203, 23);
+            cboDepartamento.TabIndex = 11;
+            // 
             // FrmPacienteEditar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(cboDepartamento);
+            Controls.Add(label6);
             Controls.Add(txtNombre);
             Controls.Add(label5);
             Controls.Add(txtApellidoMaterno);
@@ -141,6 +163,7 @@
             Name = "FrmPacienteEditar";
             StartPosition = FormStartPosition.CenterParent;
             Text = "FrmPacienteEditar";
+            Load += FrmPacienteEditar_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -157,5 +180,7 @@
         private Label label4;
         private TextBox txtNombre;
         private Label label5;
+        private Label label6;
+        private ComboBox cboDepartamento;
     }
 }

@@ -8,9 +8,11 @@ using System.Threading.Tasks;
 
 namespace SaludOcupacional_Model
 {
-    public class PacienteModel
+    public class UbigeoModel
     {
-        public DataTable ListarPacientes() { 
+        public DataTable ListarDepartamentos()
+        {
+
             string cadenaConexion = new Conexion().ObtenerCadenaConexion();
             var conn = new SqlConnection();
             var cmd = new SqlCommand();
@@ -18,16 +20,17 @@ namespace SaludOcupacional_Model
             conn.ConnectionString = cadenaConexion;
             cmd.Connection = conn;
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "usp_listarPacientes";
+            cmd.CommandText = "usp_listarDepartamentos";
             try
             {
                 var adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(dataSet, "Pacientes");
-                return dataSet.Tables["Pacientes"];
-            } catch (SqlException ex)
+                adapter.Fill(dataSet, "Departamentos");
+                return dataSet.Tables["Departamentos"];
+            } 
+            catch(SqlException ex)
             {
                 throw new Exception(ex.Message);
-            }
+            } 
             finally
             {
                 if (conn.State == ConnectionState.Open)
@@ -36,6 +39,5 @@ namespace SaludOcupacional_Model
                 }
             }
         }
-
     }
 }
