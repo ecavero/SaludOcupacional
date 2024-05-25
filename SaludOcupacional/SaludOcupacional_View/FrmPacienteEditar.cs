@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SaludOcupacional_Controller;
+using SaludOcupacional_Entity;
 
 namespace SaludOcupacional_View
 {
@@ -29,6 +30,23 @@ namespace SaludOcupacional_View
             cboDepartamento.DataSource = dataTable;
             cboDepartamento.ValueMember = "codDepartamento";
             cboDepartamento.DisplayMember = "departamento";
+        }
+
+        private void cboDepartamento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var cbo = (ComboBox)sender;
+            var ubigeo = new Ubigeo();
+            var dataRowViewSeleccionado = (DataRowView)cbo.SelectedItem;
+            var dataRowSeleccionado = dataRowViewSeleccionado.Row;
+            ubigeo.codDepartamento = (string)dataRowSeleccionado["codDepartamento"];
+            var dataTable = ubigeoController.ListarProvincias(ubigeo);
+            var dataRow = dataTable.NewRow();
+            dataRow["codProvincia"] = "null";
+            dataRow["provincia"] = "--Seleccione--";
+            dataTable.Rows.InsertAt(dataRow, 0);
+            cboProvincia.DataSource = dataTable;
+            cboProvincia.ValueMember = "codProvincia";
+            cboProvincia.DisplayMember = "provincia";
         }
     }
 }

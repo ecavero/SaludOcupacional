@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SaludOcupacional_Entity;
 using SaludOcupacional_Model;
 
 namespace SaludOcupacional_Controller
@@ -14,6 +15,11 @@ namespace SaludOcupacional_Controller
 
         public DataTable ListarDepartamentos() {  
             return model.ListarDepartamentos();
+        }
+
+        public DataTable ListarProvincias(Ubigeo ubigeo)
+        {
+            return model.ListarProvincias(ubigeo);
         }
 
     }

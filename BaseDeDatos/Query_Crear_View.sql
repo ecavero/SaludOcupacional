@@ -13,5 +13,11 @@ AS
 SELECT u.codDepartamento, MAX(u.departamento) as departamento
 FROM Ubigeo u
 GROUP BY u.codDepartamento
+GO
 
-         
+CREATE VIEW v_Provincias
+AS
+SELECT u.codDepartamento, u.codProvincia, MAX(u.provincia) as provincia
+FROM Ubigeo u
+GROUP BY u.codDepartamento, u.codProvincia
+GO

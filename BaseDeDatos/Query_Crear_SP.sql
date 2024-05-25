@@ -288,6 +288,16 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE usp_listarProvincias
+@codDepartamento varchar(2)
+AS
+BEGIN
+        SELECT codProvincia, provincia
+        FROM v_Provincias
+        WHERE codDepartamento = @codDepartamento
+END
+GO
+
 CREATE TRIGGER ActualizarEstadoCita
 ON Cita
 AFTER INSERT, UPDATE
