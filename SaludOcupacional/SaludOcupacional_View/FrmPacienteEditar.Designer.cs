@@ -42,6 +42,8 @@
             cboDepartamento = new ComboBox();
             cboProvincia = new ComboBox();
             label7 = new Label();
+            cboDistrito = new ComboBox();
+            label8 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -154,6 +156,7 @@
             cboProvincia.Name = "cboProvincia";
             cboProvincia.Size = new Size(203, 23);
             cboProvincia.TabIndex = 13;
+            cboProvincia.SelectedIndexChanged += cboProvincia_SelectedIndexChanged;
             // 
             // label7
             // 
@@ -164,11 +167,31 @@
             label7.TabIndex = 12;
             label7.Text = "Provincia";
             // 
+            // cboDistrito
+            // 
+            cboDistrito.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboDistrito.FormattingEnabled = true;
+            cboDistrito.Location = new Point(124, 234);
+            cboDistrito.Name = "cboDistrito";
+            cboDistrito.Size = new Size(203, 23);
+            cboDistrito.TabIndex = 15;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(12, 234);
+            label8.Name = "label8";
+            label8.Size = new Size(45, 15);
+            label8.TabIndex = 14;
+            label8.Text = "Distrito";
+            // 
             // FrmPacienteEditar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(369, 450);
+            Controls.Add(cboDistrito);
+            Controls.Add(label8);
             Controls.Add(cboProvincia);
             Controls.Add(label7);
             Controls.Add(cboDepartamento);
@@ -207,5 +230,7 @@
         private ComboBox cboDepartamento;
         private ComboBox cboProvincia;
         private Label label7;
+        private ComboBox cboDistrito;
+        private Label label8;
     }
 }

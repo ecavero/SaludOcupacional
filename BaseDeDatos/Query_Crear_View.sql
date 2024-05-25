@@ -21,3 +21,10 @@ SELECT u.codDepartamento, u.codProvincia, MAX(u.provincia) as provincia
 FROM Ubigeo u
 GROUP BY u.codDepartamento, u.codProvincia
 GO
+
+CREATE VIEW v_Distritos
+AS
+SELECT u.codDepartamento, u.codProvincia, u.codDistrito, MAX(u.distrito) as distrito
+FROM Ubigeo u
+GROUP BY u.codDepartamento, u.codProvincia, u.codDistrito
+GO

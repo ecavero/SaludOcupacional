@@ -57,6 +57,41 @@ namespace SaludOcupacional_Model
                 adapter.Fill(dataSet, "Provincias");
                 return dataSet.Tables["Provincias"];
             }
+            catch(SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        public DataTable ListarDistritos(Ubigeo ubigeo)
+        {
+            string cadenaConexion = new Conexion().ObtenerCadenaConexion();
+            var conn = new SqlConnection();
+            var cmd = new SqlCommand();
+            var dataSet = new DataSet(); 
+            conn.ConnectionString = cadenaConexion;
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "usp_listarDistritos";
+            cmd.Parameters.AddWithValue("@codDepartamento", ubigeo.codDepartamento);
+            cmd.Parameters.AddWithValue("@codProvincia", ubigeo.codProvincia);
+            try
+            {
+                var adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dataSet, "Distritos");
+                return dataSet.Tables["Distritos"];
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
             finally
             {
                 if (conn.State == ConnectionState.Open)

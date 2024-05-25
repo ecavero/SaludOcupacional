@@ -22,5 +22,10 @@ namespace SaludOcupacional_Controller
             return model.ListarProvincias(ubigeo);
         }
 
+        public DataTable ListarDistritos(Ubigeo ubigeo)
+        {
+            return model.ListarDistritos(ubigeo);
+        }
+
     }
 }

@@ -298,6 +298,17 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE usp_listarDistritos
+@codDepartamento varchar(2),
+@codProvincia varchar(2)
+AS
+BEGIN
+        SELECT codDistrito, distrito
+        FROM v_Distritos
+        WHERE codDepartamento = @codDepartamento
+        AND codProvincia = @codProvincia
+END
+
 CREATE TRIGGER ActualizarEstadoCita
 ON Cita
 AFTER INSERT, UPDATE
