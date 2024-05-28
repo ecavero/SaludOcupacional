@@ -44,6 +44,10 @@
             label7 = new Label();
             cboDistrito = new ComboBox();
             label8 = new Label();
+            txtNumeroDeHistoria = new TextBox();
+            label9 = new Label();
+            btnAceptar = new Button();
+            btnCancelar = new Button();
             SuspendLayout();
             // 
             // label1
@@ -185,11 +189,53 @@
             label8.TabIndex = 14;
             label8.Text = "Distrito";
             // 
+            // txtNumeroDeHistoria
+            // 
+            txtNumeroDeHistoria.Location = new Point(124, 263);
+            txtNumeroDeHistoria.Name = "txtNumeroDeHistoria";
+            txtNumeroDeHistoria.Size = new Size(203, 23);
+            txtNumeroDeHistoria.TabIndex = 17;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(12, 263);
+            label9.Name = "label9";
+            label9.Size = new Size(74, 15);
+            label9.TabIndex = 16;
+            label9.Text = "Nro. Historia";
+            // 
+            // btnAceptar
+            // 
+            btnAceptar.Location = new Point(171, 415);
+            btnAceptar.Name = "btnAceptar";
+            btnAceptar.Size = new Size(75, 23);
+            btnAceptar.TabIndex = 18;
+            btnAceptar.Text = "Aceptar";
+            btnAceptar.UseVisualStyleBackColor = true;
+            btnAceptar.Click += btnAceptar_Click;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Location = new Point(252, 415);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(75, 23);
+            btnCancelar.TabIndex = 19;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
             // FrmPacienteEditar
             // 
+            AcceptButton = btnAceptar;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = btnCancelar;
             ClientSize = new Size(369, 450);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnAceptar);
+            Controls.Add(txtNumeroDeHistoria);
+            Controls.Add(label9);
             Controls.Add(cboDistrito);
             Controls.Add(label8);
             Controls.Add(cboProvincia);
@@ -232,5 +278,9 @@
         private Label label7;
         private ComboBox cboDistrito;
         private Label label8;
+        private TextBox txtNumeroDeHistoria;
+        private Label label9;
+        private Button btnAceptar;
+        private Button btnCancelar;
     }
 }

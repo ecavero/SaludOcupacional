@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SaludOcupacional_Model;
+using SaludOcupacional_Entity;
 
 namespace SaludOcupacional_Controller
 {
@@ -15,6 +16,11 @@ namespace SaludOcupacional_Controller
         public DataTable ListarPacientes()
         {
             return model.ListarPacientes();
+        }
+
+        public void InsertarPaciente(Paciente paciente)
+        {
+            model.InsertarPaciente(paciente);
         }
     }
 }

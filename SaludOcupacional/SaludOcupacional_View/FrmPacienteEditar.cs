@@ -15,6 +15,7 @@ namespace SaludOcupacional_View
     public partial class FrmPacienteEditar : Form
     {
         UbigeoController ubigeoController = new UbigeoController();
+        PacienteController pacienteController = new PacienteController();
         public FrmPacienteEditar()
         {
             InitializeComponent();
@@ -67,6 +68,30 @@ namespace SaludOcupacional_View
             cboDistrito.DataSource = dataTable;
             cboDistrito.ValueMember = "codDistrito";
             cboDistrito.DisplayMember = "distrito";
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var paciente = new Paciente();
+                paciente.dni = txtDni.Text;
+                paciente.apellidoPaterno = txtApellidoPaterno.Text;
+                paciente.apellidoMaterno = txtApellidoMaterno.Text;
+                paciente.nombre = txtNombre.Text;
+                var dataRowViewProvincia = (DataRowView)cboProvincia.SelectedItem;
+                var dataRowProvincia = dataRowViewProvincia.Row;
+                paciente.idUbigeo = (string)dataRowProvincia["idUbigeo"];
+                paciente.numeroDeHistoria = txtNumeroDeHistoria.Text;
+                paciente.estado = true;
+
+                pacienteController.InsertarPaciente(paciente);
+            }
         }
     }
 }

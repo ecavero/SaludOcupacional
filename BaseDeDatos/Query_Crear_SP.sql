@@ -105,6 +105,27 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE usp_insertarPaciente
+@dni varchar(10),
+@apellidoPaterno varchar(100),
+@apellidoMaterno varchar(100),
+@nombre varchar(100),
+@idUbigeo varchar(6),
+@numeroDeHistoria varchar(20),
+@estado bit
+AS
+BEGIN
+	DECLARE @ultimoId int
+	SELECT @ultimoId = MAX(p.idPersona)
+	FROM Persona p
+	SET @ultimoId = @ultimoId + 1
+	INSERT INTO Persona(idPersona, dni, apellidoPaterno, apellidoMaterno, nombre, idUbigeo, idTipoPersona, estado)
+	VALUES(@ultimoId, @dni, @apellidoPaterno, @apellidoMaterno, @nombre, @idUbigeo, 1, @estado)
+	INSERT INTO Paciente(idPersona, numeroDeHistoria, estado)
+	VALUES(@ultimoId, @numeroDeHistoria, @estado)
+END
+GO
+
 CREATE PROCEDURE usp_modificarPaciente
 @idPersona integer,
 @numeroDeHistoria varchar(20)
