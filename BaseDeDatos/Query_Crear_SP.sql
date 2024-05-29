@@ -324,7 +324,7 @@ CREATE PROCEDURE usp_listarDistritos
 @codProvincia varchar(2)
 AS
 BEGIN
-        SELECT codDistrito, distrito
+        SELECT idUbigeo, codDistrito, distrito
         FROM v_Distritos
         WHERE codDepartamento = @codDepartamento
         AND codProvincia = @codProvincia

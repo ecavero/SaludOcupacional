@@ -56,6 +56,7 @@ namespace SaludOcupacional_Model
             cmd.Parameters.AddWithValue("@estado", paciente.estado);
             try
             {
+                conn.Open();
                 cmd.ExecuteNonQuery();
             }
             catch(SqlException ex)

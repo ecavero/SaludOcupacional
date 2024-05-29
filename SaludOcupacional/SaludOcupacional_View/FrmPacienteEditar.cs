@@ -84,13 +84,17 @@ namespace SaludOcupacional_View
                 paciente.apellidoPaterno = txtApellidoPaterno.Text;
                 paciente.apellidoMaterno = txtApellidoMaterno.Text;
                 paciente.nombre = txtNombre.Text;
-                var dataRowViewProvincia = (DataRowView)cboProvincia.SelectedItem;
-                var dataRowProvincia = dataRowViewProvincia.Row;
-                paciente.idUbigeo = (string)dataRowProvincia["idUbigeo"];
+                var dataRowViewDistrito = (DataRowView)cboDistrito.SelectedItem;
+                var dataRowDistrito = dataRowViewDistrito.Row;
+                paciente.idUbigeo = (string)dataRowDistrito["idUbigeo"];
                 paciente.numeroDeHistoria = txtNumeroDeHistoria.Text;
                 paciente.estado = true;
 
                 pacienteController.InsertarPaciente(paciente);
+                this.Close();
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
             }
         }
     }

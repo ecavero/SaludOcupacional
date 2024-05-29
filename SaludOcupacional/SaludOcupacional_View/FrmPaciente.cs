@@ -28,5 +28,6 @@ public partial class frmPaciente : Form
         var frm = new FrmPacienteEditar();
         frm.Text = "Paciente - Agregar";
         frm.ShowDialog();
+        ListarPacientes();
     }
 }

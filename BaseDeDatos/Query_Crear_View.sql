@@ -24,7 +24,6 @@ GO
 
 CREATE VIEW v_Distritos
 AS
-SELECT u.codDepartamento, u.codProvincia, u.codDistrito, MAX(u.distrito) as distrito
+SELECT u.idUbigeo, u.codDepartamento, u.codProvincia, u.codDistrito, MAX(u.distrito) as distrito
 FROM Ubigeo u
-GROUP BY u.codDepartamento, u.codProvincia, u.codDistrito
-GO
+GROUP BY u.idUbigeo, u.codDepartamento, u.codProvincia, u.codDistritoGO
