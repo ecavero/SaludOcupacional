@@ -30,4 +30,9 @@ public partial class frmPaciente : Form
         frm.ShowDialog();
         ListarPacientes();
     }
+
+    private void dgPacientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+    {
+
+    }
 }

@@ -35,11 +35,18 @@
             // 
             // dgPacientes
             // 
+            dgPacientes.AllowUserToAddRows = false;
+            dgPacientes.AllowUserToDeleteRows = false;
+            dgPacientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgPacientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgPacientes.Location = new Point(33, 61);
             dgPacientes.Name = "dgPacientes";
+            dgPacientes.ReadOnly = true;
+            dgPacientes.RowHeadersVisible = false;
+            dgPacientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgPacientes.Size = new Size(745, 317);
             dgPacientes.TabIndex = 0;
+            dgPacientes.CellContentClick += dgPacientes_CellContentClick;
             // 
             // btnAgregar
             // 
