@@ -50,6 +50,7 @@
             btnCancelar = new Button();
             txtClave = new TextBox();
             label10 = new Label();
+            chkActivo = new CheckBox();
             SuspendLayout();
             // 
             // label1
@@ -210,7 +211,7 @@
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(171, 484);
+            btnAceptar.Location = new Point(170, 484);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(75, 23);
             btnAceptar.TabIndex = 10;
@@ -244,11 +245,22 @@
             label10.TabIndex = 12;
             label10.Text = "Clave";
             // 
+            // chkActivo
+            // 
+            chkActivo.AutoSize = true;
+            chkActivo.Location = new Point(185, 459);
+            chkActivo.Name = "chkActivo";
+            chkActivo.Size = new Size(60, 19);
+            chkActivo.TabIndex = 21;
+            chkActivo.Text = "Activo";
+            chkActivo.UseVisualStyleBackColor = true;
+            // 
             // FrmEmpleadoEditar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(381, 541);
+            Controls.Add(chkActivo);
             Controls.Add(txtClave);
             Controls.Add(label10);
             Controls.Add(btnCancelar);
@@ -302,5 +314,6 @@
         private Button btnCancelar;
         private TextBox txtClave;
         private Label label10;
+        private CheckBox chkActivo;
     }
 }
