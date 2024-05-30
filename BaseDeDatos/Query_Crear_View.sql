@@ -1,6 +1,10 @@
 CREATE VIEW v_Paciente
 AS
-SELECT pe.idPersona, pe.dni, pe.apellidoPaterno, pe.apellidoMaterno, pe.nombre, u.departamento, u.provincia, u.distrito
+SELECT pe.idPersona, pe.dni, pe.apellidoPaterno, pe.apellidoMaterno, pe.nombre, u.departamento, u.provincia, u.distrito, pa.numeroDeHistoria, 
+CASE pa.estado
+        WHEN 1 THEN 'Activo'
+        WHEN 0 THEN 'Inactivo'
+END AS estado
 FROM Persona pe
 INNER JOIN Paciente pa
 ON pa.idPersona = pe.idPersona

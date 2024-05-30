@@ -27,12 +27,18 @@ public partial class frmPaciente : Form
     {
         var frm = new FrmPacienteEditar();
         frm.Text = "Paciente - Agregar";
+        frm.editar = false;
         frm.ShowDialog();
         ListarPacientes();
     }
 
-    private void dgPacientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+    private void btnModificar_Click(object sender, EventArgs e)
     {
-
+        var frm = new FrmPacienteEditar();
+        frm.Text = "Paciente - Modificar";
+        frm.editar = true;
+        frm.idPaciente = (int)dgPacientes.CurrentRow.Cells[0].Value;
+        frm.ShowDialog();
+        ListarPacientes();
     }
 }
