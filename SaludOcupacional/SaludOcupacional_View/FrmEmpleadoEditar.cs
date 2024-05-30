@@ -47,7 +47,7 @@ namespace SaludOcupacional_View
                 empleado.apellidoPaterno = txtApellidoPaterno.Text;
                 empleado.apellidoMaterno = txtApellidoMaterno.Text;
                 empleado.nombreEmpleado = txtNombreEmpleado.Text;
-                empleado.clave = txtClave.Text;
+                empleado.clave = txtUsuario.Text;
                 var dataRowViewDistrito = (DataRowView)cboDistrito.SelectedItem;
                 var dataRowDistrito = dataRowViewDistrito.Row;
                 empleado.idUbigeo = (string)dataRowDistrito["idUbigeo"];

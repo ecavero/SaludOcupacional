@@ -44,10 +44,12 @@
             cboDepartamento = new ComboBox();
             cboProvincia = new ComboBox();
             cboDistrito = new ComboBox();
-            txtClave = new TextBox();
+            txtUsuario = new TextBox();
             txtNombreEmpleado = new TextBox();
             btnAceptar = new Button();
             btnCancelar = new Button();
+            txtClave = new TextBox();
+            label10 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -128,9 +130,9 @@
             label9.AutoSize = true;
             label9.Location = new Point(26, 377);
             label9.Name = "label9";
-            label9.Size = new Size(36, 15);
+            label9.Size = new Size(110, 15);
             label9.TabIndex = 8;
-            label9.Text = "Clave";
+            label9.Text = "Nombre de Usuario";
             // 
             // txtCodigo
             // 
@@ -192,12 +194,12 @@
             cboDistrito.TabIndex = 7;
             cboDistrito.SelectedIndexChanged += comboBox3_SelectedIndexChanged;
             // 
-            // txtClave
+            // txtUsuario
             // 
-            txtClave.Location = new Point(185, 377);
-            txtClave.Name = "txtClave";
-            txtClave.Size = new Size(151, 23);
-            txtClave.TabIndex = 8;
+            txtUsuario.Location = new Point(185, 377);
+            txtUsuario.Name = "txtUsuario";
+            txtUsuario.Size = new Size(151, 23);
+            txtUsuario.TabIndex = 8;
             // 
             // txtNombreEmpleado
             // 
@@ -211,7 +213,7 @@
             btnAceptar.Location = new Point(171, 484);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(75, 23);
-            btnAceptar.TabIndex = 9;
+            btnAceptar.TabIndex = 10;
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
             btnAceptar.Click += btnAceptar_Click;
@@ -221,20 +223,38 @@
             btnCancelar.Location = new Point(281, 484);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
-            btnCancelar.TabIndex = 10;
+            btnCancelar.TabIndex = 11;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
+            // 
+            // txtClave
+            // 
+            txtClave.Location = new Point(185, 419);
+            txtClave.Name = "txtClave";
+            txtClave.Size = new Size(151, 23);
+            txtClave.TabIndex = 9;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(26, 419);
+            label10.Name = "label10";
+            label10.Size = new Size(36, 15);
+            label10.TabIndex = 12;
+            label10.Text = "Clave";
             // 
             // FrmEmpleadoEditar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(381, 541);
+            Controls.Add(txtClave);
+            Controls.Add(label10);
             Controls.Add(btnCancelar);
             Controls.Add(btnAceptar);
             Controls.Add(txtNombreEmpleado);
-            Controls.Add(txtClave);
+            Controls.Add(txtUsuario);
             Controls.Add(cboDistrito);
             Controls.Add(cboProvincia);
             Controls.Add(cboDepartamento);
@@ -276,9 +296,11 @@
         private ComboBox cboDepartamento;
         private ComboBox cboProvincia;
         private ComboBox cboDistrito;
-        private TextBox txtClave;
+        private TextBox txtUsuario;
         private TextBox txtNombreEmpleado;
         private Button btnAceptar;
         private Button btnCancelar;
+        private TextBox txtClave;
+        private Label label10;
     }
 }
