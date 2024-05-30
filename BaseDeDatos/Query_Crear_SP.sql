@@ -376,6 +376,15 @@ END
 GO
 
 
+CREATE PROCEDURE usp_listarMedicos
+AS
+BEGIN
+        SELECT idPersona, dni, apellidoPaterno, apellidoMaterno, nombre, departamento, provincia, distrito, nroColegiatura, especialiad, estado
+        FROM v_Medico
+END
+GO
+
+
 CREATE PROCEDURE usp_ingresarEmpresa
 @nombre varchar(100),
 @RUC varchar(60),
