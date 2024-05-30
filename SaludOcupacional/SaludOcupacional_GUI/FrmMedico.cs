@@ -13,6 +13,9 @@ namespace SaludOcupacional_View
 {
     public partial class FrmMedico : Form
     {
+
+        MedicoController medicoController = new MedicoController();
+
         public FrmMedico()
         {
             InitializeComponent();
@@ -20,9 +23,9 @@ namespace SaludOcupacional_View
 
         private void ListarMedicos()
         {
-            var dataTable = pacienteController.ListarPacientes();
+            var dataTable = medicoController.ListarMedicos();
             var dataView = new DataView(dataTable);
-            dgPacientes.DataSource = dataView;
+            dgMedicos.DataSource = dataView;
 
         }
 

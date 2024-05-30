@@ -49,7 +49,6 @@
             dgMedicos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgMedicos.Size = new Size(858, 423);
             dgMedicos.TabIndex = 1;
-            dgMedicos.CellContentClick += dgMedicos_CellContentClick;
             // 
             // btnAgregar
             // 
