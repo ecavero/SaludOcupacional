@@ -25,14 +25,12 @@ namespace SaludOcupacional_View
         private void empleadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmEmpleado frm1 = new FrmEmpleado();
-            frm1.MdiParent = this;
             frm1.Show();
         }
 
         private void pacienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmPaciente frm2 = new frmPaciente();
-            frm2.MdiParent = this;
             frm2.Show();
         }
 

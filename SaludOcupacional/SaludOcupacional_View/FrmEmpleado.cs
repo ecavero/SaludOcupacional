@@ -49,6 +49,12 @@ namespace SaludOcupacional_View
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+        var frm = new FrmEmpleadoEditar();
+        frm.Text = "Empleado - Modificar";
+        frm.editar = true;
+        frm.idEmpleado = (int)dgEmpleado.CurrentRow.Cells[0].Value;
+        frm.ShowDialog();
+        ListarEmpleados();
             
         }
     }

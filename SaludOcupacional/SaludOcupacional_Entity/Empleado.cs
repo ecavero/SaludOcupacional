@@ -15,6 +15,9 @@ namespace SaludOcupacional_Entity
         public string apellidoMaterno { get; set; }
         public string nombreEmpleado { get; set; }
         public string idUbigeo { get; set; }
+        public string codDepartamento {  get; set; }
+        public string codProvincia {  get; set; }
+        public string codDistrito {  get; set; }
         public string usuario { get; set; }
         public string clave { get; set; }
         public bool estado { get; set; }

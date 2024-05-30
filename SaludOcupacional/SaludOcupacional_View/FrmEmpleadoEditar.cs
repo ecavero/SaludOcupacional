@@ -18,6 +18,9 @@ namespace SaludOcupacional_View
         UbigeoController ubigeoController = new UbigeoController();
         EmpleadoController empleadoController = new EmpleadoController();
 
+        public bool editar {  get; set; }
+        public int idEmpleado { get; set; }
+
         public FrmEmpleadoEditar()
         {
             InitializeComponent();
@@ -43,6 +46,7 @@ namespace SaludOcupacional_View
             try
             {
                 var empleado = new Empleado();
+                empleado.IdPersona = idEmpleado;                
                 empleado.dni = txtDni.Text;
                 empleado.apellidoPaterno = txtApellidoPaterno.Text;
                 empleado.apellidoMaterno = txtApellidoMaterno.Text;
@@ -53,7 +57,10 @@ namespace SaludOcupacional_View
                 var dataRowDistrito = dataRowViewDistrito.Row;
                 empleado.idUbigeo = (string)dataRowDistrito["idUbigeo"];
                 empleado.estado = chkActivo.Checked;
-
+                if (editar)
+                {
+                    empleadoController.EditarEmpleado(empleado);
+                }
                 empleadoController.InsertarEmpleado(empleado);
                 this.Close();
             }
@@ -75,6 +82,79 @@ namespace SaludOcupacional_View
             cboDepartamento.DataSource = dataTable;
             cboDepartamento.ValueMember = "codDepartamento";
             cboDepartamento.DisplayMember = "departamento";
+            if (editar)
+            {
+                txtCodigo.Text = $"{idEmpleado}";
+                var empleado = empleadoController.BuscarEmpleado(idEmpleado);
+                txtDni.Text = empleado.dni;
+                txtApellidoPaterno.Text = empleado.apellidoPaterno;
+                txtApellidoMaterno.Text = empleado.apellidoMaterno;
+                txtNombreEmpleado.Text = empleado.nombreEmpleado;
+                SeleccionarDepartamento(empleado.codDepartamento);
+                SeleccionarProvincia(empleado.codProvincia);
+                SeleccionarDistrito(empleado.codDistrito);
+                txtUsuario.Text = empleado.usuario;
+                txtClave.Text = empleado.clave;
+                chkActivo.Checked = empleado.estado;
+            }
+        }
+
+        private void SeleccionarDepartamento(string codDepartamento)
+        {
+            DataTable dataTable = ubigeoController.ListarDepartamentos();
+            int indice = 0;
+            foreach(DataRow dataRow in dataTable.Rows )
+            {
+                indice++;
+                if (codDepartamento.Equals((string)dataRow["codDepartamento"]))
+                {
+                    cboDepartamento.SelectedIndex = indice;
+                    break;
+                }
+            }
+        }
+
+        private void SeleccionarProvincia(string codProvinia)
+        {
+            var cbo = cboDepartamento;
+            var ubigeo = new Ubigeo();
+            var dataRowViewSeleccionado = (DataRowView)cbo.SelectedItem;
+            var dataRowSeleccionado = dataRowViewSeleccionado.Row;
+            ubigeo.codDepartamento = (string)dataRowSeleccionado["codDepartamento"];
+            DataTable dataTable = ubigeoController.ListarProvincias(ubigeo);
+            int indice = 0;
+            foreach (DataRow dataRow in dataTable.Rows )
+            {
+                indice++;
+                if (codProvinia.Equals((string)dataRow["codProvincia"]))
+                {
+                    cboProvincia.SelectedIndex = indice;
+                    break;
+                }
+            }
+        }
+
+        private void SeleccionarDistrito(string codDistrito)
+        {
+            var cbo = cboProvincia;
+            var ubigeo = new Ubigeo();
+            var dataRowViewSeleccionado = (DataRowView)cbo.SelectedItem;
+            var dataRowSeleccionado = dataRowViewSeleccionado.Row;
+            var dataRowViewDepartamentoSeleccionado = (DataRowView)cboDepartamento.SelectedItem;
+            var dataRowDepartamentoSeleccionado = dataRowViewDepartamentoSeleccionado.Row;
+            ubigeo.codDepartamento = (string)dataRowDepartamentoSeleccionado["codDepartamento"];
+            ubigeo.codProvincia = (string)dataRowSeleccionado["codProvincia"];
+            var dataTable = ubigeoController.ListarDistritos(ubigeo);
+            int indice = 0;
+            foreach(DataRow dataRow in dataTable.Rows)
+            {
+                indice++;
+                if (codDistrito.Equals((string)dataRow["codDistrito"]))
+                {
+                    cboDistrito.SelectedIndex = indice;
+                    break;
+                }
+            }
         }
 
         private void cboDepartamento_SelectedIndexChanged(object sender, EventArgs e)

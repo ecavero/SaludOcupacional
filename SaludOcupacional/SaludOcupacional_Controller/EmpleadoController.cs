@@ -26,7 +26,16 @@ namespace SaludOcupacional_Controller
             {
                 model.InsertarEmpleado(empleado);
             }
+        
+        public void EditarEmpleado(Empleado empleado)
+        {
+            model.EditarEmpleado(empleado);
+        }
 
+        public Empleado BuscarEmpleado(int idPersona)
+        {
+            return model.BusarEmpleado(idPersona);
+        }
 
 
     }

@@ -51,23 +51,23 @@
             usuariosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { empleadoToolStripMenuItem, pacienteToolStripMenuItem });
             usuariosToolStripMenuItem.Image = Properties.Resources.star_green;
             usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            usuariosToolStripMenuItem.Size = new Size(80, 20);
-            usuariosToolStripMenuItem.Text = "Usuarios";
+            usuariosToolStripMenuItem.Size = new Size(122, 20);
+            usuariosToolStripMenuItem.Text = "&Mantenimientos";
             // 
             // empleadoToolStripMenuItem
             // 
             empleadoToolStripMenuItem.Image = Properties.Resources.user1;
             empleadoToolStripMenuItem.Name = "empleadoToolStripMenuItem";
-            empleadoToolStripMenuItem.Size = new Size(127, 22);
-            empleadoToolStripMenuItem.Text = "Empleado";
+            empleadoToolStripMenuItem.Size = new Size(180, 22);
+            empleadoToolStripMenuItem.Text = "&Empleado";
             empleadoToolStripMenuItem.Click += empleadoToolStripMenuItem_Click;
             // 
             // pacienteToolStripMenuItem
             // 
             pacienteToolStripMenuItem.Image = Properties.Resources.user1;
             pacienteToolStripMenuItem.Name = "pacienteToolStripMenuItem";
-            pacienteToolStripMenuItem.Size = new Size(127, 22);
-            pacienteToolStripMenuItem.Text = "Paciente";
+            pacienteToolStripMenuItem.Size = new Size(180, 22);
+            pacienteToolStripMenuItem.Text = "&Paciente";
             pacienteToolStripMenuItem.Click += pacienteToolStripMenuItem_Click;
             // 
             // salirToolStripMenuItem
@@ -76,14 +76,14 @@
             salirToolStripMenuItem.Image = Properties.Resources.star_grey;
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             salirToolStripMenuItem.Size = new Size(57, 20);
-            salirToolStripMenuItem.Text = "Salir";
+            salirToolStripMenuItem.Text = "&Salir";
             // 
             // salirDelSistemaToolStripMenuItem
             // 
             salirDelSistemaToolStripMenuItem.Image = Properties.Resources.Shutdown_32x32_32;
             salirDelSistemaToolStripMenuItem.Name = "salirDelSistemaToolStripMenuItem";
             salirDelSistemaToolStripMenuItem.Size = new Size(180, 22);
-            salirDelSistemaToolStripMenuItem.Text = "Salir del Sistema";
+            salirDelSistemaToolStripMenuItem.Text = "&Salir del Sistema";
             salirDelSistemaToolStripMenuItem.Click += salirDelSistemaToolStripMenuItem_Click;
             // 
             // MDIPrincipal
