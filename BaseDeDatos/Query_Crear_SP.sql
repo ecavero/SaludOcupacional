@@ -126,6 +126,34 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE usp_editarPaciente
+@idPersona int,
+@dni varchar(10),
+@apellidoPaterno varchar(100),
+@apellidoMaterno varchar(100),
+@nombre varchar(100),
+@idUbigeo varchar(6),
+@numeroDeHistoria varchar(20),
+@estado bit
+AS
+BEGIN
+	UPDATE Persona
+	SET 
+  dni = @dni,
+	apellidoPaterno = @apellidoPaterno,
+	apellidoMaterno = @apellidoMaterno,
+	nombre = @nombre,
+	idUbigeo = @idUbigeo	
+	WHERE idPersona = @idPersona
+	UPDATE Paciente
+	SET 	
+	numeroDeHistoria = @numeroDeHistoria,
+	estado = @estado
+	WHERE idPersona = @idPersona
+END
+GO
+
+
 CREATE PROCEDURE usp_modificarPaciente
 @idPersona integer,
 @numeroDeHistoria varchar(20)
@@ -157,13 +185,29 @@ BEGIN
 END
 GO
 
+
+CREATE PROCEDURE usp_buscarPaciente
+@idPersona int
+AS
+BEGIN
+	SELECT pe.idPersona, pe.dni, pe.nombre, pe.apellidoPaterno, pe.apellidoMaterno, u.codDepartamento, u.codProvincia, u.codDistrito, 
+    pa.numeroDeHistoria, pa.estado
+	FROM Persona pe
+	INNER JOIN Ubigeo u
+	ON u.idUbigeo = pe.idUbigeo
+	INNER JOIN Paciente pa
+	ON pa.idPersona = pe.idPersona
+	WHERE pe.idPersona = @idPersona
+END
+GO
+
 CREATE PROCEDURE usp_listarPacientes
 AS
 BEGIN
-        SELECT idPersona, dni, apellidoPaterno, apellidoMaterno, nombre, departamento, provincia, distrito
+        SELECT idPersona, dni, apellidoPaterno, apellidoMaterno, nombre, departamento, provincia, distrito, numeroDeHistoria, estado
         FROM v_Paciente
 END
-
+GO
 
 CREATE PROCEDURE usp_ingresarMedico
 @idPersona INT,

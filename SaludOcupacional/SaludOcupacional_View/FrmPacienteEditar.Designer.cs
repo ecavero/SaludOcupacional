@@ -48,6 +48,7 @@
             label9 = new Label();
             btnAceptar = new Button();
             btnCancelar = new Button();
+            chkActivo = new CheckBox();
             SuspendLayout();
             // 
             // label1
@@ -225,6 +226,16 @@
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
             // 
+            // chkActivo
+            // 
+            chkActivo.AutoSize = true;
+            chkActivo.Location = new Point(124, 303);
+            chkActivo.Name = "chkActivo";
+            chkActivo.Size = new Size(60, 19);
+            chkActivo.TabIndex = 20;
+            chkActivo.Text = "Activo";
+            chkActivo.UseVisualStyleBackColor = true;
+            // 
             // FrmPacienteEditar
             // 
             AcceptButton = btnAceptar;
@@ -232,6 +243,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = btnCancelar;
             ClientSize = new Size(369, 450);
+            Controls.Add(chkActivo);
             Controls.Add(btnCancelar);
             Controls.Add(btnAceptar);
             Controls.Add(txtNumeroDeHistoria);
@@ -282,5 +294,6 @@
         private Label label9;
         private Button btnAceptar;
         private Button btnCancelar;
+        private CheckBox chkActivo;
     }
 }

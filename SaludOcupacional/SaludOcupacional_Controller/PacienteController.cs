@@ -22,5 +22,15 @@ namespace SaludOcupacional_Controller
         {
             model.InsertarPaciente(paciente);
         }
+
+        public void EditarPaciente(Paciente paciente)
+        {
+            model.EditarPaciente(paciente);
+        }
+
+        public Paciente BuscarPaciente(int idPersona)
+        {
+            return model.BuscarPaciente(idPersona);
+        }
     }
 }
