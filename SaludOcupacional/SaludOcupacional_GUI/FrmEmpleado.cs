@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SaludOcupacional_View
+namespace SaludOcupacional_GUI
 {
     public partial class FrmEmpleado : Form
     {

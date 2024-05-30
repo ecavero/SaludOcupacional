@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using SaludOcupacional_Controller;
 using SaludOcupacional_Entity;
 
-namespace SaludOcupacional_View
+namespace SaludOcupacional_GUI
 {
     public partial class FrmPacienteEditar : Form
     {

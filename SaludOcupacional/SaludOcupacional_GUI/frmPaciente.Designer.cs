@@ -1,14 +1,14 @@
-﻿namespace SaludOcupacional_View
+﻿namespace SaludOcupacional_GUI
 {
-    partial class FrmEmpleado
+    partial class frmPaciente
     {
         /// <summary>
-        /// Required designer variable.
+        ///  Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        ///  Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -23,70 +23,70 @@
         #region Windows Form Designer generated code
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            dgEmpleado = new DataGridView();
+            dgPacientes = new DataGridView();
             btnAgregar = new Button();
             btnModificar = new Button();
-            ((System.ComponentModel.ISupportInitialize)dgEmpleado).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgPacientes).BeginInit();
             SuspendLayout();
             // 
-            // dgEmpleado
+            // dgPacientes
             // 
-            dgEmpleado.AllowUserToAddRows = false;
-            dgEmpleado.AllowUserToDeleteRows = false;
-            dgEmpleado.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgEmpleado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgEmpleado.Location = new Point(38, 57);
-            dgEmpleado.Name = "dgEmpleado";
-            dgEmpleado.ReadOnly = true;
-            dgEmpleado.RowHeadersVisible = false;
-            dgEmpleado.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgEmpleado.Size = new Size(721, 306);
-            dgEmpleado.TabIndex = 0;
-            dgEmpleado.CellContentClick += dgEmpleado_CellContentClick;
+            dgPacientes.AllowUserToAddRows = false;
+            dgPacientes.AllowUserToDeleteRows = false;
+            dgPacientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgPacientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgPacientes.Location = new Point(33, 61);
+            dgPacientes.Name = "dgPacientes";
+            dgPacientes.ReadOnly = true;
+            dgPacientes.RowHeadersVisible = false;
+            dgPacientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgPacientes.Size = new Size(745, 317);
+            dgPacientes.TabIndex = 0;
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(37, 392);
+            btnAgregar.Location = new Point(33, 402);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(75, 23);
             btnAgregar.TabIndex = 1;
-            btnAgregar.Text = "Agregar";
+            btnAgregar.Text = "&Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
             btnAgregar.Click += btnAgregar_Click;
             // 
             // btnModificar
             // 
-            btnModificar.Location = new Point(140, 392);
+            btnModificar.Location = new Point(126, 402);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(75, 23);
             btnModificar.TabIndex = 2;
-            btnModificar.Text = "Modificar";
+            btnModificar.Text = "&Modificar";
             btnModificar.UseVisualStyleBackColor = true;
             btnModificar.Click += btnModificar_Click;
             // 
-            // FrmEmpleado
+            // frmPaciente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(btnModificar);
             Controls.Add(btnAgregar);
-            Controls.Add(dgEmpleado);
-            Name = "FrmEmpleado";
-            Text = "FrmEmpleado";
-            Load += FrmEmpleado_Load;
-            ((System.ComponentModel.ISupportInitialize)dgEmpleado).EndInit();
+            Controls.Add(dgPacientes);
+            Name = "frmPaciente";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Pacientes";
+            Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)dgPacientes).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView dgEmpleado;
+        private DataGridView dgPacientes;
         private Button btnAgregar;
         private Button btnModificar;
     }

@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaludOcupacional_Model", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaludOcupacional_Controller", "SaludOcupacional_Controller\SaludOcupacional_Controller.csproj", "{6A09C1B1-B0C2-457A-A2CE-ED07ED3BE77D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaludOcupacional_View", "SaludOcupacional_View\SaludOcupacional_View.csproj", "{79657121-A2D8-402A-8F77-39DA362822CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaludOcupacional_GUI", "SaludOcupacional_GUI\SaludOcupacional_GUI.csproj", "{79657121-A2D8-402A-8F77-39DA362822CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

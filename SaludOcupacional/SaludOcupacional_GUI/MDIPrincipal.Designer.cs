@@ -1,4 +1,4 @@
-﻿namespace SaludOcupacional_View
+﻿namespace SaludOcupacional_GUI
 {
     partial class MDIPrincipal
     {

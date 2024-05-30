@@ -1,4 +1,4 @@
-namespace SaludOcupacional_View;
+namespace SaludOcupacional_GUI;
 using SaludOcupacional_Controller;
 using System.Data;
 
