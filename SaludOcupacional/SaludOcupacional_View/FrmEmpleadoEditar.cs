@@ -47,11 +47,12 @@ namespace SaludOcupacional_View
                 empleado.apellidoPaterno = txtApellidoPaterno.Text;
                 empleado.apellidoMaterno = txtApellidoMaterno.Text;
                 empleado.nombreEmpleado = txtNombreEmpleado.Text;
+                empleado.usuario = txtUsuario.Text;
                 empleado.clave = txtUsuario.Text;
                 var dataRowViewDistrito = (DataRowView)cboDistrito.SelectedItem;
                 var dataRowDistrito = dataRowViewDistrito.Row;
                 empleado.idUbigeo = (string)dataRowDistrito["idUbigeo"];
-                empleado.estado = true;
+                empleado.estado = chkActivo.Checked;
 
                 empleadoController.InsertarEmpleado(empleado);
                 this.Close();

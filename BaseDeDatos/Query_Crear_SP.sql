@@ -245,6 +245,29 @@ BEGIN
 END
 GO
 
+
+CREATE PROCEDURE usp_insertarEmpleado
+@dni varchar(10),
+@apellidoPaterno varchar(100),
+@apellidoMaterno varchar(100),
+@nombreEmpleado varchar(100),
+@idUbigeo varchar(6),
+@usuario varchar(100),
+@clave varchar(100),
+@estado bit
+AS
+BEGIN
+	DECLARE @ultimoId int
+	SELECT @ultimoId = MAX(p.idPersona)
+	FROM Persona p
+	SET @ultimoId = @ultimoId + 1
+	INSERT INTO Persona(idPersona, dni, apellidoPaterno, apellidoMaterno, nombre, idUbigeo, idTipoPersona, estado)
+	VALUES(@ultimoId, @dni, @apellidoPaterno, @apellidoMaterno, @nombreEmpleado, @idUbigeo, 3, @estado)
+	INSERT INTO Empleado(idPersona, nombreEmpleado, clave, estado)
+	VALUES(@ultimoId, @usuario, @clave, @estado)
+END
+GO
+
 CREATE PROCEDURE usp_modificarUsuario
 @idPersona integer,
 @nombreUsuario varchar(100),

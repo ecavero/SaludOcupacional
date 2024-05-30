@@ -54,6 +54,7 @@ namespace SaludOcupacional_Model
             cmd.Parameters.AddWithValue("@apellidoPaterno", empleado.apellidoPaterno);
             cmd.Parameters.AddWithValue("@apellidoMaterno", empleado.apellidoMaterno);
             cmd.Parameters.AddWithValue("@nombreEmpleado", empleado.nombreEmpleado);
+            cmd.Parameters.AddWithValue("@usuario", empleado.usuario);
             cmd.Parameters.AddWithValue("@clave", empleado.clave);
             cmd.Parameters.AddWithValue("@idUbigeo", empleado.idUbigeo);
             cmd.Parameters.AddWithValue("@estado", empleado.estado);
