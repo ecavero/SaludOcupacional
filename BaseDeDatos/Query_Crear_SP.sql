@@ -278,6 +278,15 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE usp_listarEmpleados
+AS
+BEGIN
+        SELECT idPersona, dni, apellidoPaterno, apellidoMaterno, nombre, departamento, provincia, distrito, nombreEmpleado, clave, estado
+        FROM v_Empleado
+END
+GO
+
+
 CREATE PROCEDURE usp_eliminarMedico
 @idPersona integer
 AS

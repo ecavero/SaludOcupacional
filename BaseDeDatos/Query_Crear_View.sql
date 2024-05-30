@@ -31,3 +31,19 @@ AS
 SELECT u.idUbigeo, u.codDepartamento, u.codProvincia, u.codDistrito, MAX(u.distrito) as distrito
 FROM Ubigeo u
 GROUP BY u.idUbigeo, u.codDepartamento, u.codProvincia, u.codDistritoGO
+GO
+
+CREATE VIEW v_Empleado
+AS
+SELECT pe.idPersona, pe.dni, pe.apellidoPaterno, pe.apellidoMaterno, pe.nombre, u.departamento, u.provincia, u.distrito, e.nombreEmpleado, e.clave, 
+CASE e.estado
+        WHEN 1 THEN 'Activo'
+        WHEN 0 THEN 'Inactivo'
+END AS estado
+FROM Persona pe
+INNER JOIN Empleado e
+ON e.idPersona = pe.idPersona
+INNER JOIN Ubigeo u
+ON u.idUbigeo = pe.idUbigeo
+GO
+
