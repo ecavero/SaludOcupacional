@@ -21,6 +21,8 @@ namespace SaludOcupacional_View
             InitializeComponent();
         }
 
+
+
         private void ListarMedicos()
         {
             var dataTable = medicoController.ListarMedicos();
@@ -29,6 +31,9 @@ namespace SaludOcupacional_View
 
         }
 
-
+        private void FrmMedico_Load(object sender, EventArgs e)
+        {
+            ListarMedicos();
+        }
     }
 }
