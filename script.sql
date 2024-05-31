@@ -144,7 +144,7 @@ GO
 CREATE TABLE [dbo].[Medico](
 	[idPersona] [int] NOT NULL,
 	[nroColegiatura] [int] NULL,
-	[especialiad] [varchar](100) NULL,
+	[especialidad] [varchar](100) NULL,
 	[estado] [bit] NULL,
 PRIMARY KEY CLUSTERED 
 (
