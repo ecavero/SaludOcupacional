@@ -212,11 +212,11 @@ GO
 CREATE PROCEDURE usp_ingresarMedico
 @idPersona INT,
 @nroColegiatura integer,
-@especialiad nvarchar(255)
+@especialidad nvarchar(255)
 AS
 BEGIN
-    INSERT INTO Medico (idPersona, nroColegiatura, especialiad, estado)
-    VALUES (@idPersona, @nroColegiatura, @especialiad, 1)
+    INSERT INTO Medico (idPersona, nroColegiatura, especialidad, estado)
+    VALUES (@idPersona, @nroColegiatura, @especialidad, 2)
 END
 GO
 

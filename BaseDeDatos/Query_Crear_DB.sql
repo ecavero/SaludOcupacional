@@ -26,7 +26,7 @@ GO
 CREATE TABLE [Medico] (
   [idPersona] integer PRIMARY KEY,
   [nroColegiatura] integer,
-  [especialiad] varchar(100),
+  [especialidad] varchar(100),
   [estado] bit
 )
 GO
