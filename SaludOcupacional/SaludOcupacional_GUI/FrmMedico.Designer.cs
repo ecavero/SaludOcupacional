@@ -80,6 +80,7 @@
             Controls.Add(dgMedicos);
             Name = "FrmMedico";
             Text = "FrmMedico";
+            Load += FrmMedico_Load;
             ((System.ComponentModel.ISupportInitialize)dgMedicos).EndInit();
             ResumeLayout(false);
         }
