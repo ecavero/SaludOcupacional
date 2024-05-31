@@ -40,7 +40,7 @@ VALUES
 (19, '78901234', 0);
 GO
 
-INSERT INTO [Medico] ([idPersona], [nroColegiatura], [especialiad], [estado])
+INSERT INTO [Medico] ([idPersona], [nroColegiatura], [especialidad], [estado])
 VALUES
 (2, '012345', 'Cardiología', 1),
 (5, '023456', 'Dermatología', 1),

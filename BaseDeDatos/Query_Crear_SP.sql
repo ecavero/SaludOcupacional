@@ -237,21 +237,52 @@ BEGIN
 	FROM Persona p
 	SET @ultimoId = @ultimoId + 1
 	INSERT INTO Persona(idPersona, dni, apellidoPaterno, apellidoMaterno, nombre, idUbigeo, idTipoPersona, estado)
-	VALUES(@ultimoId, @dni, @apellidoPaterno, @apellidoMaterno, @nombre, @idUbigeo, 1, @estado)
+	VALUES(@ultimoId, @dni, @apellidoPaterno, @apellidoMaterno, @nombre, @idUbigeo, 2, @estado)
 	INSERT INTO Medico(idPersona, nroColegiatura, especialidad, estado)
-	VALUES(@ultimoId, @nroColegiatura, @estado)
+	VALUES(@ultimoId, @nroColegiatura, @especialidad, @estado)
 END
 GO
+
+
+CREATE PROCEDURE usp_editarMedico
+@idPersona int,
+@dni varchar(10),
+@apellidoPaterno varchar(100),
+@apellidoMaterno varchar(100),
+@nombre varchar(100),
+@idUbigeo varchar(6),
+@nroColegiatura int,
+@especialidad varchar(100), 
+@estado bit
+AS
+BEGIN
+	UPDATE Persona
+	SET 
+  dni = @dni,
+	apellidoPaterno = @apellidoPaterno,
+	apellidoMaterno = @apellidoMaterno,
+	nombre = @nombre,
+	idUbigeo = @idUbigeo	
+	WHERE idPersona = @idPersona
+	UPDATE Medico
+	SET 	
+	nroColegiatura = @nroColegiatura,
+  especialidad = @especialidad,
+	estado = @estado
+	WHERE idPersona = @idPersona
+END
+GO
+
 
 CREATE PROCEDURE usp_modificarMedico
 @idPersona integer,
 @nroColegiatura integer,
-@especialiad nvarchar(255)
+@especialidad nvarchar(255)
 AS
 BEGIN
     UPDATE Medico
     SET nroColegiatura = @nroColegiatura,
-        especialiad = @especialiad
+        especialidad = @especialidad
     WHERE idPersona = @idPersona
 END
 GO
@@ -392,7 +423,7 @@ CREATE PROCEDURE usp_consultarMedico
 @idPersona integer
 AS
 BEGIN
-    SELECT idPersona, nroColegiatura, especialiad, estado 
+    SELECT idPersona, nroColegiatura, especialidad, estado 
     FROM Medico
     WHERE idPersona = @idPersona
 END
@@ -402,7 +433,7 @@ GO
 CREATE PROCEDURE usp_listarMedicos
 AS
 BEGIN
-        SELECT idPersona, dni, apellidoPaterno, apellidoMaterno, nombre, departamento, provincia, distrito, nroColegiatura, especialiad, estado
+        SELECT idPersona, dni, apellidoPaterno, apellidoMaterno, nombre, departamento, provincia, distrito, nroColegiatura, especialidad, estado
         FROM v_Medico
 END
 GO

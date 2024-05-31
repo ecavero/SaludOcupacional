@@ -27,7 +27,7 @@ Ref: Persona.idPersona - Paciente.idPersona
 Table Medico {
   idPersona integer [primary key]
   nroColegiatura integer
-  especialiad varchar(100)
+  especialidad varchar(100)
   estado bit
 }
 

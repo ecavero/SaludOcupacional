@@ -50,7 +50,7 @@ GO
 CREATE VIEW v_Medico
 AS
 SELECT pe.idPersona, pe.dni, pe.apellidoPaterno, pe.apellidoMaterno, pe.nombre, u.departamento, u.provincia, u.distrito, m.nroColegiatura, 
-m.especialiad, 
+m.especialidad, 
 CASE m.estado
         WHEN 1 THEN 'Activo'
         WHEN 0 THEN 'Inactivo'
