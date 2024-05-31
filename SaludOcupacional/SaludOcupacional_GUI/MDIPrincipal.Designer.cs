@@ -44,8 +44,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { usuariosToolStripMenuItem, salirToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(7, 3, 0, 3);
-            menuStrip1.Size = new Size(914, 30);
+            menuStrip1.Size = new Size(800, 28);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -54,14 +53,14 @@
             usuariosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { empleadoToolStripMenuItem, pacienteToolStripMenuItem, médicoToolStripMenuItem });
             usuariosToolStripMenuItem.Image = Properties.Resources.star_green;
             usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            usuariosToolStripMenuItem.Size = new Size(150, 24);
+            usuariosToolStripMenuItem.Size = new Size(126, 24);
             usuariosToolStripMenuItem.Text = "&Mantenimientos";
             // 
             // empleadoToolStripMenuItem
             // 
             empleadoToolStripMenuItem.Image = Properties.Resources.user1;
             empleadoToolStripMenuItem.Name = "empleadoToolStripMenuItem";
-            empleadoToolStripMenuItem.Size = new Size(224, 26);
+            empleadoToolStripMenuItem.Size = new Size(127, 22);
             empleadoToolStripMenuItem.Text = "&Empleado";
             empleadoToolStripMenuItem.Click += empleadoToolStripMenuItem_Click;
             // 
@@ -69,7 +68,7 @@
             // 
             pacienteToolStripMenuItem.Image = Properties.Resources.user1;
             pacienteToolStripMenuItem.Name = "pacienteToolStripMenuItem";
-            pacienteToolStripMenuItem.Size = new Size(224, 26);
+            pacienteToolStripMenuItem.Size = new Size(127, 22);
             pacienteToolStripMenuItem.Text = "&Paciente";
             pacienteToolStripMenuItem.Click += pacienteToolStripMenuItem_Click;
             // 
@@ -77,7 +76,7 @@
             // 
             médicoToolStripMenuItem.Image = Properties.Resources.user1;
             médicoToolStripMenuItem.Name = "médicoToolStripMenuItem";
-            médicoToolStripMenuItem.Size = new Size(224, 26);
+            médicoToolStripMenuItem.Size = new Size(127, 22);
             médicoToolStripMenuItem.Text = "Médico";
             médicoToolStripMenuItem.Click += médicoToolStripMenuItem_Click;
             // 
@@ -86,28 +85,27 @@
             salirToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { salirDelSistemaToolStripMenuItem });
             salirToolStripMenuItem.Image = Properties.Resources.star_grey;
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            salirToolStripMenuItem.Size = new Size(72, 24);
+            salirToolStripMenuItem.Size = new Size(61, 24);
             salirToolStripMenuItem.Text = "&Salir";
             // 
             // salirDelSistemaToolStripMenuItem
             // 
             salirDelSistemaToolStripMenuItem.Image = Properties.Resources.Shutdown_32x32_32;
             salirDelSistemaToolStripMenuItem.Name = "salirDelSistemaToolStripMenuItem";
-            salirDelSistemaToolStripMenuItem.Size = new Size(202, 26);
+            salirDelSistemaToolStripMenuItem.Size = new Size(159, 22);
             salirDelSistemaToolStripMenuItem.Text = "&Salir del Sistema";
             salirDelSistemaToolStripMenuItem.Click += salirDelSistemaToolStripMenuItem_Click;
             // 
             // MDIPrincipal
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.Salud_Ocupacional_3;
+            BackgroundImage = Properties.Resources.Salud_Ocupacional_32;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(800, 450);
             Controls.Add(menuStrip1);
             IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(3, 4, 3, 4);
             Name = "MDIPrincipal";
             Text = "Menu Principal";
             WindowState = FormWindowState.Maximized;

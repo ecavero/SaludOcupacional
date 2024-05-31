@@ -15,12 +15,13 @@ namespace SaludOcupacional_GUI
     {
         EmpleadoController empleadoController = new EmpleadoController();
 
+
         public FrmEmpleado()
         {
             InitializeComponent();
         }
 
-
+       
 
         private void dgEmpleado_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -34,8 +35,14 @@ namespace SaludOcupacional_GUI
 
         private void ListarEmpleados()
         {
+            ListarEmpleados("");
+        }
+        private void ListarEmpleados(String strFiltro)
+        {
             var dataTable = empleadoController.ListarEmpleados();
             var dataView = new DataView(dataTable);
+            dataView.RowFilter = $"apellidoPaterno like '%{strFiltro}%' or apellidoMaterno like '%{strFiltro}%' or nombre like '%{strFiltro}%'"; //interpolación
+
             dgEmpleado.DataSource = dataView;
         }
 
@@ -49,13 +56,35 @@ namespace SaludOcupacional_GUI
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-        var frm = new FrmEmpleadoEditar();
-        frm.Text = "Empleado - Modificar";
-        frm.editar = true;
-        frm.idEmpleado = (int)dgEmpleado.CurrentRow.Cells[0].Value;
-        frm.ShowDialog();
-        ListarEmpleados();
-            
+            var frm = new FrmEmpleadoEditar();
+            frm.Text = "Empleado - Modificar";
+            frm.editar = true;
+            frm.idEmpleado = (int)dgEmpleado.CurrentRow.Cells[0].Value;
+            frm.ShowDialog();
+            ListarEmpleados();
+
+        }
+
+
+
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                // Pasaremos al metodo CargarDatos el texto que se va escribiendo
+                // en la caja de texto 
+                ListarEmpleados(txtFiltro.Text.Trim());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex.Message);
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
