@@ -31,6 +31,8 @@
             dgEmpleado = new DataGridView();
             btnAgregar = new Button();
             btnModificar = new Button();
+            label1 = new Label();
+            txtFiltro = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgEmpleado).BeginInit();
             SuspendLayout();
             // 
@@ -69,11 +71,31 @@
             btnModificar.UseVisualStyleBackColor = true;
             btnModificar.Click += btnModificar_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(37, 22);
+            label1.Name = "label1";
+            label1.Size = new Size(78, 15);
+            label1.TabIndex = 3;
+            label1.Text = "Ingrese Filtro:";
+            label1.Click += label1_Click;
+            // 
+            // txtFiltro
+            // 
+            txtFiltro.Location = new Point(140, 19);
+            txtFiltro.Name = "txtFiltro";
+            txtFiltro.Size = new Size(348, 23);
+            txtFiltro.TabIndex = 4;
+            txtFiltro.TextChanged += txtFiltro_TextChanged;
+            // 
             // FrmEmpleado
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(txtFiltro);
+            Controls.Add(label1);
             Controls.Add(btnModificar);
             Controls.Add(btnAgregar);
             Controls.Add(dgEmpleado);
@@ -82,6 +104,7 @@
             Load += FrmEmpleado_Load;
             ((System.ComponentModel.ISupportInitialize)dgEmpleado).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -89,5 +112,7 @@
         private DataGridView dgEmpleado;
         private Button btnAgregar;
         private Button btnModificar;
+        private Label label1;
+        private TextBox txtFiltro;
     }
 }
