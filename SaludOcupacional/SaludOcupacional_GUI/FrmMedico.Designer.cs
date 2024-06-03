@@ -40,44 +40,44 @@
             dgMedicos.AllowUserToDeleteRows = false;
             dgMedicos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgMedicos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgMedicos.Location = new Point(12, 62);
-            dgMedicos.Margin = new Padding(3, 4, 3, 4);
+            dgMedicos.Location = new Point(10, 46);
             dgMedicos.Name = "dgMedicos";
             dgMedicos.ReadOnly = true;
             dgMedicos.RowHeadersVisible = false;
             dgMedicos.RowHeadersWidth = 51;
             dgMedicos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgMedicos.Size = new Size(858, 423);
+            dgMedicos.Size = new Size(751, 317);
             dgMedicos.TabIndex = 1;
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(12, 516);
-            btnAgregar.Margin = new Padding(3, 4, 3, 4);
+            btnAgregar.Location = new Point(10, 387);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(86, 31);
+            btnAgregar.Size = new Size(75, 23);
             btnAgregar.TabIndex = 2;
             btnAgregar.Text = "&Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // btnModificar
             // 
-            btnModificar.Location = new Point(115, 516);
-            btnModificar.Margin = new Padding(3, 4, 3, 4);
+            btnModificar.Location = new Point(101, 387);
             btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(86, 31);
+            btnModificar.Size = new Size(75, 23);
             btnModificar.TabIndex = 3;
             btnModificar.Text = "&Modificar";
             btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Click += btnModificar_Click;
             // 
             // FrmMedico
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(893, 571);
+            ClientSize = new Size(781, 428);
             Controls.Add(btnModificar);
             Controls.Add(btnAgregar);
             Controls.Add(dgMedicos);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmMedico";
             Text = "FrmMedico";
             Load += FrmMedico_Load;

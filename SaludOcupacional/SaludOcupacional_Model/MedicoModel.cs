@@ -53,7 +53,7 @@ namespace SaludOcupacional_Model
             cmd.Parameters.AddWithValue("@dni", medico.dni);
             cmd.Parameters.AddWithValue("@apellidoPaterno", medico.apellidoPaterno);
             cmd.Parameters.AddWithValue("@apellidoMaterno", medico.apellidoMaterno);
-            cmd.Parameters.AddWithValue("@nombre", medico.nombreEmpleado);
+            cmd.Parameters.AddWithValue("@nombre", medico.nombre);
             cmd.Parameters.AddWithValue("@nroColegiatura", medico.nroColegiatura);
             cmd.Parameters.AddWithValue("@especialidad", medico.especialidad);
             cmd.Parameters.AddWithValue("@idUbigeo", medico.idUbigeo);
@@ -89,7 +89,7 @@ namespace SaludOcupacional_Model
             cmd.Parameters.AddWithValue("@dni", medico.dni);
             cmd.Parameters.AddWithValue("@apellidoPaterno", medico.apellidoPaterno);
             cmd.Parameters.AddWithValue("@apellidoMaterno", medico.apellidoMaterno);
-            cmd.Parameters.AddWithValue("@nombreEmpleado", medico.nombreEmpleado);
+            cmd.Parameters.AddWithValue("@nombre", medico.nombre);
             cmd.Parameters.AddWithValue("@nroColegiatura", medico.nroColegiatura);
             cmd.Parameters.AddWithValue("@especialidad", medico.especialidad);
             cmd.Parameters.AddWithValue("@idUbigeo", medico.idUbigeo);
@@ -134,7 +134,7 @@ namespace SaludOcupacional_Model
                     medico.dni = (string)reader["dni"];
                     medico.apellidoPaterno = (string)reader["apellidoPaterno"];
                     medico.apellidoMaterno = (string)reader["apellidoMaterno"];
-                    medico.nombreEmpleado = (string)reader["nombreEmpleado"];
+                    medico.nombre = (string)reader["nombre"];
                     medico.nroColegiatura = (int)reader["nroColegiatura"];
                     medico.especialidad = (string)reader["especialidad"];
                     medico.codDepartamento = (string)reader["codDepartamento"];
