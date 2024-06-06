@@ -4,7 +4,6 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SaludOcupacional_Model
 {
@@ -12,7 +11,8 @@ namespace SaludOcupacional_Model
     {
         public string ObtenerCadenaConexion()
         {
-            string cadenaConexion = ConfigurationManager.ConnectionStrings["Ventas"].ConnectionString;
+            string cadenaConexion = ConfigurationManager.AppSettings["db"];
+            cadenaConexion = System.Environment.ExpandEnvironmentVariables(cadenaConexion);
             return cadenaConexion;
         }
     }
