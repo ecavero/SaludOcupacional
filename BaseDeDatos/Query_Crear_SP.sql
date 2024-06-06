@@ -439,6 +439,21 @@ END
 GO
 
 
+CREATE PROCEDURE usp_buscarMedico
+@idPersona int
+AS
+BEGIN
+	SELECT pe.idPersona, pe.dni, pe.nombre, pe.apellidoPaterno, pe.apellidoMaterno, u.codDepartamento, u.codProvincia, u.codDistrito, 
+    m.nroColegiatura, m.especialidad, m.estado
+	FROM Persona pe
+	INNER JOIN Ubigeo u
+	ON u.idUbigeo = pe.idUbigeo
+	INNER JOIN Medico m
+	ON m.idPersona = pe.idPersona
+	WHERE m.idPersona = @idPersona
+END
+GO
+
 CREATE PROCEDURE usp_ingresarEmpresa
 @nombre varchar(100),
 @RUC varchar(60),

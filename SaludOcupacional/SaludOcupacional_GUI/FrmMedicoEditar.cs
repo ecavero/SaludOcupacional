@@ -46,6 +46,7 @@ namespace SaludOcupacional_GUI
             try
             {
                 var medico = new Medico();
+                medico.IdPersona = idMedico;
                 medico.dni = txtDNI.Text;
                 medico.apellidoPaterno = txtApellidoPaterno.Text;
                 medico.apellidoMaterno = txtApellidoMaterno.Text;

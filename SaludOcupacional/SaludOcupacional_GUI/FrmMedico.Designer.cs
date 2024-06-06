@@ -26,12 +26,13 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-<<<<<<< HEAD
         private void InitializeComponent()
         {
             dgMedicos = new DataGridView();
             btnAgregar = new Button();
             btnModificar = new Button();
+            txtFiltro = new TextBox();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgMedicos).BeginInit();
             SuspendLayout();
             // 
@@ -70,66 +71,6 @@
             btnModificar.UseVisualStyleBackColor = true;
             btnModificar.Click += btnModificar_Click;
             // 
-            // FrmMedico
-            // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(781, 428);
-            Controls.Add(btnModificar);
-            Controls.Add(btnAgregar);
-            Controls.Add(dgMedicos);
-            Margin = new Padding(3, 2, 3, 2);
-            Name = "FrmMedico";
-            Text = "FrmMedico";
-            Load += FrmMedico_Load;
-            ((System.ComponentModel.ISupportInitialize)dgMedicos).EndInit();
-            ResumeLayout(false);
-        }
-
-=======
-        private void InitializeComponent()
-        {
-            dgMedicos = new DataGridView();
-            btnAgregar = new Button();
-            btnModificar = new Button();
-            txtFiltro = new TextBox();
-            label1 = new Label();
-            ((System.ComponentModel.ISupportInitialize)dgMedicos).BeginInit();
-            SuspendLayout();
-            // 
-            // dgMedicos
-            // 
-            dgMedicos.AllowUserToAddRows = false;
-            dgMedicos.AllowUserToDeleteRows = false;
-            dgMedicos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgMedicos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgMedicos.Location = new Point(10, 46);
-            dgMedicos.Name = "dgMedicos";
-            dgMedicos.ReadOnly = true;
-            dgMedicos.RowHeadersVisible = false;
-            dgMedicos.RowHeadersWidth = 51;
-            dgMedicos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgMedicos.Size = new Size(751, 317);
-            dgMedicos.TabIndex = 1;
-            // 
-            // btnAgregar
-            // 
-            btnAgregar.Location = new Point(10, 387);
-            btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(75, 23);
-            btnAgregar.TabIndex = 2;
-            btnAgregar.Text = "&Agregar";
-            btnAgregar.UseVisualStyleBackColor = true;
-            // 
-            // btnModificar
-            // 
-            btnModificar.Location = new Point(101, 387);
-            btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(75, 23);
-            btnModificar.TabIndex = 3;
-            btnModificar.Text = "&Modificar";
-            btnModificar.UseVisualStyleBackColor = true;
-            // 
             // txtFiltro
             // 
             txtFiltro.Location = new Point(114, 12);
@@ -146,7 +87,6 @@
             label1.Size = new Size(78, 15);
             label1.TabIndex = 5;
             label1.Text = "Ingrese Filtro:";
-            label1.Click += label1_Click;
             // 
             // FrmMedico
             // 
@@ -167,7 +107,6 @@
             PerformLayout();
         }
 
->>>>>>> b945ef864f0a6fbbdcddf272b78ad3a656a1a552
         #endregion
 
         private DataGridView dgMedicos;
