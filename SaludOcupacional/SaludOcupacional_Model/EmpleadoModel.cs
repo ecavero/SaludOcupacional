@@ -158,6 +158,45 @@ namespace SaludOcupacional_Model
             return empleado;
         }
 
+        public Boolean validarLoginEmpleado(String usuario, String clave)
+        {
+            Empleado empleado = null;
+            string cadenaConexion = new Conexion().ObtenerCadenaConexion();
+            var conn = new SqlConnection();
+            var cmd = new SqlCommand();
+            conn.ConnectionString = cadenaConexion;
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "usp_validarLoginEmpleado"; //cambiar al generar
+            cmd.Parameters.AddWithValue("@usuario", usuario); //cambiar al generar
+            cmd.Parameters.AddWithValue("@clave", clave); //cambiar al generar
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    return true;
+                } else
+                {
+                    return false;
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+
+        }
+
 
 
 

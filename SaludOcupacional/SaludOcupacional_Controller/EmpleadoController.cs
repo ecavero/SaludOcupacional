@@ -37,6 +37,11 @@ namespace SaludOcupacional_Controller
             return model.BusarEmpleado(idPersona);
         }
 
+        public Boolean validarLoginEmpleado(String usuario, String clave)
+        {
+            return model.validarLoginEmpleado(usuario, clave);
+        }
+
 
     }
 }
