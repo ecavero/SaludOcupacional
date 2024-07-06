@@ -17,7 +17,7 @@ namespace SaludOcupacional_GUI
         UbigeoController ubigeoController = new UbigeoController();
         PacienteController pacienteController = new PacienteController();
 
-        public bool editar {  get; set; }
+        public bool editar { get; set; }
         public int idPaciente { get; set; }
 
         public FrmPacienteEditar()
@@ -55,7 +55,7 @@ namespace SaludOcupacional_GUI
         {
             DataTable dataTable = ubigeoController.ListarDepartamentos();
             int indice = 0;
-            foreach(DataRow dataRow in dataTable.Rows )
+            foreach (DataRow dataRow in dataTable.Rows)
             {
                 indice++;
                 if (codDepartamento.Equals((string)dataRow["codDepartamento"]))
@@ -75,7 +75,7 @@ namespace SaludOcupacional_GUI
             ubigeo.codDepartamento = (string)dataRowSeleccionado["codDepartamento"];
             DataTable dataTable = ubigeoController.ListarProvincias(ubigeo);
             int indice = 0;
-            foreach (DataRow dataRow in dataTable.Rows )
+            foreach (DataRow dataRow in dataTable.Rows)
             {
                 indice++;
                 if (codProvinia.Equals((string)dataRow["codProvincia"]))
@@ -98,7 +98,7 @@ namespace SaludOcupacional_GUI
             ubigeo.codProvincia = (string)dataRowSeleccionado["codProvincia"];
             var dataTable = ubigeoController.ListarDistritos(ubigeo);
             int indice = 0;
-            foreach(DataRow dataRow in dataTable.Rows)
+            foreach (DataRow dataRow in dataTable.Rows)
             {
                 indice++;
                 if (codDistrito.Equals((string)dataRow["codDistrito"]))
@@ -169,15 +169,56 @@ namespace SaludOcupacional_GUI
                 if (editar)
                 {
                     pacienteController.EditarPaciente(paciente);
-                } 
+                }
                 else
                 {
-                pacienteController.InsertarPaciente(paciente);
+                    pacienteController.InsertarPaciente(paciente);
                 }
                 this.Close();
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtDni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtApellidoPaterno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtApellidoMaterno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNumeroDeHistoria_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

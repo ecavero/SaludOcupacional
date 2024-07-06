@@ -97,6 +97,7 @@
             Controls.Add(btnModificar);
             Controls.Add(btnAgregar);
             Controls.Add(dgPacientes);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "frmPaciente";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Pacientes";

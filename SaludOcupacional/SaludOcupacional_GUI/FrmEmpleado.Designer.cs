@@ -42,23 +42,21 @@
             dgEmpleado.AllowUserToDeleteRows = false;
             dgEmpleado.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgEmpleado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgEmpleado.Location = new Point(43, 76);
-            dgEmpleado.Margin = new Padding(3, 4, 3, 4);
+            dgEmpleado.Location = new Point(38, 57);
             dgEmpleado.Name = "dgEmpleado";
             dgEmpleado.ReadOnly = true;
             dgEmpleado.RowHeadersVisible = false;
             dgEmpleado.RowHeadersWidth = 51;
             dgEmpleado.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgEmpleado.Size = new Size(824, 408);
+            dgEmpleado.Size = new Size(721, 306);
             dgEmpleado.TabIndex = 0;
             dgEmpleado.CellContentClick += dgEmpleado_CellContentClick;
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(42, 523);
-            btnAgregar.Margin = new Padding(3, 4, 3, 4);
+            btnAgregar.Location = new Point(37, 392);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(86, 31);
+            btnAgregar.Size = new Size(75, 23);
             btnAgregar.TabIndex = 1;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
@@ -66,10 +64,9 @@
             // 
             // btnModificar
             // 
-            btnModificar.Location = new Point(160, 523);
-            btnModificar.Margin = new Padding(3, 4, 3, 4);
+            btnModificar.Location = new Point(140, 392);
             btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(86, 31);
+            btnModificar.Size = new Size(75, 23);
             btnModificar.TabIndex = 2;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = true;
@@ -78,33 +75,32 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(42, 29);
+            label1.Location = new Point(37, 22);
             label1.Name = "label1";
-            label1.Size = new Size(98, 20);
+            label1.Size = new Size(78, 15);
             label1.TabIndex = 3;
             label1.Text = "Ingrese Filtro:";
             label1.Click += label1_Click;
             // 
             // txtFiltro
             // 
-            txtFiltro.Location = new Point(160, 25);
-            txtFiltro.Margin = new Padding(3, 4, 3, 4);
+            txtFiltro.Location = new Point(140, 19);
             txtFiltro.Name = "txtFiltro";
-            txtFiltro.Size = new Size(397, 27);
+            txtFiltro.Size = new Size(348, 23);
             txtFiltro.TabIndex = 4;
             txtFiltro.TextChanged += txtFiltro_TextChanged;
             // 
             // FrmEmpleado
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(800, 450);
             Controls.Add(txtFiltro);
             Controls.Add(label1);
             Controls.Add(btnModificar);
             Controls.Add(btnAgregar);
             Controls.Add(dgEmpleado);
-            Margin = new Padding(3, 4, 3, 4);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             MaximizeBox = false;
             Name = "FrmEmpleado";
             StartPosition = FormStartPosition.CenterScreen;

@@ -141,13 +141,16 @@
             txtNombre.Size = new Size(100, 23);
             txtNombre.TabIndex = 13;
             txtNombre.TextChanged += txtNombre_TextChanged;
+            txtNombre.KeyPress += txtNombre_KeyPress;
             // 
             // txtDNI
             // 
             txtDNI.Location = new Point(177, 82);
+            txtDNI.MaxLength = 8;
             txtDNI.Name = "txtDNI";
             txtDNI.Size = new Size(100, 23);
             txtDNI.TabIndex = 14;
+            txtDNI.KeyPress += txtDNI_KeyPress;
             // 
             // txtApellidoPaterno
             // 
@@ -155,6 +158,7 @@
             txtApellidoPaterno.Name = "txtApellidoPaterno";
             txtApellidoPaterno.Size = new Size(151, 23);
             txtApellidoPaterno.TabIndex = 15;
+            txtApellidoPaterno.KeyPress += txtApellidoPaterno_KeyPress;
             // 
             // txtApellidoMaterno
             // 
@@ -162,6 +166,7 @@
             txtApellidoMaterno.Name = "txtApellidoMaterno";
             txtApellidoMaterno.Size = new Size(151, 23);
             txtApellidoMaterno.TabIndex = 16;
+            txtApellidoMaterno.KeyPress += txtApellidoMaterno_KeyPress;
             // 
             // txtColegiatura
             // 
@@ -169,6 +174,7 @@
             txtColegiatura.Name = "txtColegiatura";
             txtColegiatura.Size = new Size(151, 23);
             txtColegiatura.TabIndex = 20;
+            txtColegiatura.KeyPress += txtColegiatura_KeyPress;
             // 
             // chkActivo
             // 
@@ -236,6 +242,7 @@
             txtEspecialidad.Name = "txtEspecialidad";
             txtEspecialidad.Size = new Size(151, 23);
             txtEspecialidad.TabIndex = 33;
+            txtEspecialidad.KeyPress += txtEspecialidad_KeyPress;
             // 
             // FrmMedicoEditar
             // 

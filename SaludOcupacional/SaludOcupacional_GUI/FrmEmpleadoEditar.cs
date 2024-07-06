@@ -18,7 +18,7 @@ namespace SaludOcupacional_GUI
         UbigeoController ubigeoController = new UbigeoController();
         EmpleadoController empleadoController = new EmpleadoController();
 
-        public bool editar {  get; set; }
+        public bool editar { get; set; }
         public int idEmpleado { get; set; }
 
         public FrmEmpleadoEditar()
@@ -46,7 +46,7 @@ namespace SaludOcupacional_GUI
             try
             {
                 var empleado = new Empleado();
-                empleado.IdPersona = idEmpleado;                
+                empleado.IdPersona = idEmpleado;
                 empleado.dni = txtDni.Text;
                 empleado.apellidoPaterno = txtApellidoPaterno.Text;
                 empleado.apellidoMaterno = txtApellidoMaterno.Text;
@@ -103,7 +103,7 @@ namespace SaludOcupacional_GUI
         {
             DataTable dataTable = ubigeoController.ListarDepartamentos();
             int indice = 0;
-            foreach(DataRow dataRow in dataTable.Rows )
+            foreach (DataRow dataRow in dataTable.Rows)
             {
                 indice++;
                 if (codDepartamento.Equals((string)dataRow["codDepartamento"]))
@@ -123,7 +123,7 @@ namespace SaludOcupacional_GUI
             ubigeo.codDepartamento = (string)dataRowSeleccionado["codDepartamento"];
             DataTable dataTable = ubigeoController.ListarProvincias(ubigeo);
             int indice = 0;
-            foreach (DataRow dataRow in dataTable.Rows )
+            foreach (DataRow dataRow in dataTable.Rows)
             {
                 indice++;
                 if (codProvinia.Equals((string)dataRow["codProvincia"]))
@@ -146,7 +146,7 @@ namespace SaludOcupacional_GUI
             ubigeo.codProvincia = (string)dataRowSeleccionado["codProvincia"];
             var dataTable = ubigeoController.ListarDistritos(ubigeo);
             int indice = 0;
-            foreach(DataRow dataRow in dataTable.Rows)
+            foreach (DataRow dataRow in dataTable.Rows)
             {
                 indice++;
                 if (codDistrito.Equals((string)dataRow["codDistrito"]))
@@ -192,6 +192,46 @@ namespace SaludOcupacional_GUI
             cboDistrito.DataSource = dataTable;
             cboDistrito.ValueMember = "codDistrito";
             cboDistrito.DisplayMember = "distrito";
+        }
+
+        private void txtDni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtApellidoPaterno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtApellidoMaterno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNombreEmpleado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
