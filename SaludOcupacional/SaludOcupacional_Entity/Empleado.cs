@@ -8,6 +8,8 @@ namespace SaludOcupacional_Entity
 {
     public class Empleado
     {
+
+        public static string nombreEmpleadoLogueado { get; set; } = "";
         public int IdPersona { get; set; }
         public int idTipoPersona { get; set; }
         public string dni { get; set; }
