@@ -21,6 +21,8 @@ namespace SaludOcupacional_GUI
         public bool editar { get; set; }
         public int idEmpleado { get; set; }
 
+        string rutaFoto = "";
+
         public FrmEmpleadoEditar()
         {
             InitializeComponent();
@@ -52,16 +54,28 @@ namespace SaludOcupacional_GUI
                 empleado.apellidoMaterno = txtApellidoMaterno.Text;
                 empleado.nombreEmpleado = txtNombreEmpleado.Text;
                 empleado.usuario = txtUsuario.Text;
-                empleado.clave = txtUsuario.Text;
+                empleado.clave = txtClave.Text;
                 var dataRowViewDistrito = (DataRowView)cboDistrito.SelectedItem;
                 var dataRowDistrito = dataRowViewDistrito.Row;
                 empleado.idUbigeo = (string)dataRowDistrito["idUbigeo"];
                 empleado.estado = chkActivo.Checked;
+                if (rutaFoto != string.Empty)
+                {
+                    empleado.foto = File.ReadAllBytes(rutaFoto);
+                }
+                else
+                {
+                    var datosAnteriores = empleadoController.BuscarEmpleado(idEmpleado);
+                    empleado.foto = datosAnteriores.foto;
+                }
                 if (editar)
                 {
                     empleadoController.EditarEmpleado(empleado);
                 }
-                empleadoController.InsertarEmpleado(empleado);
+                else
+                {
+                    empleadoController.InsertarEmpleado(empleado);
+                }
                 this.Close();
             }
             catch (Exception ex)
@@ -84,8 +98,8 @@ namespace SaludOcupacional_GUI
             cboDepartamento.DisplayMember = "departamento";
             if (editar)
             {
-                txtCodigo.Text = $"{idEmpleado}";
                 var empleado = empleadoController.BuscarEmpleado(idEmpleado);
+                txtCodigo.Text = $"{idEmpleado}";
                 txtDni.Text = empleado.dni;
                 txtApellidoPaterno.Text = empleado.apellidoPaterno;
                 txtApellidoMaterno.Text = empleado.apellidoMaterno;
@@ -96,6 +110,22 @@ namespace SaludOcupacional_GUI
                 txtUsuario.Text = empleado.usuario;
                 txtClave.Text = empleado.clave;
                 chkActivo.Checked = empleado.estado;
+                mostrarImagen(empleado);
+            }
+        }
+
+        private void mostrarImagen(Empleado empleado)
+        {
+            if (empleado.foto != null)
+            {
+                using (MemoryStream ms = new MemoryStream(empleado.foto))
+                {
+                    pbFoto.Image = Image.FromStream(ms);
+                }
+            }
+            else
+            {
+                pbFoto.Image = null;
             }
         }
 
@@ -231,6 +261,20 @@ namespace SaludOcupacional_GUI
             if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+        private void btnFoto_Click(object sender, EventArgs e)
+        {
+
+            fFoto.InitialDirectory = "c:\\";
+            fFoto.Filter = "Image files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png|All files (*.*)|*.*";
+            fFoto.FilterIndex = 1;
+            fFoto.RestoreDirectory = true;
+
+            if (fFoto.ShowDialog() == DialogResult.OK)
+            {
+                rutaFoto = fFoto.FileName;
+                pbFoto.Image = Image.FromFile(rutaFoto);
             }
         }
     }

@@ -69,6 +69,17 @@ namespace SaludOcupacional_Model
                     cmd.Parameters.AddWithValue("@especialidad", medico.especialidad);
                     cmd.Parameters.AddWithValue("@idUbigeo", medico.idUbigeo);
                     cmd.Parameters.AddWithValue("@estado", medico.estado);
+                    SqlParameter paramImagen = new SqlParameter("@foto", SqlDbType.VarBinary, -1);
+                    if (medico.foto == null)
+                    {
+                        paramImagen.Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        paramImagen.Value = medico.foto;
+                    }
+                    cmd.Parameters.Add(paramImagen);
+
                     cmd.ExecuteNonQuery();
                 }
 

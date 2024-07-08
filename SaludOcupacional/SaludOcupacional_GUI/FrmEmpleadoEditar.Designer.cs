@@ -51,6 +51,10 @@
             txtClave = new TextBox();
             label10 = new Label();
             chkActivo = new CheckBox();
+            pbFoto = new PictureBox();
+            btnFoto = new Button();
+            fFoto = new OpenFileDialog();
+            ((System.ComponentModel.ISupportInitialize)pbFoto).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -217,7 +221,7 @@
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(170, 484);
+            btnAceptar.Location = new Point(185, 709);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(75, 23);
             btnAceptar.TabIndex = 10;
@@ -227,7 +231,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(281, 484);
+            btnCancelar.Location = new Point(296, 709);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
             btnCancelar.TabIndex = 11;
@@ -261,11 +265,36 @@
             chkActivo.Text = "Activo";
             chkActivo.UseVisualStyleBackColor = true;
             // 
+            // pbFoto
+            // 
+            pbFoto.Location = new Point(22, 528);
+            pbFoto.Name = "pbFoto";
+            pbFoto.Size = new Size(110, 151);
+            pbFoto.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbFoto.TabIndex = 22;
+            pbFoto.TabStop = false;
+            // 
+            // btnFoto
+            // 
+            btnFoto.Location = new Point(22, 474);
+            btnFoto.Name = "btnFoto";
+            btnFoto.Size = new Size(111, 23);
+            btnFoto.TabIndex = 35;
+            btnFoto.Text = "AgregarFoto...";
+            btnFoto.UseVisualStyleBackColor = true;
+            btnFoto.Click += btnFoto_Click;
+            // 
+            // fFoto
+            // 
+            fFoto.FileName = "openFileDialog1";
+            // 
             // FrmEmpleadoEditar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(381, 541);
+            ClientSize = new Size(381, 755);
+            Controls.Add(btnFoto);
+            Controls.Add(pbFoto);
             Controls.Add(chkActivo);
             Controls.Add(txtClave);
             Controls.Add(label10);
@@ -292,6 +321,7 @@
             Name = "FrmEmpleadoEditar";
             Text = "FrmEmpleadoEditar";
             Load += FrmEmpleadoEditar_Load;
+            ((System.ComponentModel.ISupportInitialize)pbFoto).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -321,5 +351,8 @@
         private TextBox txtClave;
         private Label label10;
         private CheckBox chkActivo;
+        private PictureBox pbFoto;
+        private Button btnFoto;
+        private OpenFileDialog fFoto;
     }
 }

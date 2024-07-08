@@ -65,11 +65,21 @@ namespace SaludOcupacional_Model
                     cmd.Parameters.AddWithValue("@dni", empleado.dni);
                     cmd.Parameters.AddWithValue("@apellidoPaterno", empleado.apellidoPaterno);
                     cmd.Parameters.AddWithValue("@apellidoMaterno", empleado.apellidoMaterno);
-                    cmd.Parameters.AddWithValue("@nombre", empleado.nombreEmpleado);
+                    cmd.Parameters.AddWithValue("@nombreEmpleado", empleado.nombreEmpleado);
                     cmd.Parameters.AddWithValue("@usuario", empleado.usuario);
                     cmd.Parameters.AddWithValue("@clave", empleado.clave);
                     cmd.Parameters.AddWithValue("@idUbigeo", empleado.idUbigeo);
                     cmd.Parameters.AddWithValue("@estado", empleado.estado);
+                    SqlParameter paramImagen = new SqlParameter("@foto", SqlDbType.VarBinary, -1);
+                    if (empleado.foto == null)
+                    {
+                        paramImagen.Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        paramImagen.Value = empleado.foto;
+                    }
+                    cmd.Parameters.Add(paramImagen);
                     cmd.ExecuteNonQuery();
                 }
 
@@ -106,6 +116,17 @@ namespace SaludOcupacional_Model
                     cmd.Parameters.AddWithValue("@clave", empleado.clave);
                     cmd.Parameters.AddWithValue("@idUbigeo", empleado.idUbigeo);
                     cmd.Parameters.AddWithValue("@estado", empleado.estado);
+                    SqlParameter paramImagen = new SqlParameter("@foto", SqlDbType.VarBinary, -1);
+                    if (empleado.foto == null)
+                    {
+                        paramImagen.Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        paramImagen.Value = empleado.foto;
+                    }
+                    cmd.Parameters.Add(paramImagen);
+
                     cmd.ExecuteNonQuery();
                 }
 
@@ -142,6 +163,7 @@ namespace SaludOcupacional_Model
                         empleado.codProvincia = (string)reader["codProvincia"];
                         empleado.codDistrito = (string)reader["codDistrito"];
                         empleado.estado = (bool)reader["estado"];
+                        empleado.foto = reader["foto"] != DBNull.Value ? (byte[])reader["foto"] : null;
                     }
                 }
                 catch (SqlException ex)

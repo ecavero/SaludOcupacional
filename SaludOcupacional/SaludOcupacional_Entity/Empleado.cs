@@ -23,6 +23,7 @@ namespace SaludOcupacional_Entity
         public string usuario { get; set; }
         public string clave { get; set; }
         public bool estado { get; set; }
+        public byte[] foto {  get; set; }
 
 
 

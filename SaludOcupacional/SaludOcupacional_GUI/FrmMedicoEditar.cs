@@ -248,6 +248,7 @@ namespace SaludOcupacional_GUI
             if (fFoto.ShowDialog() == DialogResult.OK)
             {
                 rutaFoto = fFoto.FileName;
+                pbFoto.Image = Image.FromFile(rutaFoto);
             }
         }
 
