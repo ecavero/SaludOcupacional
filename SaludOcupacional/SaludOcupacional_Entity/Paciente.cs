@@ -20,6 +20,7 @@ namespace SaludOcupacional_Entity
         public string codDistrito { get; set; }
         public string numeroDeHistoria { get; set; }
         public bool estado {  get; set; }
+        public byte[] foto {  get; set; }
 
     }
 }

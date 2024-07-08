@@ -49,6 +49,10 @@
             btnAceptar = new Button();
             btnCancelar = new Button();
             chkActivo = new CheckBox();
+            fFoto = new OpenFileDialog();
+            pbFoto = new PictureBox();
+            btnFoto = new Button();
+            ((System.ComponentModel.ISupportInitialize)pbFoto).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -214,7 +218,7 @@
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(171, 415);
+            btnAceptar.Location = new Point(174, 490);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(75, 23);
             btnAceptar.TabIndex = 18;
@@ -224,7 +228,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(252, 415);
+            btnCancelar.Location = new Point(255, 490);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
             btnCancelar.TabIndex = 19;
@@ -242,13 +246,35 @@
             chkActivo.Text = "Activo";
             chkActivo.UseVisualStyleBackColor = true;
             // 
+            // pbFoto
+            // 
+            pbFoto.BorderStyle = BorderStyle.FixedSingle;
+            pbFoto.Location = new Point(12, 368);
+            pbFoto.Name = "pbFoto";
+            pbFoto.Size = new Size(156, 111);
+            pbFoto.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbFoto.TabIndex = 21;
+            pbFoto.TabStop = false;
+            // 
+            // btnFoto
+            // 
+            btnFoto.Location = new Point(20, 324);
+            btnFoto.Name = "btnFoto";
+            btnFoto.Size = new Size(105, 23);
+            btnFoto.TabIndex = 22;
+            btnFoto.Text = "Agregar foto...";
+            btnFoto.UseVisualStyleBackColor = true;
+            btnFoto.Click += btnFoto_Click;
+            // 
             // FrmPacienteEditar
             // 
             AcceptButton = btnAceptar;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = btnCancelar;
-            ClientSize = new Size(369, 450);
+            ClientSize = new Size(369, 525);
+            Controls.Add(btnFoto);
+            Controls.Add(pbFoto);
             Controls.Add(chkActivo);
             Controls.Add(btnCancelar);
             Controls.Add(btnAceptar);
@@ -274,6 +300,7 @@
             StartPosition = FormStartPosition.CenterParent;
             Text = "FrmPacienteEditar";
             Load += FrmPacienteEditar_Load;
+            ((System.ComponentModel.ISupportInitialize)pbFoto).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -301,5 +328,8 @@
         private Button btnAceptar;
         private Button btnCancelar;
         private CheckBox chkActivo;
+        private OpenFileDialog fFoto;
+        private PictureBox pbFoto;
+        private Button btnFoto;
     }
 }
