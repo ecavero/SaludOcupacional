@@ -105,6 +105,16 @@ namespace SaludOcupacional_Model
                     cmd.Parameters.AddWithValue("@especialidad", medico.especialidad);
                     cmd.Parameters.AddWithValue("@idUbigeo", medico.idUbigeo);
                     cmd.Parameters.AddWithValue("@estado", medico.estado);
+                    SqlParameter paramImagen = new SqlParameter("@foto", SqlDbType.VarBinary, -1);
+                    if (medico.foto == null)
+                    {
+                        paramImagen.Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        paramImagen.Value = medico.foto;
+                    }
+                    cmd.Parameters.Add(paramImagen);
                     cmd.ExecuteNonQuery();
                 }
 
@@ -140,6 +150,7 @@ namespace SaludOcupacional_Model
                     medico.codProvincia = (string)reader["codProvincia"];
                     medico.codDistrito = (string)reader["codDistrito"];
                     medico.estado = (bool)reader["estado"];
+                    medico.foto = reader["foto"] != DBNull.Value ? (byte[])reader["foto"] : null;
                 }
 
             }

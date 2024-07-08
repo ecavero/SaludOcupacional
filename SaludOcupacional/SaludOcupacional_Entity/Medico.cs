@@ -15,5 +15,6 @@
         public int nroColegiatura { get; set; }
         public string especialidad { get; set; }
         public bool estado { get; set; }
+        public byte[] foto {  get; set; }
     }
 }

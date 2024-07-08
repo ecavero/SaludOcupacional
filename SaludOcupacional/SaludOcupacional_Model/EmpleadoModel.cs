@@ -179,6 +179,7 @@ namespace SaludOcupacional_Model
                     if (reader.Read())
                     {
                         Empleado.nombreEmpleadoLogueado = reader["nombreEmpleado"].ToString();
+
                         return true;
                     }
                     else
