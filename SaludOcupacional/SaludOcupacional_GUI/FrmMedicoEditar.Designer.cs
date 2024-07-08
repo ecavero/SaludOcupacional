@@ -49,6 +49,10 @@
             cboProvincia = new ComboBox();
             cboDistrito = new ComboBox();
             txtEspecialidad = new TextBox();
+            fFoto = new OpenFileDialog();
+            btnFoto = new Button();
+            pbFoto = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pbFoto).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -183,7 +187,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(255, 491);
+            btnCancelar.Location = new Point(253, 686);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
             btnCancelar.TabIndex = 29;
@@ -193,7 +197,7 @@
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(144, 491);
+            btnAceptar.Location = new Point(142, 686);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(75, 23);
             btnAceptar.TabIndex = 28;
@@ -237,11 +241,32 @@
             txtEspecialidad.Size = new Size(151, 23);
             txtEspecialidad.TabIndex = 33;
             // 
+            // btnFoto
+            // 
+            btnFoto.Location = new Point(24, 481);
+            btnFoto.Name = "btnFoto";
+            btnFoto.Size = new Size(111, 23);
+            btnFoto.TabIndex = 34;
+            btnFoto.Text = "AgregarFoto...";
+            btnFoto.UseVisualStyleBackColor = true;
+            btnFoto.Click += btnFoto_Click;
+            // 
+            // pbFoto
+            // 
+            pbFoto.Location = new Point(27, 535);
+            pbFoto.Name = "pbFoto";
+            pbFoto.Size = new Size(132, 136);
+            pbFoto.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbFoto.TabIndex = 35;
+            pbFoto.TabStop = false;
+            // 
             // FrmMedicoEditar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(370, 542);
+            ClientSize = new Size(370, 738);
+            Controls.Add(pbFoto);
+            Controls.Add(btnFoto);
             Controls.Add(txtEspecialidad);
             Controls.Add(cboDistrito);
             Controls.Add(cboProvincia);
@@ -266,6 +291,7 @@
             Name = "FrmMedicoEditar";
             Text = "FrmMedicoEditar";
             Load += FrmMedicoEditar_Load;
+            ((System.ComponentModel.ISupportInitialize)pbFoto).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -293,5 +319,8 @@
         private ComboBox cboProvincia;
         private ComboBox cboDistrito;
         private TextBox txtEspecialidad;
+        private OpenFileDialog fFoto;
+        private Button btnFoto;
+        private PictureBox pbFoto;
     }
 }

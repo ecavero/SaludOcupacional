@@ -1,4 +1,5 @@
-﻿using SaludOcupacional_Controller;
+﻿using Microsoft.VisualBasic;
+using SaludOcupacional_Controller;
 using SaludOcupacional_Entity;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,8 @@ namespace SaludOcupacional_GUI
 
         public bool editar { get; set; }
         public int idMedico { get; set; }
+
+        string rutaFoto = "";
 
 
         public FrmMedicoEditar()
@@ -57,6 +60,15 @@ namespace SaludOcupacional_GUI
                 var dataRowDistrito = dataRowViewDistrito.Row;
                 medico.idUbigeo = (string)dataRowDistrito["idUbigeo"];
                 medico.estado = chkActivo.Checked;
+                if (rutaFoto != string.Empty)
+                {
+                    medico.foto = File.ReadAllBytes(rutaFoto);
+                }
+                else
+                {
+                    var datosAnteriores = medicoController.BuscarMedico(idMedico);
+                    medico.foto = datosAnteriores.foto;
+                }
                 if (editar)
                 {
                     medicoController.EditarMedico(medico);
@@ -96,6 +108,22 @@ namespace SaludOcupacional_GUI
                 SeleccionarProvincia(medico.codProvincia);
                 SeleccionarDistrito(medico.codDistrito);
                 chkActivo.Checked = medico.estado;
+                mostrarImagen(medico);
+            }
+        }
+
+        private void mostrarImagen(Medico medico)
+        {
+            if (medico.foto != null)
+            {
+                using (MemoryStream ms = new MemoryStream(medico.foto))
+                {
+                    pbFoto.Image = Image.FromStream(ms);
+                }
+            }
+            else
+            {
+                pbFoto.Image = null;
             }
         }
 
@@ -202,6 +230,25 @@ namespace SaludOcupacional_GUI
         private void chkActivo_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void btnFoto_Click(object sender, EventArgs e)
+        {
+            fFoto.InitialDirectory = "c:\\";
+            fFoto.Filter = "Image files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png|All files (*.*)|*.*";
+            fFoto.FilterIndex = 1;
+            fFoto.RestoreDirectory = true;
+
+            if (fFoto.ShowDialog() == DialogResult.OK)
+            {
+                rutaFoto = fFoto.FileName;
+            }
         }
     }
 }
