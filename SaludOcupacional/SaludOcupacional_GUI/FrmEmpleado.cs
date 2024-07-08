@@ -41,7 +41,7 @@ namespace SaludOcupacional_GUI
         {
             var dataTable = empleadoController.ListarEmpleados();
             var dataView = new DataView(dataTable);
-            dataView.RowFilter = $"apellidoPaterno like '%{strFiltro}%' or apellidoMaterno like '%{strFiltro}%' or nombre like '%{strFiltro}%'"; //interpolación
+            dataView.RowFilter = $"apellidoPaterno like '%{strFiltro}%' or apellidoMaterno like '%{strFiltro}%' or nombre like '%{strFiltro}%'or dni like '%{strFiltro}%'"; //interpolación
 
             dgEmpleado.DataSource = dataView;
         }

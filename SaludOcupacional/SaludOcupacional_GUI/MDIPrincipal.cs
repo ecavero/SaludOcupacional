@@ -46,7 +46,7 @@ namespace SaludOcupacional_GUI
         private void salirDelSistemaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
-            Application.Exit();
+         
         }
 
         private void médicoToolStripMenuItem_Click(object sender, EventArgs e)

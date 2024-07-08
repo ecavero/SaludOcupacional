@@ -147,9 +147,11 @@
             // txtDni
             // 
             txtDni.Location = new Point(185, 77);
+            txtDni.MaxLength = 8;
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(100, 23);
             txtDni.TabIndex = 1;
+            txtDni.KeyPress += txtDni_KeyPress;
             // 
             // txtApellidoPaterno
             // 
@@ -157,6 +159,7 @@
             txtApellidoPaterno.Name = "txtApellidoPaterno";
             txtApellidoPaterno.Size = new Size(151, 23);
             txtApellidoPaterno.TabIndex = 2;
+            txtApellidoPaterno.KeyPress += txtApellidoPaterno_KeyPress;
             // 
             // txtApellidoMaterno
             // 
@@ -164,6 +167,7 @@
             txtApellidoMaterno.Name = "txtApellidoMaterno";
             txtApellidoMaterno.Size = new Size(151, 23);
             txtApellidoMaterno.TabIndex = 3;
+            txtApellidoMaterno.KeyPress += txtApellidoMaterno_KeyPress;
             // 
             // cboDepartamento
             // 
@@ -201,6 +205,7 @@
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(151, 23);
             txtUsuario.TabIndex = 8;
+            txtUsuario.KeyPress += txtUsuario_KeyPress;
             // 
             // txtNombreEmpleado
             // 
@@ -208,6 +213,7 @@
             txtNombreEmpleado.Name = "txtNombreEmpleado";
             txtNombreEmpleado.Size = new Size(151, 23);
             txtNombreEmpleado.TabIndex = 4;
+            txtNombreEmpleado.KeyPress += txtNombreEmpleado_KeyPress;
             // 
             // btnAceptar
             // 

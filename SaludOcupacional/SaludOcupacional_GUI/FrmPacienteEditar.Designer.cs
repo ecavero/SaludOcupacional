@@ -82,9 +82,11 @@
             // txtDni
             // 
             txtDni.Location = new Point(124, 56);
+            txtDni.MaxLength = 8;
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(100, 23);
             txtDni.TabIndex = 3;
+            txtDni.KeyPress += txtDni_KeyPress;
             // 
             // label3
             // 
@@ -101,6 +103,7 @@
             txtApellidoPaterno.Name = "txtApellidoPaterno";
             txtApellidoPaterno.Size = new Size(203, 23);
             txtApellidoPaterno.TabIndex = 5;
+            txtApellidoPaterno.KeyPress += txtApellidoPaterno_KeyPress;
             // 
             // txtApellidoMaterno
             // 
@@ -108,6 +111,7 @@
             txtApellidoMaterno.Name = "txtApellidoMaterno";
             txtApellidoMaterno.Size = new Size(203, 23);
             txtApellidoMaterno.TabIndex = 7;
+            txtApellidoMaterno.KeyPress += txtApellidoMaterno_KeyPress;
             // 
             // label4
             // 
@@ -124,6 +128,7 @@
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(203, 23);
             txtNombre.TabIndex = 9;
+            txtNombre.KeyPress += txtNombre_KeyPress;
             // 
             // label5
             // 
@@ -196,6 +201,7 @@
             txtNumeroDeHistoria.Name = "txtNumeroDeHistoria";
             txtNumeroDeHistoria.Size = new Size(203, 23);
             txtNumeroDeHistoria.TabIndex = 17;
+            txtNumeroDeHistoria.KeyPress += txtNumeroDeHistoria_KeyPress;
             // 
             // label9
             // 
