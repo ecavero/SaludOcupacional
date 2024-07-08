@@ -11,32 +11,33 @@ namespace SaludOcupacional_Model
 {
     public class EmpleadoModel
     {
-
         public DataTable ListarEmpleados()
         {
             string cadenaConexion = new Conexion().ObtenerCadenaConexion();
-            var conn = new SqlConnection();
-            var cmd = new SqlCommand();
-            var dataSet = new DataSet();
-            conn.ConnectionString = cadenaConexion;
-            cmd.Connection = conn;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "usp_listarEmpleados";
-            try
+            using (var conn = new SqlConnection(cadenaConexion))
             {
-                var adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(dataSet, "Empleados");
-                return dataSet.Tables["Empleados"];
-            }
-            catch (SqlException ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                if (conn.State == ConnectionState.Open)
+                var cmd = new SqlCommand();
+                var dataSet = new DataSet();
+                conn.ConnectionString = cadenaConexion;
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "usp_listarEmpleados";
+                try
                 {
-                    conn.Close();
+                    var adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dataSet, "Empleados");
+                    return dataSet.Tables["Empleados"];
+                }
+                catch (SqlException ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                 }
             }
         }
@@ -44,115 +45,115 @@ namespace SaludOcupacional_Model
         public void InsertarEmpleado(Empleado empleado)
         {
             string cadenaConexion = new Conexion().ObtenerCadenaConexion();
-            var conn = new SqlConnection();
-            var cmd = new SqlCommand();
-            conn.ConnectionString = cadenaConexion;
-            cmd.Connection = conn;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "usp_insertarEmpleado";
-            cmd.Parameters.AddWithValue("@dni", empleado.dni);
-            cmd.Parameters.AddWithValue("@apellidoPaterno", empleado.apellidoPaterno);
-            cmd.Parameters.AddWithValue("@apellidoMaterno", empleado.apellidoMaterno);
-            cmd.Parameters.AddWithValue("@nombre", empleado.nombreEmpleado);
-            cmd.Parameters.AddWithValue("@usuario", empleado.usuario);
-            cmd.Parameters.AddWithValue("@clave", empleado.clave);
-            cmd.Parameters.AddWithValue("@idUbigeo", empleado.idUbigeo);
-            cmd.Parameters.AddWithValue("@estado", empleado.estado);
-            try
+            using (var conn = new SqlConnection(cadenaConexion))
             {
                 conn.Open();
-                cmd.ExecuteNonQuery();
-            }
-            catch (SqlException ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                if (conn.State == ConnectionState.Open)
+
+                // Establecer la variable de sesión
+                using (var setContextCmd = new SqlCommand("sp_set_session_context", conn))
                 {
-                    conn.Close();
+                    setContextCmd.CommandType = CommandType.StoredProcedure;
+                    setContextCmd.Parameters.AddWithValue("@key", "UserName");
+                    setContextCmd.Parameters.AddWithValue("@value", Empleado.nombreEmpleadoLogueado);
+                    setContextCmd.ExecuteNonQuery();
                 }
+
+                // Ejecutar la inserción del empleado
+                using (var cmd = new SqlCommand("usp_insertarEmpleado", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@dni", empleado.dni);
+                    cmd.Parameters.AddWithValue("@apellidoPaterno", empleado.apellidoPaterno);
+                    cmd.Parameters.AddWithValue("@apellidoMaterno", empleado.apellidoMaterno);
+                    cmd.Parameters.AddWithValue("@nombre", empleado.nombreEmpleado);
+                    cmd.Parameters.AddWithValue("@usuario", empleado.usuario);
+                    cmd.Parameters.AddWithValue("@clave", empleado.clave);
+                    cmd.Parameters.AddWithValue("@idUbigeo", empleado.idUbigeo);
+                    cmd.Parameters.AddWithValue("@estado", empleado.estado);
+                    cmd.ExecuteNonQuery();
+                }
+
+                conn.Close();
             }
         }
 
         public void EditarEmpleado(Empleado empleado)
         {
             string cadenaConexion = new Conexion().ObtenerCadenaConexion();
-            var conn = new SqlConnection();
-            var cmd = new SqlCommand();
-            conn.ConnectionString = cadenaConexion;
-            cmd.Connection = conn;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "usp_editarEmpleado";
-            cmd.Parameters.AddWithValue("@idPersona", empleado.IdPersona);
-            cmd.Parameters.AddWithValue("@dni", empleado.dni);
-            cmd.Parameters.AddWithValue("@apellidoPaterno", empleado.apellidoPaterno);
-            cmd.Parameters.AddWithValue("@apellidoMaterno", empleado.apellidoMaterno);
-            cmd.Parameters.AddWithValue("@nombreEmpleado", empleado.nombreEmpleado);
-            cmd.Parameters.AddWithValue("@usuario", empleado.usuario);
-            cmd.Parameters.AddWithValue("@clave", empleado.clave);
-            cmd.Parameters.AddWithValue("@idUbigeo", empleado.idUbigeo);
-            cmd.Parameters.AddWithValue("@estado", empleado.estado);
-            try
+            using (var conn = new SqlConnection(cadenaConexion))
             {
                 conn.Open();
-                cmd.ExecuteNonQuery();
-            }
-            catch (SqlException ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                if (conn.State == ConnectionState.Open)
-                {
-                    conn.Close();
-                }
-            }
 
+                // Establecer la variable de sesión
+                using (var setContextCmd = new SqlCommand("sp_set_session_context", conn))
+                {
+                    setContextCmd.CommandType = CommandType.StoredProcedure;
+                    setContextCmd.Parameters.AddWithValue("@key", "UserName");
+                    setContextCmd.Parameters.AddWithValue("@value", Empleado.nombreEmpleadoLogueado);
+                    setContextCmd.ExecuteNonQuery();
+                }
+
+                // Ejecutar la actualización del empleado
+                using (var cmd = new SqlCommand("usp_editarEmpleado", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@idPersona", empleado.IdPersona);
+                    cmd.Parameters.AddWithValue("@dni", empleado.dni);
+                    cmd.Parameters.AddWithValue("@apellidoPaterno", empleado.apellidoPaterno);
+                    cmd.Parameters.AddWithValue("@apellidoMaterno", empleado.apellidoMaterno);
+                    cmd.Parameters.AddWithValue("@nombreEmpleado", empleado.nombreEmpleado);
+                    cmd.Parameters.AddWithValue("@usuario", empleado.usuario);
+                    cmd.Parameters.AddWithValue("@clave", empleado.clave);
+                    cmd.Parameters.AddWithValue("@idUbigeo", empleado.idUbigeo);
+                    cmd.Parameters.AddWithValue("@estado", empleado.estado);
+                    cmd.ExecuteNonQuery();
+                }
+
+                conn.Close();
+            }
         }
 
         public Empleado BusarEmpleado(int idPersona)
         {
             Empleado empleado = null;
             string cadenaConexion = new Conexion().ObtenerCadenaConexion();
-            var conn = new SqlConnection();
-            var cmd = new SqlCommand();
-            conn.ConnectionString = cadenaConexion;
-            cmd.Connection = conn;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "usp_buscarEmpleado";
-            cmd.Parameters.AddWithValue("@idPersona", idPersona);
-            try
+            using (var conn = new SqlConnection(cadenaConexion))
             {
-                conn.Open();
-                var reader = cmd.ExecuteReader();
-                if (reader.Read())
+                var cmd = new SqlCommand();
+                conn.ConnectionString = cadenaConexion;
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "usp_buscarEmpleado";
+                cmd.Parameters.AddWithValue("@idPersona", idPersona);
+                try
                 {
-                    empleado = new Empleado();
-                    empleado.dni = (string)reader["dni"];
-                    empleado.apellidoPaterno = (string)reader["apellidoPaterno"];
-                    empleado.apellidoMaterno = (string)reader["apellidoMaterno"];
-                    empleado.nombreEmpleado = (string)reader["nombre"];
-                    empleado.usuario = (string)reader["nombreEmpleado"];
-                    empleado.clave = (string)reader["clave"];
-                    empleado.codDepartamento = (string)reader["codDepartamento"];
-                    empleado.codProvincia = (string)reader["codProvincia"];
-                    empleado.codDistrito = (string)reader["codDistrito"];
-                    empleado.estado = (bool)reader["estado"];
+                    conn.Open();
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        empleado = new Empleado();
+                        empleado.dni = (string)reader["dni"];
+                        empleado.apellidoPaterno = (string)reader["apellidoPaterno"];
+                        empleado.apellidoMaterno = (string)reader["apellidoMaterno"];
+                        empleado.nombreEmpleado = (string)reader["nombre"];
+                        empleado.usuario = (string)reader["nombreEmpleado"];
+                        empleado.clave = (string)reader["clave"];
+                        empleado.codDepartamento = (string)reader["codDepartamento"];
+                        empleado.codProvincia = (string)reader["codProvincia"];
+                        empleado.codDistrito = (string)reader["codDistrito"];
+                        empleado.estado = (bool)reader["estado"];
+                    }
                 }
-
-            }
-            catch(SqlException ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                if (conn.State == ConnectionState.Open)
+                catch (SqlException ex)
                 {
-                    conn.Close();
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                 }
             }
             return empleado;
@@ -162,44 +163,63 @@ namespace SaludOcupacional_Model
         {
             Empleado empleado = null;
             string cadenaConexion = new Conexion().ObtenerCadenaConexion();
-            var conn = new SqlConnection();
-            var cmd = new SqlCommand();
-            conn.ConnectionString = cadenaConexion;
-            cmd.Connection = conn;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "usp_validarLoginEmpleado"; //cambiar al generar
-            cmd.Parameters.AddWithValue("@usuario", usuario); //cambiar al generar
-            cmd.Parameters.AddWithValue("@clave", clave); //cambiar al generar
-            try
+            using (var conn = new SqlConnection(cadenaConexion))
             {
-                conn.Open();
-                var reader = cmd.ExecuteReader();
-                if (reader.Read())
+                var cmd = new SqlCommand();
+                conn.ConnectionString = cadenaConexion;
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "usp_validarLoginEmpleado";
+                cmd.Parameters.AddWithValue("@usuario", usuario);
+                cmd.Parameters.AddWithValue("@clave", clave);
+                try
                 {
-                    return true;
-                } else
-                {
-                    return false;
+                    conn.Open();
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        Empleado.nombreEmpleadoLogueado = reader["nombreEmpleado"].ToString();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
-
-            }
-            catch (SqlException ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                if (conn.State == ConnectionState.Open)
+                catch (SqlException ex)
                 {
-                    conn.Close();
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                 }
             }
-
         }
 
+        public void SetSessionContext(string userName)
+        {
+            string cadenaConexion = new Conexion().ObtenerCadenaConexion();
+            using (var conn = new SqlConnection(cadenaConexion))
+            {
+                var cmd = new SqlCommand("sp_set_session_context", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@key", "UserName");
+                cmd.Parameters.AddWithValue("@value", userName);
 
-
-
-
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+        }
     }
 }

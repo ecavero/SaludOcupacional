@@ -1,5 +1,7 @@
 ﻿using SaludOcupacional_Controller;
+using SaludOcupacional_Entity;
 using SaludOcupacional_GUI;
+using SaludOcupacional_Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,40 +27,44 @@ namespace ProyWinC_Sem03
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if(txtLogin.Text.Trim() != "" && txtPassword.Text.Trim() != "")
-             {
-                // Codifique
-
-                //if(txtLogin.Text.Trim() == "ISIL" && txtPassword.Text.Trim() == "12345")
-                if(empleadoController.validarLoginEmpleado(txtLogin.Text.Trim(), txtPassword.Text.Trim()))
+            if (txtLogin.Text.Trim() != "" && txtPassword.Text.Trim() != "")
+            {
+                if (empleadoController.validarLoginEmpleado(txtLogin.Text.Trim(), txtPassword.Text.Trim()))
                 {
-                    //Credenciales correctas
-                    this.Hide(); //Ocultamos el login
+                    // Depuración: Verificar el valor de nombreEmpleadoLogueado
+                    string loggedInUser = Empleado.nombreEmpleadoLogueado;
+
+                    // Establecer la variable de sesión
+                    EmpleadoModel model = new EmpleadoModel();
+                    model.SetSessionContext(loggedInUser);
+
+                    // Credenciales correctas
+                    this.Hide(); // Ocultamos el login
                     timer1.Enabled = false;
                     MDIPrincipal mdi = new MDIPrincipal();
                     mdi.ShowDialog();
                 }
                 else
                 {
-                    MessageBox.Show("Usuario o Password incorrectos",
-                    "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Usuario o Password incorrectos", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     intentos += 1;
                 }
             }
             else
             {
-                MessageBox.Show("Usuario o Password obligatorios",
-                    "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-               intentos +=1;
+                MessageBox.Show("Usuario o Password obligatorios", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                intentos += 1;
             }
+
             // Si se llega al intento 3 se envia el mensaje y se sale de la aplicacion
             if (intentos == 3)
             {
-                MessageBox.Show("Lo sentimos,  sobrepaso el numero de intentos",
-                    "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lo sentimos, sobrepaso el numero de intentos", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }
+
+
 
         private void timer1_Tick(object sender, EventArgs e)
         {

@@ -44,73 +44,72 @@ namespace SaludOcupacional_Model
         public void InsertarMedico(Medico medico)
         {
             string cadenaConexion = new Conexion().ObtenerCadenaConexion();
-            var conn = new SqlConnection();
-            var cmd = new SqlCommand();
-            conn.ConnectionString = cadenaConexion;
-            cmd.Connection = conn;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "usp_insertarMedico";
-            cmd.Parameters.AddWithValue("@dni", medico.dni);
-            cmd.Parameters.AddWithValue("@apellidoPaterno", medico.apellidoPaterno);
-            cmd.Parameters.AddWithValue("@apellidoMaterno", medico.apellidoMaterno);
-            cmd.Parameters.AddWithValue("@nombre", medico.nombre);
-            cmd.Parameters.AddWithValue("@nroColegiatura", medico.nroColegiatura);
-            cmd.Parameters.AddWithValue("@especialidad", medico.especialidad);
-            cmd.Parameters.AddWithValue("@idUbigeo", medico.idUbigeo);
-            cmd.Parameters.AddWithValue("@estado", medico.estado);
-            try
+            using (var conn = new SqlConnection(cadenaConexion))
             {
                 conn.Open();
-                cmd.ExecuteNonQuery();
-            }
-            catch (SqlException ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                if (conn.State == ConnectionState.Open)
+
+                // Establecer la variable de sesión
+                using (var setContextCmd = new SqlCommand("sp_set_session_context", conn))
                 {
-                    conn.Close();
+                    setContextCmd.CommandType = CommandType.StoredProcedure;
+                    setContextCmd.Parameters.AddWithValue("@key", "UserName");
+                    setContextCmd.Parameters.AddWithValue("@value", Empleado.nombreEmpleadoLogueado);
+                    setContextCmd.ExecuteNonQuery();
                 }
+
+                // Ejecutar la inserción del médico
+                using (var cmd = new SqlCommand("usp_insertarMedico", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@dni", medico.dni);
+                    cmd.Parameters.AddWithValue("@apellidoPaterno", medico.apellidoPaterno);
+                    cmd.Parameters.AddWithValue("@apellidoMaterno", medico.apellidoMaterno);
+                    cmd.Parameters.AddWithValue("@nombre", medico.nombre);
+                    cmd.Parameters.AddWithValue("@nroColegiatura", medico.nroColegiatura);
+                    cmd.Parameters.AddWithValue("@especialidad", medico.especialidad);
+                    cmd.Parameters.AddWithValue("@idUbigeo", medico.idUbigeo);
+                    cmd.Parameters.AddWithValue("@estado", medico.estado);
+                    cmd.ExecuteNonQuery();
+                }
+
+                conn.Close();
             }
         }
 
         public void EditarMedico(Medico medico)
         {
             string cadenaConexion = new Conexion().ObtenerCadenaConexion();
-            var conn = new SqlConnection();
-            var cmd = new SqlCommand();
-            conn.ConnectionString = cadenaConexion;
-            cmd.Connection = conn;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "usp_editarMedico";
-            cmd.Parameters.AddWithValue("@idPersona", medico.IdPersona);
-            cmd.Parameters.AddWithValue("@dni", medico.dni);
-            cmd.Parameters.AddWithValue("@apellidoPaterno", medico.apellidoPaterno);
-            cmd.Parameters.AddWithValue("@apellidoMaterno", medico.apellidoMaterno);
-            cmd.Parameters.AddWithValue("@nombre", medico.nombre);
-            cmd.Parameters.AddWithValue("@nroColegiatura", medico.nroColegiatura);
-            cmd.Parameters.AddWithValue("@especialidad", medico.especialidad);
-            cmd.Parameters.AddWithValue("@idUbigeo", medico.idUbigeo);
-            cmd.Parameters.AddWithValue("@estado", medico.estado);
-            try
+            using (var conn = new SqlConnection(cadenaConexion))
             {
                 conn.Open();
-                cmd.ExecuteNonQuery();
-            }
-            catch (SqlException ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                if (conn.State == ConnectionState.Open)
-                {
-                    conn.Close();
-                }
-            }
 
+                // Establecer la variable de sesión
+                using (var setContextCmd = new SqlCommand("sp_set_session_context", conn))
+                {
+                    setContextCmd.CommandType = CommandType.StoredProcedure;
+                    setContextCmd.Parameters.AddWithValue("@key", "UserName");
+                    setContextCmd.Parameters.AddWithValue("@value", Empleado.nombreEmpleadoLogueado);
+                    setContextCmd.ExecuteNonQuery();
+                }
+
+                // Ejecutar la actualización del médico
+                using (var cmd = new SqlCommand("usp_editarMedico", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@idPersona", medico.IdPersona);
+                    cmd.Parameters.AddWithValue("@dni", medico.dni);
+                    cmd.Parameters.AddWithValue("@apellidoPaterno", medico.apellidoPaterno);
+                    cmd.Parameters.AddWithValue("@apellidoMaterno", medico.apellidoMaterno);
+                    cmd.Parameters.AddWithValue("@nombre", medico.nombre);
+                    cmd.Parameters.AddWithValue("@nroColegiatura", medico.nroColegiatura);
+                    cmd.Parameters.AddWithValue("@especialidad", medico.especialidad);
+                    cmd.Parameters.AddWithValue("@idUbigeo", medico.idUbigeo);
+                    cmd.Parameters.AddWithValue("@estado", medico.estado);
+                    cmd.ExecuteNonQuery();
+                }
+
+                conn.Close();
+            }
         }
 
         public Medico BuscarMedico(int idPersona)
@@ -157,10 +156,5 @@ namespace SaludOcupacional_Model
             }
             return medico;
         }
-
     }
-
 }
-
-
-

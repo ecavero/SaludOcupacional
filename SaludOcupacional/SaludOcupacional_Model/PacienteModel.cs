@@ -11,7 +11,8 @@ namespace SaludOcupacional_Model
 {
     public class PacienteModel
     {
-        public DataTable ListarPacientes() { 
+        public DataTable ListarPacientes()
+        {
             string cadenaConexion = new Conexion().ObtenerCadenaConexion();
             var conn = new SqlConnection();
             var cmd = new SqlCommand();
@@ -25,7 +26,8 @@ namespace SaludOcupacional_Model
                 var adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dataSet, "Pacientes");
                 return dataSet.Tables["Pacientes"];
-            } catch (SqlException ex)
+            }
+            catch (SqlException ex)
             {
                 throw new Exception(ex.Message);
             }
@@ -41,71 +43,70 @@ namespace SaludOcupacional_Model
         public void InsertarPaciente(Paciente paciente)
         {
             string cadenaConexion = new Conexion().ObtenerCadenaConexion();
-            var conn = new SqlConnection();
-            var cmd = new SqlCommand();
-            conn.ConnectionString = cadenaConexion;
-            cmd.Connection = conn;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "usp_insertarPaciente";
-            cmd.Parameters.AddWithValue("@dni", paciente.dni);
-            cmd.Parameters.AddWithValue("@apellidoPaterno", paciente.apellidoPaterno);
-            cmd.Parameters.AddWithValue("@apellidoMaterno", paciente.apellidoMaterno);
-            cmd.Parameters.AddWithValue("@nombre", paciente.nombre);
-            cmd.Parameters.AddWithValue("@idUbigeo", paciente.idUbigeo);
-            cmd.Parameters.AddWithValue("@numeroDeHistoria", paciente.numeroDeHistoria);
-            cmd.Parameters.AddWithValue("@estado", paciente.estado);
-            try
+            using (var conn = new SqlConnection(cadenaConexion))
             {
                 conn.Open();
-                cmd.ExecuteNonQuery();
-            }
-            catch(SqlException ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                if (conn.State == ConnectionState.Open)
+
+                // Establecer la variable de sesión
+                using (var setContextCmd = new SqlCommand("sp_set_session_context", conn))
                 {
-                    conn.Close();
+                    setContextCmd.CommandType = CommandType.StoredProcedure;
+                    setContextCmd.Parameters.AddWithValue("@key", "UserName");
+                    setContextCmd.Parameters.AddWithValue("@value", Empleado.nombreEmpleadoLogueado);
+                    setContextCmd.ExecuteNonQuery();
                 }
+
+                // Ejecutar la inserción del paciente
+                using (var cmd = new SqlCommand("usp_insertarPaciente", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@dni", paciente.dni);
+                    cmd.Parameters.AddWithValue("@apellidoPaterno", paciente.apellidoPaterno);
+                    cmd.Parameters.AddWithValue("@apellidoMaterno", paciente.apellidoMaterno);
+                    cmd.Parameters.AddWithValue("@nombre", paciente.nombre);
+                    cmd.Parameters.AddWithValue("@idUbigeo", paciente.idUbigeo);
+                    cmd.Parameters.AddWithValue("@numeroDeHistoria", paciente.numeroDeHistoria);
+                    cmd.Parameters.AddWithValue("@estado", paciente.estado);
+                    cmd.ExecuteNonQuery();
+                }
+
+                conn.Close();
             }
         }
 
         public void EditarPaciente(Paciente paciente)
         {
             string cadenaConexion = new Conexion().ObtenerCadenaConexion();
-            var conn = new SqlConnection();
-            var cmd = new SqlCommand();
-            conn.ConnectionString = cadenaConexion;
-            cmd.Connection = conn;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "usp_editarPaciente";
-            cmd.Parameters.AddWithValue("@idPersona", paciente.IdPersona);
-            cmd.Parameters.AddWithValue("@dni", paciente.dni);
-            cmd.Parameters.AddWithValue("@apellidoPaterno", paciente.apellidoPaterno);
-            cmd.Parameters.AddWithValue("@apellidoMaterno", paciente.apellidoMaterno);
-            cmd.Parameters.AddWithValue("@nombre", paciente.nombre);
-            cmd.Parameters.AddWithValue("@idUbigeo", paciente.idUbigeo);
-            cmd.Parameters.AddWithValue("@numeroDeHistoria", paciente.numeroDeHistoria);
-            cmd.Parameters.AddWithValue("@estado", paciente.estado);
-            try
+            using (var conn = new SqlConnection(cadenaConexion))
             {
                 conn.Open();
-                cmd.ExecuteNonQuery();
-            }
-            catch(SqlException ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                if (conn.State == ConnectionState.Open)
-                {
-                    conn.Close();
-                }
-            }
 
+                // Establecer la variable de sesión
+                using (var setContextCmd = new SqlCommand("sp_set_session_context", conn))
+                {
+                    setContextCmd.CommandType = CommandType.StoredProcedure;
+                    setContextCmd.Parameters.AddWithValue("@key", "UserName");
+                    setContextCmd.Parameters.AddWithValue("@value", Empleado.nombreEmpleadoLogueado);
+                    setContextCmd.ExecuteNonQuery();
+                }
+
+                // Ejecutar la actualización del paciente
+                using (var cmd = new SqlCommand("usp_editarPaciente", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@idPersona", paciente.IdPersona);
+                    cmd.Parameters.AddWithValue("@dni", paciente.dni);
+                    cmd.Parameters.AddWithValue("@apellidoPaterno", paciente.apellidoPaterno);
+                    cmd.Parameters.AddWithValue("@apellidoMaterno", paciente.apellidoMaterno);
+                    cmd.Parameters.AddWithValue("@nombre", paciente.nombre);
+                    cmd.Parameters.AddWithValue("@idUbigeo", paciente.idUbigeo);
+                    cmd.Parameters.AddWithValue("@numeroDeHistoria", paciente.numeroDeHistoria);
+                    cmd.Parameters.AddWithValue("@estado", paciente.estado);
+                    cmd.ExecuteNonQuery();
+                }
+
+                conn.Close();
+            }
         }
 
         public Paciente BuscarPaciente(int idPersona)
@@ -136,10 +137,10 @@ namespace SaludOcupacional_Model
                     paciente.codDistrito = (string)reader["codDistrito"];
                     paciente.numeroDeHistoria = (string)reader["numeroDeHistoria"];
                     paciente.estado = (bool)reader["estado"];
-                    
+
                 }
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 throw new Exception(ex.Message);
             }

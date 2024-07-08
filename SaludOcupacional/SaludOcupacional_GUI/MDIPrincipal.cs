@@ -56,6 +56,14 @@ namespace SaludOcupacional_GUI
             frm.Show();
         }
 
+        private void auditoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAuditoria frmAuditoria = new FrmAuditoria();
+            frmAuditoria.MdiParent = this;
+            frmAuditoria.Show();
+        }
+
+
         private void MDIPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult vrpta = MessageBox.Show("¿Seguro de salir del sistema?", "Confirmar",
