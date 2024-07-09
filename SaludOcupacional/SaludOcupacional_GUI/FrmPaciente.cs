@@ -12,6 +12,7 @@ public partial class frmPaciente : Form
 
     private void Form1_Load(object sender, EventArgs e)
     {
+        dgPacientes.AutoGenerateColumns = false;
         ListarPacientes();
     }
 
@@ -47,6 +48,7 @@ public partial class frmPaciente : Form
         dataView.RowFilter = $"apellidoPaterno like '%{strFiltro}%' or apellidoMaterno like '%{strFiltro}%' or nombre like '%{strFiltro}%'or dni like '%{strFiltro}%'"; //interpolación
 
         dgPacientes.DataSource = dataView;
+        lblRegistros.Text = dgPacientes.Rows.Count.ToString();
     }
 
 

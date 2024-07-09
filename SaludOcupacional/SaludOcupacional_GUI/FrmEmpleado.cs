@@ -30,6 +30,9 @@ namespace SaludOcupacional_GUI
 
         private void FrmEmpleado_Load(object sender, EventArgs e)
         {
+
+            dgEmpleado.AutoGenerateColumns = false;
+
             ListarEmpleados();
         }
 
@@ -44,6 +47,7 @@ namespace SaludOcupacional_GUI
             dataView.RowFilter = $"apellidoPaterno like '%{strFiltro}%' or apellidoMaterno like '%{strFiltro}%' or nombre like '%{strFiltro}%'or dni like '%{strFiltro}%'"; //interpolación
 
             dgEmpleado.DataSource = dataView;
+            lblRegistros.Text = dgEmpleado.Rows.Count.ToString();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)

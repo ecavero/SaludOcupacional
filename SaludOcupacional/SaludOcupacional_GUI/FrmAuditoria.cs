@@ -19,7 +19,7 @@ namespace SaludOcupacional_GUI
         {
             InitializeComponent();
             auditoriaModel = new AuditoriaModel();
-            CargarDatosAuditoria();
+            
         }
 
         private void CargarDatosAuditoria()
@@ -28,6 +28,7 @@ namespace SaludOcupacional_GUI
             {
                 DataTable auditoriaData = auditoriaModel.ObtenerAuditoria();
                 auditDataGrid.DataSource = auditoriaData;
+                lblRegistros.Text = auditDataGrid.Rows.Count.ToString();
             }
             catch (Exception ex)
             {
@@ -38,6 +39,12 @@ namespace SaludOcupacional_GUI
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FrmAuditoria_Load(object sender, EventArgs e)
+        {
+            auditDataGrid.AutoGenerateColumns = false;
+            CargarDatosAuditoria();
         }
     }
 }

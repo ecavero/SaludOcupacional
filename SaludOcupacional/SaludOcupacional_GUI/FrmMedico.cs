@@ -29,6 +29,7 @@ namespace SaludOcupacional_View
                 dataView.RowFilter = $"apellidoPaterno like '%{strFiltro}%' or apellidoMaterno like '%{strFiltro}%' or nombre like '%{strFiltro}%'or dni like '%{strFiltro}%'"; //interpolación
 
                 dgMedicos.DataSource = dataView;
+                lblRegistros.Text = dgMedicos.Rows.Count.ToString();
 
             }
             catch (Exception ex)
@@ -38,6 +39,7 @@ namespace SaludOcupacional_View
         }
         private void FrmMedico_Load(object sender, EventArgs e)
         {
+            dgMedicos.AutoGenerateColumns = false;
             ListarMedicos();
         }
 
