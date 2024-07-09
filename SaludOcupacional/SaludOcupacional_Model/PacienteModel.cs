@@ -67,6 +67,17 @@ namespace SaludOcupacional_Model
                     cmd.Parameters.AddWithValue("@idUbigeo", paciente.idUbigeo);
                     cmd.Parameters.AddWithValue("@numeroDeHistoria", paciente.numeroDeHistoria);
                     cmd.Parameters.AddWithValue("@estado", paciente.estado);
+                    SqlParameter paramImagen = new SqlParameter("@foto", SqlDbType.VarBinary, -1);
+                    if (paciente.foto == null)
+                    {
+                        paramImagen.Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        paramImagen.Value = paciente.foto;
+                    }
+                    cmd.Parameters.Add(paramImagen);
+
                     cmd.ExecuteNonQuery();
                 }
 
@@ -102,6 +113,16 @@ namespace SaludOcupacional_Model
                     cmd.Parameters.AddWithValue("@idUbigeo", paciente.idUbigeo);
                     cmd.Parameters.AddWithValue("@numeroDeHistoria", paciente.numeroDeHistoria);
                     cmd.Parameters.AddWithValue("@estado", paciente.estado);
+                    SqlParameter paramImagen = new SqlParameter("@foto", SqlDbType.VarBinary, -1);
+                    if (paciente.foto == null)
+                    {
+                        paramImagen.Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        paramImagen.Value = paciente.foto;
+                    }
+                    cmd.Parameters.Add(paramImagen);
                     cmd.ExecuteNonQuery();
                 }
 
@@ -137,7 +158,7 @@ namespace SaludOcupacional_Model
                     paciente.codDistrito = (string)reader["codDistrito"];
                     paciente.numeroDeHistoria = (string)reader["numeroDeHistoria"];
                     paciente.estado = (bool)reader["estado"];
-
+                    paciente.foto = reader["foto"] != DBNull.Value ? (byte[])reader["foto"] : null;
                 }
             }
             catch (SqlException ex)

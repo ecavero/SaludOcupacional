@@ -155,3 +155,73 @@ BEGIN
 END
 
 go
+
+
+ALTER PROCEDURE [dbo].[usp_editarPaciente]
+@idPersona int,
+@dni varchar(10),
+@apellidoPaterno varchar(100),
+@apellidoMaterno varchar(100),
+@nombre varchar(100),
+@idUbigeo varchar(6),
+@numeroDeHistoria varchar(20),
+@estado bit,
+@foto varbinary(max)
+AS
+BEGIN
+	UPDATE Persona
+	SET 
+  dni = @dni,
+	apellidoPaterno = @apellidoPaterno,
+	apellidoMaterno = @apellidoMaterno,
+	nombre = @nombre,
+	idUbigeo = @idUbigeo,
+	estado = @estado,
+	Foto = @foto
+	WHERE idPersona = @idPersona
+	UPDATE Paciente
+	SET 	
+	numeroDeHistoria = @numeroDeHistoria,
+	estado = @estado
+	WHERE idPersona = @idPersona
+END
+
+go
+
+ALTER PROCEDURE [dbo].[usp_buscarPaciente]
+@idPersona int
+AS
+BEGIN
+	SELECT pe.idPersona, pe.dni, pe.nombre, pe.apellidoPaterno, pe.apellidoMaterno, u.codDepartamento, u.codProvincia, u.codDistrito, 
+    pa.numeroDeHistoria, pa.estado, pe.Foto
+	FROM Persona pe
+	INNER JOIN Ubigeo u
+	ON u.idUbigeo = pe.idUbigeo
+	INNER JOIN Paciente pa
+	ON pa.idPersona = pe.idPersona
+	WHERE pe.idPersona = @idPersona
+END
+
+go
+
+
+ALTER PROCEDURE [dbo].[usp_insertarPaciente]
+@dni varchar(10),
+@apellidoPaterno varchar(100),
+@apellidoMaterno varchar(100),
+@nombre varchar(100),
+@idUbigeo varchar(6),
+@numeroDeHistoria varchar(20),
+@estado bit,
+@foto varbinary(max)
+AS
+BEGIN
+	DECLARE @ultimoId int
+	SELECT @ultimoId = MAX(p.idPersona)
+	FROM Persona p
+	SET @ultimoId = @ultimoId + 1
+	INSERT INTO Persona(idPersona, dni, apellidoPaterno, apellidoMaterno, nombre, idUbigeo, idTipoPersona, estado, Foto)
+	VALUES(@ultimoId, @dni, @apellidoPaterno, @apellidoMaterno, @nombre, @idUbigeo, 1, @estado, @foto)
+	INSERT INTO Paciente(idPersona, numeroDeHistoria, estado)
+	VALUES(@ultimoId, @numeroDeHistoria, @estado)
+END

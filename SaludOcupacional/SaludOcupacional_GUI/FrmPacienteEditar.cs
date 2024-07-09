@@ -20,6 +20,8 @@ namespace SaludOcupacional_GUI
         public bool editar { get; set; }
         public int idPaciente { get; set; }
 
+        string rutaFoto = "";
+
         public FrmPacienteEditar()
         {
             InitializeComponent();
@@ -48,6 +50,22 @@ namespace SaludOcupacional_GUI
                 SeleccionarDistrito(paciente.codDistrito);
                 txtNumeroDeHistoria.Text = paciente.numeroDeHistoria;
                 chkActivo.Checked = paciente.estado;
+                mostrarImagen(paciente);
+            }
+        }
+
+        private void mostrarImagen(Paciente paciente)
+        {
+            if (paciente.foto != null)
+            {
+                using (MemoryStream ms = new MemoryStream(paciente.foto))
+                {
+                    pbFoto.Image = Image.FromStream(ms);
+                }
+            }
+            else
+            {
+                pbFoto.Image = null;
             }
         }
 
@@ -166,6 +184,15 @@ namespace SaludOcupacional_GUI
                 paciente.idUbigeo = (string)dataRowDistrito["idUbigeo"];
                 paciente.numeroDeHistoria = txtNumeroDeHistoria.Text;
                 paciente.estado = chkActivo.Checked;
+                if (rutaFoto != string.Empty)
+                {
+                    paciente.foto = File.ReadAllBytes(rutaFoto);
+                }
+                else
+                {
+                    var datosAnteriores = pacienteController.BuscarPaciente(idPaciente);
+                    paciente.foto = datosAnteriores.foto;
+                }
                 if (editar)
                 {
                     pacienteController.EditarPaciente(paciente);
@@ -174,7 +201,7 @@ namespace SaludOcupacional_GUI
                 {
                     pacienteController.InsertarPaciente(paciente);
                 }
-                this.Close();
+               this.Close();
             }
             catch (Exception ex)
             {
@@ -219,6 +246,21 @@ namespace SaludOcupacional_GUI
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void btnFoto_Click(object sender, EventArgs e)
+        {
+
+            fFoto.InitialDirectory = "c:\\";
+            fFoto.Filter = "Image files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png|All files (*.*)|*.*";
+            fFoto.FilterIndex = 1;
+            fFoto.RestoreDirectory = true;
+
+            if (fFoto.ShowDialog() == DialogResult.OK)
+            {
+                rutaFoto = fFoto.FileName;
+                pbFoto.Image = Image.FromFile(rutaFoto);
             }
         }
     }
