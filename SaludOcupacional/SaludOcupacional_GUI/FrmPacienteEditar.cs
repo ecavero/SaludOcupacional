@@ -184,6 +184,15 @@ namespace SaludOcupacional_GUI
                 paciente.idUbigeo = (string)dataRowDistrito["idUbigeo"];
                 paciente.numeroDeHistoria = txtNumeroDeHistoria.Text;
                 paciente.estado = chkActivo.Checked;
+                if (rutaFoto != string.Empty)
+                {
+                    paciente.foto = File.ReadAllBytes(rutaFoto);
+                }
+                else
+                {
+                    var datosAnteriores = pacienteController.BuscarPaciente(idPaciente);
+                    paciente.foto = datosAnteriores.foto;
+                }
                 if (editar)
                 {
                     pacienteController.EditarPaciente(paciente);
@@ -192,7 +201,7 @@ namespace SaludOcupacional_GUI
                 {
                     pacienteController.InsertarPaciente(paciente);
                 }
-                this.Close();
+               this.Close();
             }
             catch (Exception ex)
             {
