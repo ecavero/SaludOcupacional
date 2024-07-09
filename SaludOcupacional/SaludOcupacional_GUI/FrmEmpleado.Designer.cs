@@ -29,6 +29,13 @@
         private void InitializeComponent()
         {
             dgEmpleado = new DataGridView();
+            btnAgregar = new Button();
+            btnModificar = new Button();
+            label1 = new Label();
+            txtFiltro = new TextBox();
+            lblRegistros = new Label();
+            label2 = new Label();
+            id_Persona = new DataGridViewTextBoxColumn();
             dni = new DataGridViewTextBoxColumn();
             apellidoPaterno = new DataGridViewTextBoxColumn();
             apellidoMaterno = new DataGridViewTextBoxColumn();
@@ -39,12 +46,6 @@
             nombreEmpleado = new DataGridViewTextBoxColumn();
             clave = new DataGridViewTextBoxColumn();
             estado = new DataGridViewTextBoxColumn();
-            btnAgregar = new Button();
-            btnModificar = new Button();
-            label1 = new Label();
-            txtFiltro = new TextBox();
-            lblRegistros = new Label();
-            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgEmpleado).BeginInit();
             SuspendLayout();
             // 
@@ -54,7 +55,7 @@
             dgEmpleado.AllowUserToDeleteRows = false;
             dgEmpleado.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgEmpleado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgEmpleado.Columns.AddRange(new DataGridViewColumn[] { dni, apellidoPaterno, apellidoMaterno, nombre, departamento, provincia, distrito, nombreEmpleado, clave, estado });
+            dgEmpleado.Columns.AddRange(new DataGridViewColumn[] { id_Persona, dni, apellidoPaterno, apellidoMaterno, nombre, departamento, provincia, distrito, nombreEmpleado, clave, estado });
             dgEmpleado.Location = new Point(43, 76);
             dgEmpleado.Margin = new Padding(3, 4, 3, 4);
             dgEmpleado.Name = "dgEmpleado";
@@ -65,6 +66,73 @@
             dgEmpleado.Size = new Size(824, 408);
             dgEmpleado.TabIndex = 0;
             dgEmpleado.CellContentClick += dgEmpleado_CellContentClick;
+            // 
+            // btnAgregar
+            // 
+            btnAgregar.Location = new Point(42, 523);
+            btnAgregar.Margin = new Padding(3, 4, 3, 4);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(86, 31);
+            btnAgregar.TabIndex = 1;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
+            // 
+            // btnModificar
+            // 
+            btnModificar.Location = new Point(160, 523);
+            btnModificar.Margin = new Padding(3, 4, 3, 4);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new Size(86, 31);
+            btnModificar.TabIndex = 2;
+            btnModificar.Text = "Modificar";
+            btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Click += btnModificar_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(42, 29);
+            label1.Name = "label1";
+            label1.Size = new Size(98, 20);
+            label1.TabIndex = 3;
+            label1.Text = "Ingrese Filtro:";
+            label1.Click += label1_Click;
+            // 
+            // txtFiltro
+            // 
+            txtFiltro.Location = new Point(160, 25);
+            txtFiltro.Margin = new Padding(3, 4, 3, 4);
+            txtFiltro.Name = "txtFiltro";
+            txtFiltro.Size = new Size(397, 27);
+            txtFiltro.TabIndex = 4;
+            txtFiltro.TextChanged += txtFiltro_TextChanged;
+            // 
+            // lblRegistros
+            // 
+            lblRegistros.BorderStyle = BorderStyle.FixedSingle;
+            lblRegistros.Location = new Point(771, 525);
+            lblRegistros.Name = "lblRegistros";
+            lblRegistros.Size = new Size(96, 29);
+            lblRegistros.TabIndex = 5;
+            lblRegistros.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(681, 525);
+            label2.Name = "label2";
+            label2.Size = new Size(73, 20);
+            label2.TabIndex = 6;
+            label2.Text = "Registros:";
+            // 
+            // id_Persona
+            // 
+            id_Persona.DataPropertyName = "idPersona";
+            id_Persona.HeaderText = "ID";
+            id_Persona.MinimumWidth = 6;
+            id_Persona.Name = "id_Persona";
+            id_Persona.ReadOnly = true;
             // 
             // dni
             // 
@@ -146,65 +214,6 @@
             estado.Name = "estado";
             estado.ReadOnly = true;
             // 
-            // btnAgregar
-            // 
-            btnAgregar.Location = new Point(42, 523);
-            btnAgregar.Margin = new Padding(3, 4, 3, 4);
-            btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(86, 31);
-            btnAgregar.TabIndex = 1;
-            btnAgregar.Text = "Agregar";
-            btnAgregar.UseVisualStyleBackColor = true;
-            btnAgregar.Click += btnAgregar_Click;
-            // 
-            // btnModificar
-            // 
-            btnModificar.Location = new Point(160, 523);
-            btnModificar.Margin = new Padding(3, 4, 3, 4);
-            btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(86, 31);
-            btnModificar.TabIndex = 2;
-            btnModificar.Text = "Modificar";
-            btnModificar.UseVisualStyleBackColor = true;
-            btnModificar.Click += btnModificar_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(42, 29);
-            label1.Name = "label1";
-            label1.Size = new Size(98, 20);
-            label1.TabIndex = 3;
-            label1.Text = "Ingrese Filtro:";
-            label1.Click += label1_Click;
-            // 
-            // txtFiltro
-            // 
-            txtFiltro.Location = new Point(160, 25);
-            txtFiltro.Margin = new Padding(3, 4, 3, 4);
-            txtFiltro.Name = "txtFiltro";
-            txtFiltro.Size = new Size(397, 27);
-            txtFiltro.TabIndex = 4;
-            txtFiltro.TextChanged += txtFiltro_TextChanged;
-            // 
-            // lblRegistros
-            // 
-            lblRegistros.BorderStyle = BorderStyle.FixedSingle;
-            lblRegistros.Location = new Point(771, 525);
-            lblRegistros.Name = "lblRegistros";
-            lblRegistros.Size = new Size(96, 29);
-            lblRegistros.TabIndex = 5;
-            lblRegistros.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(681, 525);
-            label2.Name = "label2";
-            label2.Size = new Size(73, 20);
-            label2.TabIndex = 6;
-            label2.Text = "Registros:";
-            // 
             // FrmEmpleado
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -237,8 +246,12 @@
         private Label label1;
         private TextBox txtFiltro;
         private DataGridViewTextBoxColumn idPersona;
-        private DataGridViewTextBoxColumn dni;
         private DataGridViewTextBoxColumn apellidoParterno;
+        private Label lblRegistros;
+        private Label label2;
+        private DataGridViewTextBoxColumn id_Persona;
+        private DataGridViewTextBoxColumn dni;
+        private DataGridViewTextBoxColumn apellidoPaterno;
         private DataGridViewTextBoxColumn apellidoMaterno;
         private DataGridViewTextBoxColumn nombre;
         private DataGridViewTextBoxColumn departamento;
@@ -247,8 +260,5 @@
         private DataGridViewTextBoxColumn nombreEmpleado;
         private DataGridViewTextBoxColumn clave;
         private DataGridViewTextBoxColumn estado;
-        private DataGridViewTextBoxColumn apellidoPaterno;
-        private Label lblRegistros;
-        private Label label2;
     }
 }

@@ -60,27 +60,27 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(26, 37);
+            label1.Location = new Point(30, 49);
             label1.Name = "label1";
-            label1.Size = new Size(46, 15);
+            label1.Size = new Size(58, 20);
             label1.TabIndex = 0;
             label1.Text = "Codigo";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(26, 77);
+            label2.Location = new Point(30, 103);
             label2.Name = "label2";
-            label2.Size = new Size(27, 15);
+            label2.Size = new Size(35, 20);
             label2.TabIndex = 1;
             label2.Text = "DNI";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(26, 117);
+            label3.Location = new Point(30, 156);
             label3.Name = "label3";
-            label3.Size = new Size(95, 15);
+            label3.Size = new Size(120, 20);
             label3.TabIndex = 2;
             label3.Text = "Apellido Paterno";
             label3.Click += label3_Click;
@@ -88,54 +88,54 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(26, 157);
+            label4.Location = new Point(30, 209);
             label4.Name = "label4";
-            label4.Size = new Size(99, 15);
+            label4.Size = new Size(126, 20);
             label4.TabIndex = 3;
             label4.Text = "Apellido Materno";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(26, 198);
+            label5.Location = new Point(30, 264);
             label5.Name = "label5";
-            label5.Size = new Size(107, 15);
+            label5.Size = new Size(136, 20);
             label5.TabIndex = 4;
             label5.Text = "Nombre Empleado";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(26, 241);
+            label6.Location = new Point(30, 321);
             label6.Name = "label6";
-            label6.Size = new Size(83, 15);
+            label6.Size = new Size(106, 20);
             label6.TabIndex = 5;
             label6.Text = "Departamento";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(26, 287);
+            label7.Location = new Point(30, 383);
             label7.Name = "label7";
-            label7.Size = new Size(56, 15);
+            label7.Size = new Size(69, 20);
             label7.TabIndex = 6;
             label7.Text = "Provincia";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(26, 331);
+            label8.Location = new Point(30, 441);
             label8.Name = "label8";
-            label8.Size = new Size(45, 15);
+            label8.Size = new Size(58, 20);
             label8.TabIndex = 7;
             label8.Text = "Distrito";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(26, 377);
+            label9.Location = new Point(30, 503);
             label9.Name = "label9";
-            label9.Size = new Size(110, 15);
+            label9.Size = new Size(139, 20);
             label9.TabIndex = 8;
             label9.Text = "Nombre de Usuario";
             // 
@@ -143,33 +143,37 @@
             // 
             txtCodigo.BackColor = SystemColors.InactiveCaption;
             txtCodigo.Enabled = false;
-            txtCodigo.Location = new Point(185, 37);
+            txtCodigo.Location = new Point(211, 49);
+            txtCodigo.Margin = new Padding(3, 4, 3, 4);
             txtCodigo.Name = "txtCodigo";
-            txtCodigo.Size = new Size(100, 23);
+            txtCodigo.Size = new Size(114, 27);
             txtCodigo.TabIndex = 0;
             // 
             // txtDni
             // 
-            txtDni.Location = new Point(185, 77);
+            txtDni.Location = new Point(211, 103);
+            txtDni.Margin = new Padding(3, 4, 3, 4);
             txtDni.MaxLength = 8;
             txtDni.Name = "txtDni";
-            txtDni.Size = new Size(100, 23);
+            txtDni.Size = new Size(114, 27);
             txtDni.TabIndex = 1;
             txtDni.KeyPress += txtDni_KeyPress;
             // 
             // txtApellidoPaterno
             // 
-            txtApellidoPaterno.Location = new Point(185, 117);
+            txtApellidoPaterno.Location = new Point(211, 156);
+            txtApellidoPaterno.Margin = new Padding(3, 4, 3, 4);
             txtApellidoPaterno.Name = "txtApellidoPaterno";
-            txtApellidoPaterno.Size = new Size(151, 23);
+            txtApellidoPaterno.Size = new Size(172, 27);
             txtApellidoPaterno.TabIndex = 2;
             txtApellidoPaterno.KeyPress += txtApellidoPaterno_KeyPress;
             // 
             // txtApellidoMaterno
             // 
-            txtApellidoMaterno.Location = new Point(185, 157);
+            txtApellidoMaterno.Location = new Point(211, 209);
+            txtApellidoMaterno.Margin = new Padding(3, 4, 3, 4);
             txtApellidoMaterno.Name = "txtApellidoMaterno";
-            txtApellidoMaterno.Size = new Size(151, 23);
+            txtApellidoMaterno.Size = new Size(172, 27);
             txtApellidoMaterno.TabIndex = 3;
             txtApellidoMaterno.KeyPress += txtApellidoMaterno_KeyPress;
             // 
@@ -177,9 +181,10 @@
             // 
             cboDepartamento.DropDownStyle = ComboBoxStyle.DropDownList;
             cboDepartamento.FormattingEnabled = true;
-            cboDepartamento.Location = new Point(185, 241);
+            cboDepartamento.Location = new Point(211, 321);
+            cboDepartamento.Margin = new Padding(3, 4, 3, 4);
             cboDepartamento.Name = "cboDepartamento";
-            cboDepartamento.Size = new Size(151, 23);
+            cboDepartamento.Size = new Size(172, 28);
             cboDepartamento.TabIndex = 5;
             cboDepartamento.SelectedIndexChanged += cboDepartamento_SelectedIndexChanged;
             // 
@@ -187,9 +192,10 @@
             // 
             cboProvincia.DropDownStyle = ComboBoxStyle.DropDownList;
             cboProvincia.FormattingEnabled = true;
-            cboProvincia.Location = new Point(185, 287);
+            cboProvincia.Location = new Point(211, 383);
+            cboProvincia.Margin = new Padding(3, 4, 3, 4);
             cboProvincia.Name = "cboProvincia";
-            cboProvincia.Size = new Size(151, 23);
+            cboProvincia.Size = new Size(172, 28);
             cboProvincia.TabIndex = 6;
             cboProvincia.SelectedIndexChanged += cboProvincia_SelectedIndexChanged;
             // 
@@ -197,33 +203,37 @@
             // 
             cboDistrito.DropDownStyle = ComboBoxStyle.DropDownList;
             cboDistrito.FormattingEnabled = true;
-            cboDistrito.Location = new Point(185, 331);
+            cboDistrito.Location = new Point(211, 441);
+            cboDistrito.Margin = new Padding(3, 4, 3, 4);
             cboDistrito.Name = "cboDistrito";
-            cboDistrito.Size = new Size(151, 23);
+            cboDistrito.Size = new Size(172, 28);
             cboDistrito.TabIndex = 7;
             cboDistrito.SelectedIndexChanged += comboBox3_SelectedIndexChanged;
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(185, 377);
+            txtUsuario.Location = new Point(211, 503);
+            txtUsuario.Margin = new Padding(3, 4, 3, 4);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(151, 23);
+            txtUsuario.Size = new Size(172, 27);
             txtUsuario.TabIndex = 8;
             txtUsuario.KeyPress += txtUsuario_KeyPress;
             // 
             // txtNombreEmpleado
             // 
-            txtNombreEmpleado.Location = new Point(185, 198);
+            txtNombreEmpleado.Location = new Point(211, 264);
+            txtNombreEmpleado.Margin = new Padding(3, 4, 3, 4);
             txtNombreEmpleado.Name = "txtNombreEmpleado";
-            txtNombreEmpleado.Size = new Size(151, 23);
+            txtNombreEmpleado.Size = new Size(172, 27);
             txtNombreEmpleado.TabIndex = 4;
             txtNombreEmpleado.KeyPress += txtNombreEmpleado_KeyPress;
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(185, 709);
+            btnAceptar.Location = new Point(211, 849);
+            btnAceptar.Margin = new Padding(3, 4, 3, 4);
             btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(75, 23);
+            btnAceptar.Size = new Size(86, 31);
             btnAceptar.TabIndex = 10;
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
@@ -231,9 +241,10 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(296, 709);
+            btnCancelar.Location = new Point(324, 849);
+            btnCancelar.Margin = new Padding(3, 4, 3, 4);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(75, 23);
+            btnCancelar.Size = new Size(86, 31);
             btnCancelar.TabIndex = 11;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
@@ -241,26 +252,28 @@
             // 
             // txtClave
             // 
-            txtClave.Location = new Point(185, 419);
+            txtClave.Location = new Point(211, 559);
+            txtClave.Margin = new Padding(3, 4, 3, 4);
             txtClave.Name = "txtClave";
-            txtClave.Size = new Size(151, 23);
+            txtClave.Size = new Size(172, 27);
             txtClave.TabIndex = 9;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(26, 419);
+            label10.Location = new Point(30, 559);
             label10.Name = "label10";
-            label10.Size = new Size(36, 15);
+            label10.Size = new Size(45, 20);
             label10.TabIndex = 12;
             label10.Text = "Clave";
             // 
             // chkActivo
             // 
             chkActivo.AutoSize = true;
-            chkActivo.Location = new Point(185, 459);
+            chkActivo.Location = new Point(211, 612);
+            chkActivo.Margin = new Padding(3, 4, 3, 4);
             chkActivo.Name = "chkActivo";
-            chkActivo.Size = new Size(60, 19);
+            chkActivo.Size = new Size(73, 24);
             chkActivo.TabIndex = 21;
             chkActivo.Text = "Activo";
             chkActivo.UseVisualStyleBackColor = true;
@@ -268,18 +281,20 @@
             // pbFoto
             // 
             pbFoto.BorderStyle = BorderStyle.FixedSingle;
-            pbFoto.Location = new Point(22, 528);
+            pbFoto.Location = new Point(211, 659);
+            pbFoto.Margin = new Padding(3, 4, 3, 4);
             pbFoto.Name = "pbFoto";
-            pbFoto.Size = new Size(110, 151);
+            pbFoto.Size = new Size(172, 147);
             pbFoto.SizeMode = PictureBoxSizeMode.StretchImage;
             pbFoto.TabIndex = 22;
             pbFoto.TabStop = false;
             // 
             // btnFoto
             // 
-            btnFoto.Location = new Point(22, 474);
+            btnFoto.Location = new Point(23, 659);
+            btnFoto.Margin = new Padding(3, 4, 3, 4);
             btnFoto.Name = "btnFoto";
-            btnFoto.Size = new Size(111, 23);
+            btnFoto.Size = new Size(127, 31);
             btnFoto.TabIndex = 35;
             btnFoto.Text = "AgregarFoto...";
             btnFoto.UseVisualStyleBackColor = true;
@@ -291,9 +306,9 @@
             // 
             // FrmEmpleadoEditar
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(381, 755);
+            ClientSize = new Size(435, 892);
             Controls.Add(btnFoto);
             Controls.Add(pbFoto);
             Controls.Add(chkActivo);
@@ -319,6 +334,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FrmEmpleadoEditar";
             Text = "FrmEmpleadoEditar";
             Load += FrmEmpleadoEditar_Load;

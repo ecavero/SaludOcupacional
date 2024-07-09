@@ -58,9 +58,9 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 24);
+            label1.Location = new Point(14, 32);
             label1.Name = "label1";
-            label1.Size = new Size(46, 15);
+            label1.Size = new Size(58, 20);
             label1.TabIndex = 0;
             label1.Text = "Código";
             // 
@@ -69,86 +69,91 @@
             txtCodigo.BackColor = SystemColors.InactiveCaption;
             txtCodigo.Enabled = false;
             txtCodigo.ForeColor = SystemColors.InactiveCaptionText;
-            txtCodigo.Location = new Point(124, 24);
+            txtCodigo.Location = new Point(142, 32);
+            txtCodigo.Margin = new Padding(3, 4, 3, 4);
             txtCodigo.Name = "txtCodigo";
-            txtCodigo.Size = new Size(100, 23);
+            txtCodigo.Size = new Size(114, 27);
             txtCodigo.TabIndex = 1;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 60);
+            label2.Location = new Point(14, 80);
             label2.Name = "label2";
-            label2.Size = new Size(27, 15);
+            label2.Size = new Size(35, 20);
             label2.TabIndex = 2;
             label2.Text = "DNI";
             // 
             // txtDni
             // 
-            txtDni.Location = new Point(124, 56);
+            txtDni.Location = new Point(142, 75);
+            txtDni.Margin = new Padding(3, 4, 3, 4);
             txtDni.MaxLength = 8;
             txtDni.Name = "txtDni";
-            txtDni.Size = new Size(100, 23);
+            txtDni.Size = new Size(114, 27);
             txtDni.TabIndex = 3;
             txtDni.KeyPress += txtDni_KeyPress;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 88);
+            label3.Location = new Point(14, 117);
             label3.Name = "label3";
-            label3.Size = new Size(95, 15);
+            label3.Size = new Size(120, 20);
             label3.TabIndex = 4;
             label3.Text = "Apellido Paterno";
             // 
             // txtApellidoPaterno
             // 
-            txtApellidoPaterno.Location = new Point(124, 88);
+            txtApellidoPaterno.Location = new Point(142, 117);
+            txtApellidoPaterno.Margin = new Padding(3, 4, 3, 4);
             txtApellidoPaterno.Name = "txtApellidoPaterno";
-            txtApellidoPaterno.Size = new Size(203, 23);
+            txtApellidoPaterno.Size = new Size(231, 27);
             txtApellidoPaterno.TabIndex = 5;
             txtApellidoPaterno.KeyPress += txtApellidoPaterno_KeyPress;
             // 
             // txtApellidoMaterno
             // 
-            txtApellidoMaterno.Location = new Point(124, 117);
+            txtApellidoMaterno.Location = new Point(142, 156);
+            txtApellidoMaterno.Margin = new Padding(3, 4, 3, 4);
             txtApellidoMaterno.Name = "txtApellidoMaterno";
-            txtApellidoMaterno.Size = new Size(203, 23);
+            txtApellidoMaterno.Size = new Size(231, 27);
             txtApellidoMaterno.TabIndex = 7;
             txtApellidoMaterno.KeyPress += txtApellidoMaterno_KeyPress;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(12, 117);
+            label4.Location = new Point(14, 156);
             label4.Name = "label4";
-            label4.Size = new Size(99, 15);
+            label4.Size = new Size(126, 20);
             label4.TabIndex = 6;
             label4.Text = "Apellido Materno";
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(124, 147);
+            txtNombre.Location = new Point(142, 196);
+            txtNombre.Margin = new Padding(3, 4, 3, 4);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(203, 23);
+            txtNombre.Size = new Size(231, 27);
             txtNombre.TabIndex = 9;
             txtNombre.KeyPress += txtNombre_KeyPress;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(12, 147);
+            label5.Location = new Point(14, 196);
             label5.Name = "label5";
-            label5.Size = new Size(51, 15);
+            label5.Size = new Size(64, 20);
             label5.TabIndex = 8;
             label5.Text = "Nombre";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(12, 176);
+            label6.Location = new Point(14, 235);
             label6.Name = "label6";
-            label6.Size = new Size(83, 15);
+            label6.Size = new Size(106, 20);
             label6.TabIndex = 10;
             label6.Text = "Departamento";
             // 
@@ -156,9 +161,10 @@
             // 
             cboDepartamento.DropDownStyle = ComboBoxStyle.DropDownList;
             cboDepartamento.FormattingEnabled = true;
-            cboDepartamento.Location = new Point(124, 176);
+            cboDepartamento.Location = new Point(142, 235);
+            cboDepartamento.Margin = new Padding(3, 4, 3, 4);
             cboDepartamento.Name = "cboDepartamento";
-            cboDepartamento.Size = new Size(203, 23);
+            cboDepartamento.Size = new Size(231, 28);
             cboDepartamento.TabIndex = 11;
             cboDepartamento.SelectedIndexChanged += cboDepartamento_SelectedIndexChanged;
             // 
@@ -166,18 +172,19 @@
             // 
             cboProvincia.DropDownStyle = ComboBoxStyle.DropDownList;
             cboProvincia.FormattingEnabled = true;
-            cboProvincia.Location = new Point(124, 205);
+            cboProvincia.Location = new Point(142, 273);
+            cboProvincia.Margin = new Padding(3, 4, 3, 4);
             cboProvincia.Name = "cboProvincia";
-            cboProvincia.Size = new Size(203, 23);
+            cboProvincia.Size = new Size(231, 28);
             cboProvincia.TabIndex = 13;
             cboProvincia.SelectedIndexChanged += cboProvincia_SelectedIndexChanged;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(12, 205);
+            label7.Location = new Point(14, 273);
             label7.Name = "label7";
-            label7.Size = new Size(56, 15);
+            label7.Size = new Size(69, 20);
             label7.TabIndex = 12;
             label7.Text = "Provincia";
             // 
@@ -185,42 +192,45 @@
             // 
             cboDistrito.DropDownStyle = ComboBoxStyle.DropDownList;
             cboDistrito.FormattingEnabled = true;
-            cboDistrito.Location = new Point(124, 234);
+            cboDistrito.Location = new Point(142, 312);
+            cboDistrito.Margin = new Padding(3, 4, 3, 4);
             cboDistrito.Name = "cboDistrito";
-            cboDistrito.Size = new Size(203, 23);
+            cboDistrito.Size = new Size(231, 28);
             cboDistrito.TabIndex = 15;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(12, 234);
+            label8.Location = new Point(14, 312);
             label8.Name = "label8";
-            label8.Size = new Size(45, 15);
+            label8.Size = new Size(58, 20);
             label8.TabIndex = 14;
             label8.Text = "Distrito";
             // 
             // txtNumeroDeHistoria
             // 
-            txtNumeroDeHistoria.Location = new Point(124, 263);
+            txtNumeroDeHistoria.Location = new Point(142, 351);
+            txtNumeroDeHistoria.Margin = new Padding(3, 4, 3, 4);
             txtNumeroDeHistoria.Name = "txtNumeroDeHistoria";
-            txtNumeroDeHistoria.Size = new Size(203, 23);
+            txtNumeroDeHistoria.Size = new Size(231, 27);
             txtNumeroDeHistoria.TabIndex = 17;
             txtNumeroDeHistoria.KeyPress += txtNumeroDeHistoria_KeyPress;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(12, 263);
+            label9.Location = new Point(14, 351);
             label9.Name = "label9";
-            label9.Size = new Size(74, 15);
+            label9.Size = new Size(93, 20);
             label9.TabIndex = 16;
             label9.Text = "Nro. Historia";
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(174, 490);
+            btnAceptar.Location = new Point(186, 630);
+            btnAceptar.Margin = new Padding(3, 4, 3, 4);
             btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(75, 23);
+            btnAceptar.Size = new Size(86, 31);
             btnAceptar.TabIndex = 18;
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
@@ -228,9 +238,10 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(255, 490);
+            btnCancelar.Location = new Point(291, 630);
+            btnCancelar.Margin = new Padding(3, 4, 3, 4);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(75, 23);
+            btnCancelar.Size = new Size(86, 31);
             btnCancelar.TabIndex = 19;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
@@ -239,9 +250,10 @@
             // chkActivo
             // 
             chkActivo.AutoSize = true;
-            chkActivo.Location = new Point(124, 303);
+            chkActivo.Location = new Point(142, 404);
+            chkActivo.Margin = new Padding(3, 4, 3, 4);
             chkActivo.Name = "chkActivo";
-            chkActivo.Size = new Size(60, 19);
+            chkActivo.Size = new Size(73, 24);
             chkActivo.TabIndex = 20;
             chkActivo.Text = "Activo";
             chkActivo.UseVisualStyleBackColor = true;
@@ -249,18 +261,20 @@
             // pbFoto
             // 
             pbFoto.BorderStyle = BorderStyle.FixedSingle;
-            pbFoto.Location = new Point(12, 368);
+            pbFoto.Location = new Point(142, 447);
+            pbFoto.Margin = new Padding(3, 4, 3, 4);
             pbFoto.Name = "pbFoto";
-            pbFoto.Size = new Size(156, 111);
+            pbFoto.Size = new Size(231, 147);
             pbFoto.SizeMode = PictureBoxSizeMode.StretchImage;
             pbFoto.TabIndex = 21;
             pbFoto.TabStop = false;
             // 
             // btnFoto
             // 
-            btnFoto.Location = new Point(20, 324);
+            btnFoto.Location = new Point(14, 447);
+            btnFoto.Margin = new Padding(3, 4, 3, 4);
             btnFoto.Name = "btnFoto";
-            btnFoto.Size = new Size(105, 23);
+            btnFoto.Size = new Size(120, 31);
             btnFoto.TabIndex = 22;
             btnFoto.Text = "Agregar foto...";
             btnFoto.UseVisualStyleBackColor = true;
@@ -269,10 +283,10 @@
             // FrmPacienteEditar
             // 
             AcceptButton = btnAceptar;
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = btnCancelar;
-            ClientSize = new Size(369, 525);
+            ClientSize = new Size(422, 669);
             Controls.Add(btnFoto);
             Controls.Add(pbFoto);
             Controls.Add(chkActivo);
@@ -296,6 +310,7 @@
             Controls.Add(label2);
             Controls.Add(txtCodigo);
             Controls.Add(label1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FrmPacienteEditar";
             StartPosition = FormStartPosition.CenterParent;
             Text = "FrmPacienteEditar";

@@ -29,6 +29,13 @@
         private void InitializeComponent()
         {
             dgMedicos = new DataGridView();
+            btnAgregar = new Button();
+            btnModificar = new Button();
+            txtFiltro = new TextBox();
+            label1 = new Label();
+            lblRegistros = new Label();
+            label2 = new Label();
+            id_Persona = new DataGridViewTextBoxColumn();
             dni = new DataGridViewTextBoxColumn();
             apellidoPaterno = new DataGridViewTextBoxColumn();
             apellidoMaterno = new DataGridViewTextBoxColumn();
@@ -39,12 +46,6 @@
             nroColegiatura = new DataGridViewTextBoxColumn();
             especialidad = new DataGridViewTextBoxColumn();
             estado = new DataGridViewTextBoxColumn();
-            btnAgregar = new Button();
-            btnModificar = new Button();
-            txtFiltro = new TextBox();
-            label1 = new Label();
-            lblRegistros = new Label();
-            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgMedicos).BeginInit();
             SuspendLayout();
             // 
@@ -54,7 +55,7 @@
             dgMedicos.AllowUserToDeleteRows = false;
             dgMedicos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgMedicos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgMedicos.Columns.AddRange(new DataGridViewColumn[] { dni, apellidoPaterno, apellidoMaterno, nombre, departamento, provincia, distrito, nroColegiatura, especialidad, estado });
+            dgMedicos.Columns.AddRange(new DataGridViewColumn[] { id_Persona, dni, apellidoPaterno, apellidoMaterno, nombre, departamento, provincia, distrito, nroColegiatura, especialidad, estado });
             dgMedicos.Location = new Point(11, 61);
             dgMedicos.Margin = new Padding(3, 4, 3, 4);
             dgMedicos.Name = "dgMedicos";
@@ -64,6 +65,72 @@
             dgMedicos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgMedicos.Size = new Size(858, 423);
             dgMedicos.TabIndex = 1;
+            // 
+            // btnAgregar
+            // 
+            btnAgregar.Location = new Point(11, 516);
+            btnAgregar.Margin = new Padding(3, 4, 3, 4);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(86, 31);
+            btnAgregar.TabIndex = 2;
+            btnAgregar.Text = "&Agregar";
+            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
+            // 
+            // btnModificar
+            // 
+            btnModificar.Location = new Point(115, 516);
+            btnModificar.Margin = new Padding(3, 4, 3, 4);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new Size(86, 31);
+            btnModificar.TabIndex = 3;
+            btnModificar.Text = "&Modificar";
+            btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Click += btnModificar_Click;
+            // 
+            // txtFiltro
+            // 
+            txtFiltro.Location = new Point(130, 16);
+            txtFiltro.Margin = new Padding(3, 4, 3, 4);
+            txtFiltro.Name = "txtFiltro";
+            txtFiltro.Size = new Size(397, 27);
+            txtFiltro.TabIndex = 6;
+            txtFiltro.TextChanged += txtFiltro_TextChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(13, 20);
+            label1.Name = "label1";
+            label1.Size = new Size(98, 20);
+            label1.TabIndex = 5;
+            label1.Text = "Ingrese Filtro:";
+            // 
+            // lblRegistros
+            // 
+            lblRegistros.BorderStyle = BorderStyle.FixedSingle;
+            lblRegistros.Location = new Point(773, 518);
+            lblRegistros.Name = "lblRegistros";
+            lblRegistros.Size = new Size(96, 29);
+            lblRegistros.TabIndex = 7;
+            lblRegistros.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(683, 518);
+            label2.Name = "label2";
+            label2.Size = new Size(73, 20);
+            label2.TabIndex = 8;
+            label2.Text = "Registros:";
+            // 
+            // id_Persona
+            // 
+            id_Persona.DataPropertyName = "idPersona";
+            id_Persona.HeaderText = "ID";
+            id_Persona.MinimumWidth = 6;
+            id_Persona.Name = "id_Persona";
+            id_Persona.ReadOnly = true;
             // 
             // dni
             // 
@@ -145,64 +212,6 @@
             estado.Name = "estado";
             estado.ReadOnly = true;
             // 
-            // btnAgregar
-            // 
-            btnAgregar.Location = new Point(11, 516);
-            btnAgregar.Margin = new Padding(3, 4, 3, 4);
-            btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(86, 31);
-            btnAgregar.TabIndex = 2;
-            btnAgregar.Text = "&Agregar";
-            btnAgregar.UseVisualStyleBackColor = true;
-            btnAgregar.Click += btnAgregar_Click;
-            // 
-            // btnModificar
-            // 
-            btnModificar.Location = new Point(115, 516);
-            btnModificar.Margin = new Padding(3, 4, 3, 4);
-            btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(86, 31);
-            btnModificar.TabIndex = 3;
-            btnModificar.Text = "&Modificar";
-            btnModificar.UseVisualStyleBackColor = true;
-            btnModificar.Click += btnModificar_Click;
-            // 
-            // txtFiltro
-            // 
-            txtFiltro.Location = new Point(130, 16);
-            txtFiltro.Margin = new Padding(3, 4, 3, 4);
-            txtFiltro.Name = "txtFiltro";
-            txtFiltro.Size = new Size(397, 27);
-            txtFiltro.TabIndex = 6;
-            txtFiltro.TextChanged += txtFiltro_TextChanged;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(13, 20);
-            label1.Name = "label1";
-            label1.Size = new Size(98, 20);
-            label1.TabIndex = 5;
-            label1.Text = "Ingrese Filtro:";
-            // 
-            // lblRegistros
-            // 
-            lblRegistros.BorderStyle = BorderStyle.FixedSingle;
-            lblRegistros.Location = new Point(773, 518);
-            lblRegistros.Name = "lblRegistros";
-            lblRegistros.Size = new Size(96, 29);
-            lblRegistros.TabIndex = 7;
-            lblRegistros.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(683, 518);
-            label2.Name = "label2";
-            label2.Size = new Size(73, 20);
-            label2.TabIndex = 8;
-            label2.Text = "Registros:";
-            // 
             // FrmMedico
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -232,6 +241,9 @@
         private Button btnModificar;
         private TextBox txtFiltro;
         private Label label1;
+        private Label lblRegistros;
+        private Label label2;
+        private DataGridViewTextBoxColumn id_Persona;
         private DataGridViewTextBoxColumn dni;
         private DataGridViewTextBoxColumn apellidoPaterno;
         private DataGridViewTextBoxColumn apellidoMaterno;
@@ -242,7 +254,5 @@
         private DataGridViewTextBoxColumn nroColegiatura;
         private DataGridViewTextBoxColumn especialidad;
         private DataGridViewTextBoxColumn estado;
-        private Label lblRegistros;
-        private Label label2;
     }
 }
