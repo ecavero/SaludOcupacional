@@ -11,7 +11,7 @@ namespace SitioWeb_SaludOcupacional_GUI.Consultas
 {
 
 
-    public partial class WebForm1
+    public partial class Audiometria
     {
 
         /// <summary>

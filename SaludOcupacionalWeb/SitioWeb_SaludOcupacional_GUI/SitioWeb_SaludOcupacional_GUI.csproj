@@ -78,16 +78,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Consultas\WebForm1.aspx" />
+    <Content Include="Consultas\Audiometria.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Consultas\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="Consultas\Audiometria.aspx.cs">
+      <DependentUpon>Audiometria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Consultas\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="Consultas\Audiometria.aspx.designer.cs">
+      <DependentUpon>Audiometria.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
