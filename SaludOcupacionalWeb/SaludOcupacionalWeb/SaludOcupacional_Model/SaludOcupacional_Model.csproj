@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{80EEAD8F-14F9-4A9D-B2AD-F9447627416B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SaludOcupacional_Model</RootNamespace>
+    <AssemblyName>SaludOcupacional_Model</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cita.cs">
+      <DependentUpon>SaludOcupacional.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CitaExamen.cs">
+      <DependentUpon>SaludOcupacional.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CitaExamenResultado.cs">
+      <DependentUpon>SaludOcupacional.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Empleado.cs">
+      <DependentUpon>SaludOcupacional.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Empresa.cs">
+      <DependentUpon>SaludOcupacional.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Examen.cs">
+      <DependentUpon>SaludOcupacional.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExamenComponente.cs">
+      <DependentUpon>SaludOcupacional.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Medico.cs">
+      <DependentUpon>SaludOcupacional.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Paciente.cs">
+      <DependentUpon>SaludOcupacional.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PerfilMedico.cs">
+      <DependentUpon>SaludOcupacional.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PerfilMedicoExamen.cs">
+      <DependentUpon>SaludOcupacional.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Persona.cs">
+      <DependentUpon>SaludOcupacional.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaludOcupacional.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaludOcupacional.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SaludOcupacional.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaludOcupacional.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SaludOcupacional.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaludOcupacional.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="TipoPersona.cs">
+      <DependentUpon>SaludOcupacional.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ubigeo.cs">
+      <DependentUpon>SaludOcupacional.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_listarPacientes_Result.cs">
+      <DependentUpon>SaludOcupacional.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="SaludOcupacional.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SaludOcupacional.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <None Include="SaludOcupacional.edmx.diagram">
+      <DependentUpon>SaludOcupacional.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SaludOcupacional.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SaludOcupacional.Context.cs</LastGenOutput>
+      <DependentUpon>SaludOcupacional.edmx</DependentUpon>
+    </Content>
+    <Content Include="SaludOcupacional.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SaludOcupacional.edmx</DependentUpon>
+      <LastGenOutput>SaludOcupacional.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SaludOcupacional_Entities\SaludOcupacional_Entities.csproj">
+      <Project>{e418f9fa-01cc-4e00-b7c1-a2ac3c4f6563}</Project>
+      <Name>SaludOcupacional_Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

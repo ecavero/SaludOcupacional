@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="26009389b52d449daeeff85b9a2461a7" Name="Diagram1">
+        <EntityTypeShape EntityType="SaludOcupacionalModel.Cita" Width="1.5" PointX="7.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaludOcupacionalModel.CitaExamen" Width="1.5" PointX="9.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaludOcupacionalModel.CitaExamenResultado" Width="1.5" PointX="9.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaludOcupacionalModel.Empleado" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaludOcupacionalModel.Empresa" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaludOcupacionalModel.Examen" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaludOcupacionalModel.ExamenComponente" Width="1.5" PointX="7.5" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaludOcupacionalModel.Medico" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaludOcupacionalModel.Paciente" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaludOcupacionalModel.PerfilMedico" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaludOcupacionalModel.PerfilMedicoExamen" Width="1.5" PointX="7.5" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaludOcupacionalModel.Persona" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaludOcupacionalModel.TipoPersona" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaludOcupacionalModel.Ubigeo" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <AssociationConnector Association="SaludOcupacionalModel.FK__Cita__idPerfilMe__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="SaludOcupacionalModel.FK__Cita__idPersona__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="SaludOcupacionalModel.FK__CitaExame__idCit__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="SaludOcupacionalModel.FK__CitaExame__idCit__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="SaludOcupacionalModel.FK__CitaExame__idMed__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="SaludOcupacionalModel.FK__CitaExame__idExa__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="SaludOcupacionalModel.FK__Empleado__idPers__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="SaludOcupacionalModel.FK__Empresa__idUbige__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="SaludOcupacionalModel.FK__PerfilMed__idEmp__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="SaludOcupacionalModel.FK__ExamenCom__idExa__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="SaludOcupacionalModel.FK__PerfilMed__idExa__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="SaludOcupacionalModel.FK__Medico__idPerson__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="SaludOcupacionalModel.FK__Paciente__idPers__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="SaludOcupacionalModel.FK__PerfilMed__idPer__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="SaludOcupacionalModel.FK__PerfilMed__idPer__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="SaludOcupacionalModel.FK__Persona__idTipoP__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="SaludOcupacionalModel.FK__Persona__idUbige__60A75C0F" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,1139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SaludOcupacionalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cita">
+          <Key>
+            <PropertyRef Name="idCita" />
+          </Key>
+          <Property Name="idCita" Type="int" Nullable="false" />
+          <Property Name="idPersona" Type="int" />
+          <Property Name="idPerfilMedico" Type="int" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="idEmpladoCrea" Type="int" />
+          <Property Name="idEmpleadoModifica" Type="int" />
+          <Property Name="idEmpleadoElimina" Type="int" />
+          <Property Name="estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="CitaExamen">
+          <Key>
+            <PropertyRef Name="idCitaExamen" />
+          </Key>
+          <Property Name="idCitaExamen" Type="int" Nullable="false" />
+          <Property Name="idCita" Type="int" />
+          <Property Name="idExamen" Type="int" />
+          <Property Name="idMedico" Type="int" />
+          <Property Name="estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="CitaExamenResultado">
+          <Key>
+            <PropertyRef Name="idCitaExamenResultado" />
+          </Key>
+          <Property Name="idCitaExamenResultado" Type="int" Nullable="false" />
+          <Property Name="idCita" Type="int" />
+          <Property Name="idExamenComponente" Type="int" />
+          <Property Name="resultado" Type="varchar" MaxLength="100" />
+          <Property Name="estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="idPersona" />
+          </Key>
+          <Property Name="idPersona" Type="int" Nullable="false" />
+          <Property Name="nombreEmpleado" Type="varchar" MaxLength="100" />
+          <Property Name="clave" Type="varchar" MaxLength="100" />
+          <Property Name="estado" Type="bit" />
+          <Property Name="usuarioCrea" Type="nvarchar" MaxLength="255" />
+          <Property Name="usuarioModifica" Type="nvarchar" MaxLength="255" />
+          <Property Name="fechaCrea" Type="date" />
+          <Property Name="fechaModifica" Type="date" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="idEmpresa" />
+          </Key>
+          <Property Name="idEmpresa" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" />
+          <Property Name="RUC" Type="varchar" MaxLength="60" />
+          <Property Name="idUbigeo" Type="varchar" MaxLength="6" />
+          <Property Name="estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Examen">
+          <Key>
+            <PropertyRef Name="idExamen" />
+          </Key>
+          <Property Name="idExamen" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ExamenComponente">
+          <Key>
+            <PropertyRef Name="idExamenComponente" />
+          </Key>
+          <Property Name="idExamenComponente" Type="int" Nullable="false" />
+          <Property Name="idExamen" Type="int" />
+          <Property Name="descripcionComponente" Type="varchar" MaxLength="100" />
+          <Property Name="estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Medico">
+          <Key>
+            <PropertyRef Name="idPersona" />
+          </Key>
+          <Property Name="idPersona" Type="int" Nullable="false" />
+          <Property Name="nroColegiatura" Type="int" />
+          <Property Name="especialidad" Type="varchar" MaxLength="100" />
+          <Property Name="estado" Type="bit" />
+          <Property Name="usuarioCrea" Type="nvarchar" MaxLength="255" />
+          <Property Name="usuarioModifica" Type="nvarchar" MaxLength="255" />
+          <Property Name="fechaCrea" Type="date" />
+          <Property Name="fechaModifica" Type="date" />
+        </EntityType>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="idPersona" />
+          </Key>
+          <Property Name="idPersona" Type="int" Nullable="false" />
+          <Property Name="numeroDeHistoria" Type="varchar" MaxLength="20" />
+          <Property Name="estado" Type="bit" />
+          <Property Name="usuarioCrea" Type="nvarchar" MaxLength="255" />
+          <Property Name="usuarioModifica" Type="nvarchar" MaxLength="255" />
+          <Property Name="fechaCrea" Type="datetime" />
+          <Property Name="fechaModifica" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PerfilMedico">
+          <Key>
+            <PropertyRef Name="idPerfilMedico" />
+          </Key>
+          <Property Name="idPerfilMedico" Type="int" Nullable="false" />
+          <Property Name="idPersona" Type="int" />
+          <Property Name="idEmpresa" Type="int" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="PerfilMedicoExamen">
+          <Key>
+            <PropertyRef Name="idPerfilMedicoExamen" />
+          </Key>
+          <Property Name="idPerfilMedicoExamen" Type="int" Nullable="false" />
+          <Property Name="idPerfilMedico" Type="int" />
+          <Property Name="idExamen" Type="int" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="idPersona" />
+          </Key>
+          <Property Name="idPersona" Type="int" Nullable="false" />
+          <Property Name="idTipoPersona" Type="int" />
+          <Property Name="dni" Type="varchar" MaxLength="10" />
+          <Property Name="apellidoPaterno" Type="varchar" MaxLength="100" />
+          <Property Name="apellidoMaterno" Type="varchar" MaxLength="100" />
+          <Property Name="idUbigeo" Type="varchar" MaxLength="6" />
+          <Property Name="estado" Type="bit" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" />
+          <Property Name="Foto" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TipoPersona">
+          <Key>
+            <PropertyRef Name="idTipoPersona" />
+          </Key>
+          <Property Name="idTipoPersona" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Ubigeo">
+          <Key>
+            <PropertyRef Name="idUbigeo" />
+          </Key>
+          <Property Name="idUbigeo" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="codProvincia" Type="varchar" MaxLength="2" />
+          <Property Name="codDepartamento" Type="varchar" MaxLength="2" />
+          <Property Name="codDistrito" Type="varchar" MaxLength="2" />
+          <Property Name="provincia" Type="varchar" MaxLength="100" />
+          <Property Name="departamento" Type="varchar" MaxLength="100" />
+          <Property Name="distrito" Type="varchar" MaxLength="100" />
+          <Property Name="estado" Type="bit" />
+        </EntityType>
+        <Association Name="FK__Cita__idPerfilMe__5812160E">
+          <End Role="PerfilMedico" Type="Self.PerfilMedico" Multiplicity="0..1" />
+          <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PerfilMedico">
+              <PropertyRef Name="idPerfilMedico" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="idPerfilMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cita__idPersona__5AEE82B9">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="0..1" />
+          <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CitaExame__idCit__59063A47">
+          <End Role="Cita" Type="Self.Cita" Multiplicity="0..1" />
+          <End Role="CitaExamen" Type="Self.CitaExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cita">
+              <PropertyRef Name="idCita" />
+            </Principal>
+            <Dependent Role="CitaExamen">
+              <PropertyRef Name="idCita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CitaExame__idCit__5CD6CB2B">
+          <End Role="Cita" Type="Self.Cita" Multiplicity="0..1" />
+          <End Role="CitaExamenResultado" Type="Self.CitaExamenResultado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cita">
+              <PropertyRef Name="idCita" />
+            </Principal>
+            <Dependent Role="CitaExamenResultado">
+              <PropertyRef Name="idCita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CitaExame__idExa__5BE2A6F2">
+          <End Role="ExamenComponente" Type="Self.ExamenComponente" Multiplicity="0..1" />
+          <End Role="CitaExamenResultado" Type="Self.CitaExamenResultado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExamenComponente">
+              <PropertyRef Name="idExamenComponente" />
+            </Principal>
+            <Dependent Role="CitaExamenResultado">
+              <PropertyRef Name="idExamenComponente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CitaExame__idMed__59FA5E80">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <End Role="CitaExamen" Type="Self.CitaExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="CitaExamen">
+              <PropertyRef Name="idMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleado__idPers__5535A963">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empresa__idUbige__619B8048">
+          <End Role="Ubigeo" Type="Self.Ubigeo" Multiplicity="0..1" />
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubigeo">
+              <PropertyRef Name="idUbigeo" />
+            </Principal>
+            <Dependent Role="Empresa">
+              <PropertyRef Name="idUbigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExamenCom__idExa__5DCAEF64">
+          <End Role="Examen" Type="Self.Examen" Multiplicity="0..1" />
+          <End Role="ExamenComponente" Type="Self.ExamenComponente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Examen">
+              <PropertyRef Name="idExamen" />
+            </Principal>
+            <Dependent Role="ExamenComponente">
+              <PropertyRef Name="idExamen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Medico__idPerson__5441852A">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Paciente__idPers__534D60F1">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PerfilMed__idEmp__5FB337D6">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="PerfilMedico" Type="Self.PerfilMedico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="idEmpresa" />
+            </Principal>
+            <Dependent Role="PerfilMedico">
+              <PropertyRef Name="idEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PerfilMed__idExa__571DF1D5">
+          <End Role="Examen" Type="Self.Examen" Multiplicity="0..1" />
+          <End Role="PerfilMedicoExamen" Type="Self.PerfilMedicoExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Examen">
+              <PropertyRef Name="idExamen" />
+            </Principal>
+            <Dependent Role="PerfilMedicoExamen">
+              <PropertyRef Name="idExamen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PerfilMed__idPer__5629CD9C">
+          <End Role="PerfilMedico" Type="Self.PerfilMedico" Multiplicity="0..1" />
+          <End Role="PerfilMedicoExamen" Type="Self.PerfilMedicoExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PerfilMedico">
+              <PropertyRef Name="idPerfilMedico" />
+            </Principal>
+            <Dependent Role="PerfilMedicoExamen">
+              <PropertyRef Name="idPerfilMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PerfilMed__idPer__5EBF139D">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="0..1" />
+          <End Role="PerfilMedico" Type="Self.PerfilMedico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="PerfilMedico">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Persona__idTipoP__52593CB8">
+          <End Role="TipoPersona" Type="Self.TipoPersona" Multiplicity="0..1" />
+          <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoPersona">
+              <PropertyRef Name="idTipoPersona" />
+            </Principal>
+            <Dependent Role="Persona">
+              <PropertyRef Name="idTipoPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Persona__idUbige__60A75C0F">
+          <End Role="Ubigeo" Type="Self.Ubigeo" Multiplicity="0..1" />
+          <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubigeo">
+              <PropertyRef Name="idUbigeo" />
+            </Principal>
+            <Dependent Role="Persona">
+              <PropertyRef Name="idUbigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="usp_listarPacientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="SaludOcupacionalModelStoreContainer">
+          <EntitySet Name="Cita" EntityType="Self.Cita" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CitaExamen" EntityType="Self.CitaExamen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CitaExamenResultado" EntityType="Self.CitaExamenResultado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Examen" EntityType="Self.Examen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExamenComponente" EntityType="Self.ExamenComponente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medico" EntityType="Self.Medico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PerfilMedico" EntityType="Self.PerfilMedico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PerfilMedicoExamen" EntityType="Self.PerfilMedicoExamen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoPersona" EntityType="Self.TipoPersona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ubigeo" EntityType="Self.Ubigeo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Cita__idPerfilMe__5812160E" Association="Self.FK__Cita__idPerfilMe__5812160E">
+            <End Role="PerfilMedico" EntitySet="PerfilMedico" />
+            <End Role="Cita" EntitySet="Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cita__idPersona__5AEE82B9" Association="Self.FK__Cita__idPersona__5AEE82B9">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Cita" EntitySet="Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CitaExame__idCit__59063A47" Association="Self.FK__CitaExame__idCit__59063A47">
+            <End Role="Cita" EntitySet="Cita" />
+            <End Role="CitaExamen" EntitySet="CitaExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CitaExame__idCit__5CD6CB2B" Association="Self.FK__CitaExame__idCit__5CD6CB2B">
+            <End Role="Cita" EntitySet="Cita" />
+            <End Role="CitaExamenResultado" EntitySet="CitaExamenResultado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CitaExame__idExa__5BE2A6F2" Association="Self.FK__CitaExame__idExa__5BE2A6F2">
+            <End Role="ExamenComponente" EntitySet="ExamenComponente" />
+            <End Role="CitaExamenResultado" EntitySet="CitaExamenResultado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CitaExame__idMed__59FA5E80" Association="Self.FK__CitaExame__idMed__59FA5E80">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="CitaExamen" EntitySet="CitaExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleado__idPers__5535A963" Association="Self.FK__Empleado__idPers__5535A963">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empresa__idUbige__619B8048" Association="Self.FK__Empresa__idUbige__619B8048">
+            <End Role="Ubigeo" EntitySet="Ubigeo" />
+            <End Role="Empresa" EntitySet="Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExamenCom__idExa__5DCAEF64" Association="Self.FK__ExamenCom__idExa__5DCAEF64">
+            <End Role="Examen" EntitySet="Examen" />
+            <End Role="ExamenComponente" EntitySet="ExamenComponente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medico__idPerson__5441852A" Association="Self.FK__Medico__idPerson__5441852A">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Medico" EntitySet="Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Paciente__idPers__534D60F1" Association="Self.FK__Paciente__idPers__534D60F1">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PerfilMed__idEmp__5FB337D6" Association="Self.FK__PerfilMed__idEmp__5FB337D6">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="PerfilMedico" EntitySet="PerfilMedico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PerfilMed__idExa__571DF1D5" Association="Self.FK__PerfilMed__idExa__571DF1D5">
+            <End Role="Examen" EntitySet="Examen" />
+            <End Role="PerfilMedicoExamen" EntitySet="PerfilMedicoExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PerfilMed__idPer__5629CD9C" Association="Self.FK__PerfilMed__idPer__5629CD9C">
+            <End Role="PerfilMedico" EntitySet="PerfilMedico" />
+            <End Role="PerfilMedicoExamen" EntitySet="PerfilMedicoExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PerfilMed__idPer__5EBF139D" Association="Self.FK__PerfilMed__idPer__5EBF139D">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="PerfilMedico" EntitySet="PerfilMedico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Persona__idTipoP__52593CB8" Association="Self.FK__Persona__idTipoP__52593CB8">
+            <End Role="TipoPersona" EntitySet="TipoPersona" />
+            <End Role="Persona" EntitySet="Persona" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Persona__idUbige__60A75C0F" Association="Self.FK__Persona__idUbige__60A75C0F">
+            <End Role="Ubigeo" EntitySet="Ubigeo" />
+            <End Role="Persona" EntitySet="Persona" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SaludOcupacionalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cita">
+          <Key>
+            <PropertyRef Name="idCita" />
+          </Key>
+          <Property Name="idCita" Type="Int32" Nullable="false" />
+          <Property Name="idPersona" Type="Int32" />
+          <Property Name="idPerfilMedico" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="idEmpladoCrea" Type="Int32" />
+          <Property Name="idEmpleadoModifica" Type="Int32" />
+          <Property Name="idEmpleadoElimina" Type="Int32" />
+          <Property Name="estado" Type="Boolean" />
+          <NavigationProperty Name="PerfilMedico" Relationship="Self.FK__Cita__idPerfilMe__5812160E" FromRole="Cita" ToRole="PerfilMedico" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK__Cita__idPersona__5AEE82B9" FromRole="Cita" ToRole="Paciente" />
+          <NavigationProperty Name="CitaExamen" Relationship="Self.FK__CitaExame__idCit__59063A47" FromRole="Cita" ToRole="CitaExamen" />
+          <NavigationProperty Name="CitaExamenResultado" Relationship="Self.FK__CitaExame__idCit__5CD6CB2B" FromRole="Cita" ToRole="CitaExamenResultado" />
+        </EntityType>
+        <EntityType Name="CitaExamen">
+          <Key>
+            <PropertyRef Name="idCitaExamen" />
+          </Key>
+          <Property Name="idCitaExamen" Type="Int32" Nullable="false" />
+          <Property Name="idCita" Type="Int32" />
+          <Property Name="idExamen" Type="Int32" />
+          <Property Name="idMedico" Type="Int32" />
+          <Property Name="estado" Type="Boolean" />
+          <NavigationProperty Name="Cita" Relationship="Self.FK__CitaExame__idCit__59063A47" FromRole="CitaExamen" ToRole="Cita" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK__CitaExame__idMed__59FA5E80" FromRole="CitaExamen" ToRole="Medico" />
+        </EntityType>
+        <EntityType Name="CitaExamenResultado">
+          <Key>
+            <PropertyRef Name="idCitaExamenResultado" />
+          </Key>
+          <Property Name="idCitaExamenResultado" Type="Int32" Nullable="false" />
+          <Property Name="idCita" Type="Int32" />
+          <Property Name="idExamenComponente" Type="Int32" />
+          <Property Name="resultado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Boolean" />
+          <NavigationProperty Name="Cita" Relationship="Self.FK__CitaExame__idCit__5CD6CB2B" FromRole="CitaExamenResultado" ToRole="Cita" />
+          <NavigationProperty Name="ExamenComponente" Relationship="Self.FK__CitaExame__idExa__5BE2A6F2" FromRole="CitaExamenResultado" ToRole="ExamenComponente" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="idPersona" />
+          </Key>
+          <Property Name="idPersona" Type="Int32" Nullable="false" />
+          <Property Name="nombreEmpleado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="clave" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Boolean" />
+          <Property Name="usuarioCrea" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="usuarioModifica" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="fechaCrea" Type="DateTime" Precision="0" />
+          <Property Name="fechaModifica" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK__Empleado__idPers__5535A963" FromRole="Empleado" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="idEmpresa" />
+          </Key>
+          <Property Name="idEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RUC" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="idUbigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Boolean" />
+          <NavigationProperty Name="Ubigeo" Relationship="Self.FK__Empresa__idUbige__619B8048" FromRole="Empresa" ToRole="Ubigeo" />
+          <NavigationProperty Name="PerfilMedico" Relationship="Self.FK__PerfilMed__idEmp__5FB337D6" FromRole="Empresa" ToRole="PerfilMedico" />
+        </EntityType>
+        <EntityType Name="Examen">
+          <Key>
+            <PropertyRef Name="idExamen" />
+          </Key>
+          <Property Name="idExamen" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ExamenComponente" Relationship="Self.FK__ExamenCom__idExa__5DCAEF64" FromRole="Examen" ToRole="ExamenComponente" />
+          <NavigationProperty Name="PerfilMedicoExamen" Relationship="Self.FK__PerfilMed__idExa__571DF1D5" FromRole="Examen" ToRole="PerfilMedicoExamen" />
+        </EntityType>
+        <EntityType Name="ExamenComponente">
+          <Key>
+            <PropertyRef Name="idExamenComponente" />
+          </Key>
+          <Property Name="idExamenComponente" Type="Int32" Nullable="false" />
+          <Property Name="idExamen" Type="Int32" />
+          <Property Name="descripcionComponente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Boolean" />
+          <NavigationProperty Name="CitaExamenResultado" Relationship="Self.FK__CitaExame__idExa__5BE2A6F2" FromRole="ExamenComponente" ToRole="CitaExamenResultado" />
+          <NavigationProperty Name="Examen" Relationship="Self.FK__ExamenCom__idExa__5DCAEF64" FromRole="ExamenComponente" ToRole="Examen" />
+        </EntityType>
+        <EntityType Name="Medico">
+          <Key>
+            <PropertyRef Name="idPersona" />
+          </Key>
+          <Property Name="idPersona" Type="Int32" Nullable="false" />
+          <Property Name="nroColegiatura" Type="Int32" />
+          <Property Name="especialidad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Boolean" />
+          <Property Name="usuarioCrea" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="usuarioModifica" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="fechaCrea" Type="DateTime" Precision="0" />
+          <Property Name="fechaModifica" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CitaExamen" Relationship="Self.FK__CitaExame__idMed__59FA5E80" FromRole="Medico" ToRole="CitaExamen" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK__Medico__idPerson__5441852A" FromRole="Medico" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="idPersona" />
+          </Key>
+          <Property Name="idPersona" Type="Int32" Nullable="false" />
+          <Property Name="numeroDeHistoria" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Boolean" />
+          <Property Name="usuarioCrea" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="usuarioModifica" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="fechaCrea" Type="DateTime" Precision="3" />
+          <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Cita" Relationship="Self.FK__Cita__idPersona__5AEE82B9" FromRole="Paciente" ToRole="Cita" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK__Paciente__idPers__534D60F1" FromRole="Paciente" ToRole="Persona" />
+          <NavigationProperty Name="PerfilMedico" Relationship="Self.FK__PerfilMed__idPer__5EBF139D" FromRole="Paciente" ToRole="PerfilMedico" />
+        </EntityType>
+        <EntityType Name="PerfilMedico">
+          <Key>
+            <PropertyRef Name="idPerfilMedico" />
+          </Key>
+          <Property Name="idPerfilMedico" Type="Int32" Nullable="false" />
+          <Property Name="idPersona" Type="Int32" />
+          <Property Name="idEmpresa" Type="Int32" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cita" Relationship="Self.FK__Cita__idPerfilMe__5812160E" FromRole="PerfilMedico" ToRole="Cita" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK__PerfilMed__idEmp__5FB337D6" FromRole="PerfilMedico" ToRole="Empresa" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK__PerfilMed__idPer__5EBF139D" FromRole="PerfilMedico" ToRole="Paciente" />
+          <NavigationProperty Name="PerfilMedicoExamen" Relationship="Self.FK__PerfilMed__idPer__5629CD9C" FromRole="PerfilMedico" ToRole="PerfilMedicoExamen" />
+        </EntityType>
+        <EntityType Name="PerfilMedicoExamen">
+          <Key>
+            <PropertyRef Name="idPerfilMedicoExamen" />
+          </Key>
+          <Property Name="idPerfilMedicoExamen" Type="Int32" Nullable="false" />
+          <Property Name="idPerfilMedico" Type="Int32" />
+          <Property Name="idExamen" Type="Int32" />
+          <NavigationProperty Name="Examen" Relationship="Self.FK__PerfilMed__idExa__571DF1D5" FromRole="PerfilMedicoExamen" ToRole="Examen" />
+          <NavigationProperty Name="PerfilMedico" Relationship="Self.FK__PerfilMed__idPer__5629CD9C" FromRole="PerfilMedicoExamen" ToRole="PerfilMedico" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="idPersona" />
+          </Key>
+          <Property Name="idPersona" Type="Int32" Nullable="false" />
+          <Property Name="idTipoPersona" Type="Int32" />
+          <Property Name="dni" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="apellidoPaterno" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="apellidoMaterno" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="idUbigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Boolean" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Empleado__idPers__5535A963" FromRole="Persona" ToRole="Empleado" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK__Medico__idPerson__5441852A" FromRole="Persona" ToRole="Medico" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK__Paciente__idPers__534D60F1" FromRole="Persona" ToRole="Paciente" />
+          <NavigationProperty Name="TipoPersona" Relationship="Self.FK__Persona__idTipoP__52593CB8" FromRole="Persona" ToRole="TipoPersona" />
+          <NavigationProperty Name="Ubigeo" Relationship="Self.FK__Persona__idUbige__60A75C0F" FromRole="Persona" ToRole="Ubigeo" />
+        </EntityType>
+        <EntityType Name="TipoPersona">
+          <Key>
+            <PropertyRef Name="idTipoPersona" />
+          </Key>
+          <Property Name="idTipoPersona" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK__Persona__idTipoP__52593CB8" FromRole="TipoPersona" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="Ubigeo">
+          <Key>
+            <PropertyRef Name="idUbigeo" />
+          </Key>
+          <Property Name="idUbigeo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="codProvincia" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="codDepartamento" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="codDistrito" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="provincia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="departamento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="distrito" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Boolean" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK__Empresa__idUbige__619B8048" FromRole="Ubigeo" ToRole="Empresa" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK__Persona__idUbige__60A75C0F" FromRole="Ubigeo" ToRole="Persona" />
+        </EntityType>
+        <Association Name="FK__Cita__idPerfilMe__5812160E">
+          <End Role="PerfilMedico" Type="Self.PerfilMedico" Multiplicity="0..1" />
+          <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PerfilMedico">
+              <PropertyRef Name="idPerfilMedico" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="idPerfilMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cita__idPersona__5AEE82B9">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="0..1" />
+          <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CitaExame__idCit__59063A47">
+          <End Role="Cita" Type="Self.Cita" Multiplicity="0..1" />
+          <End Role="CitaExamen" Type="Self.CitaExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cita">
+              <PropertyRef Name="idCita" />
+            </Principal>
+            <Dependent Role="CitaExamen">
+              <PropertyRef Name="idCita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CitaExame__idCit__5CD6CB2B">
+          <End Role="Cita" Type="Self.Cita" Multiplicity="0..1" />
+          <End Role="CitaExamenResultado" Type="Self.CitaExamenResultado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cita">
+              <PropertyRef Name="idCita" />
+            </Principal>
+            <Dependent Role="CitaExamenResultado">
+              <PropertyRef Name="idCita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CitaExame__idMed__59FA5E80">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <End Role="CitaExamen" Type="Self.CitaExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="CitaExamen">
+              <PropertyRef Name="idMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CitaExame__idExa__5BE2A6F2">
+          <End Role="ExamenComponente" Type="Self.ExamenComponente" Multiplicity="0..1" />
+          <End Role="CitaExamenResultado" Type="Self.CitaExamenResultado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExamenComponente">
+              <PropertyRef Name="idExamenComponente" />
+            </Principal>
+            <Dependent Role="CitaExamenResultado">
+              <PropertyRef Name="idExamenComponente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleado__idPers__5535A963">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empresa__idUbige__619B8048">
+          <End Role="Ubigeo" Type="Self.Ubigeo" Multiplicity="0..1" />
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubigeo">
+              <PropertyRef Name="idUbigeo" />
+            </Principal>
+            <Dependent Role="Empresa">
+              <PropertyRef Name="idUbigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PerfilMed__idEmp__5FB337D6">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="PerfilMedico" Type="Self.PerfilMedico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="idEmpresa" />
+            </Principal>
+            <Dependent Role="PerfilMedico">
+              <PropertyRef Name="idEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExamenCom__idExa__5DCAEF64">
+          <End Role="Examen" Type="Self.Examen" Multiplicity="0..1" />
+          <End Role="ExamenComponente" Type="Self.ExamenComponente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Examen">
+              <PropertyRef Name="idExamen" />
+            </Principal>
+            <Dependent Role="ExamenComponente">
+              <PropertyRef Name="idExamen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PerfilMed__idExa__571DF1D5">
+          <End Role="Examen" Type="Self.Examen" Multiplicity="0..1" />
+          <End Role="PerfilMedicoExamen" Type="Self.PerfilMedicoExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Examen">
+              <PropertyRef Name="idExamen" />
+            </Principal>
+            <Dependent Role="PerfilMedicoExamen">
+              <PropertyRef Name="idExamen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Medico__idPerson__5441852A">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Paciente__idPers__534D60F1">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PerfilMed__idPer__5EBF139D">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="0..1" />
+          <End Role="PerfilMedico" Type="Self.PerfilMedico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="PerfilMedico">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PerfilMed__idPer__5629CD9C">
+          <End Role="PerfilMedico" Type="Self.PerfilMedico" Multiplicity="0..1" />
+          <End Role="PerfilMedicoExamen" Type="Self.PerfilMedicoExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PerfilMedico">
+              <PropertyRef Name="idPerfilMedico" />
+            </Principal>
+            <Dependent Role="PerfilMedicoExamen">
+              <PropertyRef Name="idPerfilMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Persona__idTipoP__52593CB8">
+          <End Role="TipoPersona" Type="Self.TipoPersona" Multiplicity="0..1" />
+          <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoPersona">
+              <PropertyRef Name="idTipoPersona" />
+            </Principal>
+            <Dependent Role="Persona">
+              <PropertyRef Name="idTipoPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Persona__idUbige__60A75C0F">
+          <End Role="Ubigeo" Type="Self.Ubigeo" Multiplicity="0..1" />
+          <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubigeo">
+              <PropertyRef Name="idUbigeo" />
+            </Principal>
+            <Dependent Role="Persona">
+              <PropertyRef Name="idUbigeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SaludOcupacionalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cita" EntityType="Self.Cita" />
+          <EntitySet Name="CitaExamen" EntityType="Self.CitaExamen" />
+          <EntitySet Name="CitaExamenResultado" EntityType="Self.CitaExamenResultado" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" />
+          <EntitySet Name="Examen" EntityType="Self.Examen" />
+          <EntitySet Name="ExamenComponente" EntityType="Self.ExamenComponente" />
+          <EntitySet Name="Medico" EntityType="Self.Medico" />
+          <EntitySet Name="Paciente" EntityType="Self.Paciente" />
+          <EntitySet Name="PerfilMedico" EntityType="Self.PerfilMedico" />
+          <EntitySet Name="PerfilMedicoExamen" EntityType="Self.PerfilMedicoExamen" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" />
+          <EntitySet Name="TipoPersona" EntityType="Self.TipoPersona" />
+          <EntitySet Name="Ubigeo" EntityType="Self.Ubigeo" />
+          <AssociationSet Name="FK__Cita__idPerfilMe__5812160E" Association="Self.FK__Cita__idPerfilMe__5812160E">
+            <End Role="PerfilMedico" EntitySet="PerfilMedico" />
+            <End Role="Cita" EntitySet="Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cita__idPersona__5AEE82B9" Association="Self.FK__Cita__idPersona__5AEE82B9">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Cita" EntitySet="Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CitaExame__idCit__59063A47" Association="Self.FK__CitaExame__idCit__59063A47">
+            <End Role="Cita" EntitySet="Cita" />
+            <End Role="CitaExamen" EntitySet="CitaExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CitaExame__idCit__5CD6CB2B" Association="Self.FK__CitaExame__idCit__5CD6CB2B">
+            <End Role="Cita" EntitySet="Cita" />
+            <End Role="CitaExamenResultado" EntitySet="CitaExamenResultado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CitaExame__idMed__59FA5E80" Association="Self.FK__CitaExame__idMed__59FA5E80">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="CitaExamen" EntitySet="CitaExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CitaExame__idExa__5BE2A6F2" Association="Self.FK__CitaExame__idExa__5BE2A6F2">
+            <End Role="ExamenComponente" EntitySet="ExamenComponente" />
+            <End Role="CitaExamenResultado" EntitySet="CitaExamenResultado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleado__idPers__5535A963" Association="Self.FK__Empleado__idPers__5535A963">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empresa__idUbige__619B8048" Association="Self.FK__Empresa__idUbige__619B8048">
+            <End Role="Ubigeo" EntitySet="Ubigeo" />
+            <End Role="Empresa" EntitySet="Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PerfilMed__idEmp__5FB337D6" Association="Self.FK__PerfilMed__idEmp__5FB337D6">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="PerfilMedico" EntitySet="PerfilMedico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExamenCom__idExa__5DCAEF64" Association="Self.FK__ExamenCom__idExa__5DCAEF64">
+            <End Role="Examen" EntitySet="Examen" />
+            <End Role="ExamenComponente" EntitySet="ExamenComponente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PerfilMed__idExa__571DF1D5" Association="Self.FK__PerfilMed__idExa__571DF1D5">
+            <End Role="Examen" EntitySet="Examen" />
+            <End Role="PerfilMedicoExamen" EntitySet="PerfilMedicoExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medico__idPerson__5441852A" Association="Self.FK__Medico__idPerson__5441852A">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Medico" EntitySet="Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Paciente__idPers__534D60F1" Association="Self.FK__Paciente__idPers__534D60F1">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PerfilMed__idPer__5EBF139D" Association="Self.FK__PerfilMed__idPer__5EBF139D">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="PerfilMedico" EntitySet="PerfilMedico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PerfilMed__idPer__5629CD9C" Association="Self.FK__PerfilMed__idPer__5629CD9C">
+            <End Role="PerfilMedico" EntitySet="PerfilMedico" />
+            <End Role="PerfilMedicoExamen" EntitySet="PerfilMedicoExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Persona__idTipoP__52593CB8" Association="Self.FK__Persona__idTipoP__52593CB8">
+            <End Role="TipoPersona" EntitySet="TipoPersona" />
+            <End Role="Persona" EntitySet="Persona" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Persona__idUbige__60A75C0F" Association="Self.FK__Persona__idUbige__60A75C0F">
+            <End Role="Ubigeo" EntitySet="Ubigeo" />
+            <End Role="Persona" EntitySet="Persona" />
+          </AssociationSet>
+          <FunctionImport Name="usp_listarPacientes" ReturnType="Collection(SaludOcupacionalModel.usp_listarPacientes_Result)" />
+        </EntityContainer>
+        <ComplexType Name="usp_listarPacientes_Result">
+          <Property Type="Int32" Name="idPersona" Nullable="false" />
+          <Property Type="String" Name="dni" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="apellidoPaterno" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="apellidoMaterno" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="departamento" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="provincia" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="distrito" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="numeroDeHistoria" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="estado" Nullable="true" MaxLength="8" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SaludOcupacionalModelStoreContainer" CdmEntityContainer="SaludOcupacionalEntities">
+          <EntitySetMapping Name="Cita">
+            <EntityTypeMapping TypeName="SaludOcupacionalModel.Cita">
+              <MappingFragment StoreEntitySet="Cita">
+                <ScalarProperty Name="idCita" ColumnName="idCita" />
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="idPerfilMedico" ColumnName="idPerfilMedico" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="idEmpladoCrea" ColumnName="idEmpladoCrea" />
+                <ScalarProperty Name="idEmpleadoModifica" ColumnName="idEmpleadoModifica" />
+                <ScalarProperty Name="idEmpleadoElimina" ColumnName="idEmpleadoElimina" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CitaExamen">
+            <EntityTypeMapping TypeName="SaludOcupacionalModel.CitaExamen">
+              <MappingFragment StoreEntitySet="CitaExamen">
+                <ScalarProperty Name="idCitaExamen" ColumnName="idCitaExamen" />
+                <ScalarProperty Name="idCita" ColumnName="idCita" />
+                <ScalarProperty Name="idExamen" ColumnName="idExamen" />
+                <ScalarProperty Name="idMedico" ColumnName="idMedico" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CitaExamenResultado">
+            <EntityTypeMapping TypeName="SaludOcupacionalModel.CitaExamenResultado">
+              <MappingFragment StoreEntitySet="CitaExamenResultado">
+                <ScalarProperty Name="idCitaExamenResultado" ColumnName="idCitaExamenResultado" />
+                <ScalarProperty Name="idCita" ColumnName="idCita" />
+                <ScalarProperty Name="idExamenComponente" ColumnName="idExamenComponente" />
+                <ScalarProperty Name="resultado" ColumnName="resultado" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleado">
+            <EntityTypeMapping TypeName="SaludOcupacionalModel.Empleado">
+              <MappingFragment StoreEntitySet="Empleado">
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="nombreEmpleado" ColumnName="nombreEmpleado" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="usuarioCrea" ColumnName="usuarioCrea" />
+                <ScalarProperty Name="usuarioModifica" ColumnName="usuarioModifica" />
+                <ScalarProperty Name="fechaCrea" ColumnName="fechaCrea" />
+                <ScalarProperty Name="fechaModifica" ColumnName="fechaModifica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresa">
+            <EntityTypeMapping TypeName="SaludOcupacionalModel.Empresa">
+              <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="idEmpresa" ColumnName="idEmpresa" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="RUC" ColumnName="RUC" />
+                <ScalarProperty Name="idUbigeo" ColumnName="idUbigeo" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Examen">
+            <EntityTypeMapping TypeName="SaludOcupacionalModel.Examen">
+              <MappingFragment StoreEntitySet="Examen">
+                <ScalarProperty Name="idExamen" ColumnName="idExamen" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExamenComponente">
+            <EntityTypeMapping TypeName="SaludOcupacionalModel.ExamenComponente">
+              <MappingFragment StoreEntitySet="ExamenComponente">
+                <ScalarProperty Name="idExamenComponente" ColumnName="idExamenComponente" />
+                <ScalarProperty Name="idExamen" ColumnName="idExamen" />
+                <ScalarProperty Name="descripcionComponente" ColumnName="descripcionComponente" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medico">
+            <EntityTypeMapping TypeName="SaludOcupacionalModel.Medico">
+              <MappingFragment StoreEntitySet="Medico">
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="nroColegiatura" ColumnName="nroColegiatura" />
+                <ScalarProperty Name="especialidad" ColumnName="especialidad" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="usuarioCrea" ColumnName="usuarioCrea" />
+                <ScalarProperty Name="usuarioModifica" ColumnName="usuarioModifica" />
+                <ScalarProperty Name="fechaCrea" ColumnName="fechaCrea" />
+                <ScalarProperty Name="fechaModifica" ColumnName="fechaModifica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Paciente">
+            <EntityTypeMapping TypeName="SaludOcupacionalModel.Paciente">
+              <MappingFragment StoreEntitySet="Paciente">
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="numeroDeHistoria" ColumnName="numeroDeHistoria" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="usuarioCrea" ColumnName="usuarioCrea" />
+                <ScalarProperty Name="usuarioModifica" ColumnName="usuarioModifica" />
+                <ScalarProperty Name="fechaCrea" ColumnName="fechaCrea" />
+                <ScalarProperty Name="fechaModifica" ColumnName="fechaModifica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PerfilMedico">
+            <EntityTypeMapping TypeName="SaludOcupacionalModel.PerfilMedico">
+              <MappingFragment StoreEntitySet="PerfilMedico">
+                <ScalarProperty Name="idPerfilMedico" ColumnName="idPerfilMedico" />
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="idEmpresa" ColumnName="idEmpresa" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PerfilMedicoExamen">
+            <EntityTypeMapping TypeName="SaludOcupacionalModel.PerfilMedicoExamen">
+              <MappingFragment StoreEntitySet="PerfilMedicoExamen">
+                <ScalarProperty Name="idPerfilMedicoExamen" ColumnName="idPerfilMedicoExamen" />
+                <ScalarProperty Name="idPerfilMedico" ColumnName="idPerfilMedico" />
+                <ScalarProperty Name="idExamen" ColumnName="idExamen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Persona">
+            <EntityTypeMapping TypeName="SaludOcupacionalModel.Persona">
+              <MappingFragment StoreEntitySet="Persona">
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="idTipoPersona" ColumnName="idTipoPersona" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
+                <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
+                <ScalarProperty Name="idUbigeo" ColumnName="idUbigeo" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoPersona">
+            <EntityTypeMapping TypeName="SaludOcupacionalModel.TipoPersona">
+              <MappingFragment StoreEntitySet="TipoPersona">
+                <ScalarProperty Name="idTipoPersona" ColumnName="idTipoPersona" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ubigeo">
+            <EntityTypeMapping TypeName="SaludOcupacionalModel.Ubigeo">
+              <MappingFragment StoreEntitySet="Ubigeo">
+                <ScalarProperty Name="idUbigeo" ColumnName="idUbigeo" />
+                <ScalarProperty Name="codProvincia" ColumnName="codProvincia" />
+                <ScalarProperty Name="codDepartamento" ColumnName="codDepartamento" />
+                <ScalarProperty Name="codDistrito" ColumnName="codDistrito" />
+                <ScalarProperty Name="provincia" ColumnName="provincia" />
+                <ScalarProperty Name="departamento" ColumnName="departamento" />
+                <ScalarProperty Name="distrito" ColumnName="distrito" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_listarPacientes" FunctionName="SaludOcupacionalModel.Store.usp_listarPacientes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SaludOcupacionalModel.usp_listarPacientes_Result">
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
+                <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="departamento" ColumnName="departamento" />
+                <ScalarProperty Name="provincia" ColumnName="provincia" />
+                <ScalarProperty Name="distrito" ColumnName="distrito" />
+                <ScalarProperty Name="numeroDeHistoria" ColumnName="numeroDeHistoria" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
