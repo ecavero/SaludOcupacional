@@ -11,7 +11,7 @@ namespace SitioWeb_SaludOcupacional_GUI.Consultas
 {
 
 
-    public partial class ConsultaMedico
+    public partial class ConsultaPacientes
     {
 
         /// <summary>
@@ -42,13 +42,13 @@ namespace SitioWeb_SaludOcupacional_GUI.Consultas
         protected global::System.Web.UI.WebControls.Button btnBuscar;
 
         /// <summary>
-        /// Control grvMedicos.
+        /// Control grvPacientes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvMedicos;
+        protected global::System.Web.UI.WebControls.GridView grvPacientes;
 
         /// <summary>
         /// Control lblMensaje.

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using SaludOcupacional_Controller;
+using SaludOcupacional_Entities;
 
 namespace SitioWeb_SaludOcupacional_GUI.Consultas
 {
@@ -12,6 +13,8 @@ namespace SitioWeb_SaludOcupacional_GUI.Consultas
     {
 
         MedicoBL objMedicoBL = new MedicoBL();
+
+        List<MedicoBE> medicos = new List<MedicoBE>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,25 +27,38 @@ namespace SitioWeb_SaludOcupacional_GUI.Consultas
             }
             catch (Exception ex)
             {
-                lblMensajePopup.Text = "Error: " + ex.Message;
-                //PopMensaje.Show();
+                lblMensaje.Text = "Error: " + ex.Message;
             }
         }
 
         private void CargarDatosMedicos(string strFiltro)
         {
-            //System.Threading.Thread.Sleep(2000);
+            try
+            {
+                lblMensaje.Text = "";
 
-            if(strFiltro == String.Empty)
-            {
-                grvMedicos.DataSource = objMedicoBL.ListarMedicos();
+                if (string.IsNullOrEmpty(strFiltro))
+                {
+                    grvMedicos.DataSource = objMedicoBL.ListarMedicos();
+                }
+                else
+                {
+                    medicos = objMedicoBL.ListarMedicos().Where(medico =>
+                        medico.especialidad.Equals(strFiltro, StringComparison.OrdinalIgnoreCase)).ToList();
+
+                    if (medicos.Count == 0)
+                    {
+                        lblMensaje.Text = "No se encontraron doctores";
+                    }
+
+                    grvMedicos.DataSource = medicos;
+                }
+                grvMedicos.DataBind();
             }
-            else
+            catch (Exception ex)
             {
-                grvMedicos.DataSource = objMedicoBL.ListarMedicos().Where(medico => 
-                medico.especialidad.Contains(strFiltro)).ToList();
+                lblMensaje.Text = "Error: " + ex.Message;
             }
-            grvMedicos.DataBind();
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
@@ -53,16 +69,17 @@ namespace SitioWeb_SaludOcupacional_GUI.Consultas
             }
             catch (Exception ex)
             {
-                lblMensajePopup.Text = ex.Message;
+                lblMensaje.Text = ex.Message;
             }
         }
 
-        protected void grvVendedores_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void grvMedicos_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             // Codifique
             grvMedicos.PageIndex = e.NewPageIndex;
             CargarDatosMedicos(txtFiltro.Text.Trim());
 
         }
+
     }
 }
