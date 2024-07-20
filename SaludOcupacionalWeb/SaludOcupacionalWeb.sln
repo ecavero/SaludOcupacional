@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaludOcupacional_Entities", "SaludOcupacional_Entities\SaludOcupacional_Entities.csproj", "{E418F9FA-01CC-4E00-B7C1-A2AC3C4F6563}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitioWeb_SaludOcupacional_GUI", "SitioWeb_SaludOcupacional_GUI\SitioWeb_SaludOcupacional_GUI.csproj", "{CB3BF7BA-9250-42C5-B1A6-0877B0FCA03A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{80EEAD8F-14F9-4A9D-B2AD-F9447627416B} = {80EEAD8F-14F9-4A9D-B2AD-F9447627416B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

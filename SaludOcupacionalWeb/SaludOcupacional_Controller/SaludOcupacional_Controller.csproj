@@ -46,6 +46,7 @@
     <Compile Include="MedicoBL.cs" />
     <Compile Include="PacienteBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultadosController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SaludOcupacional_Entities\SaludOcupacional_Entities.csproj">

@@ -41,8 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CitaEntity.cs" />
+    <Compile Include="CitaExamenResultadoEntity.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="EmpresaBE.cs" />
+    <Compile Include="ExamenComponenteEntity.cs" />
     <Compile Include="MedicoBE.cs" />
     <Compile Include="PacienteBE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
