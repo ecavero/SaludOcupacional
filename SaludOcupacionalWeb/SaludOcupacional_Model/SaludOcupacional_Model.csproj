@@ -75,6 +75,7 @@
     <Compile Include="Medico.cs">
       <DependentUpon>SaludOcupacional.tt</DependentUpon>
     </Compile>
+    <Compile Include="MedicoADO.cs" />
     <Compile Include="Paciente.cs">
       <DependentUpon>SaludOcupacional.tt</DependentUpon>
     </Compile>

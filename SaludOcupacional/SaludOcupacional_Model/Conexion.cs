@@ -11,9 +11,23 @@ namespace SaludOcupacional_Model
     {
         public string ObtenerCadenaConexion()
         {
-            string cadenaConexion = ConfigurationManager.AppSettings["db"];
-            cadenaConexion = System.Environment.ExpandEnvironmentVariables(cadenaConexion);
-            return cadenaConexion;
+
+            //Conexión con variable de Entorno
+            //string cadenaConexion = ConfigurationManager.AppSettings["db"];
+            //cadenaConexion = System.Environment.ExpandEnvironmentVariables(cadenaConexion);
+            //return cadenaConexion;
+
+            //Conexión sin Variable de Entorno
+            string strCnx =
+                ConfigurationManager.ConnectionStrings["SaludOcupacional"].ConnectionString;
+            if (object.ReferenceEquals(strCnx, string.Empty))
+            {
+                return string.Empty;
+            }
+            else
+            {
+                return strCnx;
+            }
         }
     }
 }

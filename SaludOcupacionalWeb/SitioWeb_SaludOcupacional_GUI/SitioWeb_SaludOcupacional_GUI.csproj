@@ -79,6 +79,88 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Consultas\Audiometria.aspx" />
+    <Content Include="Consultas\ConsultaMedico.aspx" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="CSS\DemoCSS.css" />
+    <Content Include="Images\1.jpg" />
+    <Content Include="Images\2.jpg" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\Aceptar.png" />
+    <Content Include="Images\Agregar.png" />
+    <Content Include="Images\book_blue.png" />
+    <Content Include="Images\Borrar.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\Buscar.png" />
+    <Content Include="Images\cabinet.png" />
+    <Content Include="Images\Calc.png" />
+    <Content Include="Images\calculator.png" />
+    <Content Include="Images\Cancelar.png" />
+    <Content Include="Images\Consultas.jpg" />
+    <Content Include="Images\Control_Panel.png" />
+    <Content Include="Images\DaleU.jpg" />
+    <Content Include="Images\docOC.png" />
+    <Content Include="Images\docRD.png" />
+    <Content Include="Images\docRM.png" />
+    <Content Include="Images\docRP.png" />
+    <Content Include="Images\document_attachment.png" />
+    <Content Include="Images\document_certificate.png" />
+    <Content Include="Images\document_dirty.png" />
+    <Content Include="Images\document_lock.png" />
+    <Content Include="Images\Editar.png" />
+    <Content Include="Images\Estetoscopio.JPG" />
+    <Content Include="Images\fondo.jpg" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\indicator.gif" />
+    <Content Include="Images\InicioSesion.jpg" />
+    <Content Include="Images\loading.gif" />
+    <Content Include="Images\loading2.gif" />
+    <Content Include="Images\Logout.jpg" />
+    <Content Include="Images\Mantenimientos.jpg" />
+    <Content Include="Images\money.png" />
+    <Content Include="Images\moneybag.png" />
+    <Content Include="Images\note_new.png" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
+    <Content Include="Images\p1.jpg" />
+    <Content Include="Images\p2.jpg" />
+    <Content Include="Images\p3.jpg" />
+    <Content Include="Images\p4.jpg" />
+    <Content Include="Images\p5.jpg" />
+    <Content Include="Images\p6.jpg" />
+    <Content Include="Images\p7.jpg" />
+    <Content Include="Images\Peru.png" />
+    <Content Include="Images\Testeo1.jpg" />
+    <Content Include="Images\Transacciones.jpg" />
+    <Content Include="Images\Ventas.jpg" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -89,10 +171,47 @@
     <Compile Include="Consultas\Audiometria.aspx.designer.cs">
       <DependentUpon>Audiometria.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Consultas\ConsultaMedico.aspx.cs">
+      <DependentUpon>ConsultaMedico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consultas\ConsultaMedico.aspx.designer.cs">
+      <DependentUpon>ConsultaMedico.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaludOcupacional.Master.cs">
+      <DependentUpon>SaludOcupacional.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SaludOcupacional.Master.designer.cs">
+      <DependentUpon>SaludOcupacional.Master</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="packages.config" />
+    <Content Include="SaludOcupacional.Master" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
