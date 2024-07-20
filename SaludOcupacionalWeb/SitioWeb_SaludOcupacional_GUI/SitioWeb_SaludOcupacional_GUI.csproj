@@ -78,6 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Consultas\ConsultaEmpresa.aspx" />
     <Content Include="Consultas\Audiometria.aspx" />
     <Content Include="Consultas\ConsultaMedico.aspx" />
     <Content Include="Consultas\ConsultaPacientes.aspx" />
@@ -165,6 +166,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consultas\ConsultaEmpresa.aspx.cs">
+      <DependentUpon>ConsultaEmpresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consultas\ConsultaEmpresa.aspx.designer.cs">
+      <DependentUpon>ConsultaEmpresa.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Consultas\Audiometria.aspx.cs">
       <DependentUpon>Audiometria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
