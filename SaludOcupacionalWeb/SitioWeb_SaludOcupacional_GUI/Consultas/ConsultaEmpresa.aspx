@@ -39,9 +39,18 @@
 
 
 
-        <asp:GridView ID="grvEmpresas" runat="server" CellPadding="4" CssClass="GridView" ForeColor="#333333" GridLines="None" Width="805px" AllowPaging="True" OnPageIndexChanging="grvPacientes_PageIndexChanging" PageSize="4" AutoGenerateColumns="True">
+        <asp:GridView ID="grvEmpresas" runat="server" CellPadding="4" CssClass="GridView" ForeColor="#333333" GridLines="None" Width="805px" AllowPaging="True" OnPageIndexChanging="grvPacientes_PageIndexChanging" PageSize="4" AutoGenerateColumns="False">
             <AlternatingRowStyle BackColor="White" />
+            <Columns>
 
+                <asp:BoundField DataField="nombre" HeaderText="Nombre" />
+                <asp:BoundField DataField="RUC" HeaderText="RUC" />
+                <asp:BoundField DataField="departamento" HeaderText="Departamento" />
+                <asp:BoundField DataField="provincia" HeaderText="Provincia" />
+                <asp:BoundField DataField="distrito" HeaderText="Distrito" />
+                <asp:BoundField DataField="estado" HeaderText="Estado" />
+
+            </Columns>
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />

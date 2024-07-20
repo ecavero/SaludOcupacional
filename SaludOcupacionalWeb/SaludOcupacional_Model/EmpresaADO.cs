@@ -31,7 +31,7 @@ namespace SaludOcupacional_Model
                     objEmpresaBE.departamento = resultado.Ubigeo.departamento;
                     objEmpresaBE.provincia = resultado.Ubigeo.provincia;
                     objEmpresaBE.distrito = resultado.Ubigeo.distrito;
-                    objEmpresaBE.estado = (bool) resultado.Empresa.estado;
+                    objEmpresaBE.estado = ((bool) resultado.Empresa.estado) == true ? "Activo" : "Inactivo";
                     objListaEmpresasBE.Add(objEmpresaBE);
                 }
                 return objListaEmpresasBE;

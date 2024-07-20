@@ -13,6 +13,6 @@ namespace SaludOcupacional_Entities
         public String departamento { get; set;}
         public String provincia { get; set;}
         public String distrito { get; set;}
-        public Boolean estado { get; set; }
+        public String estado { get; set; }
     }
 }
